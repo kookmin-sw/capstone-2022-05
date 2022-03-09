@@ -11,9 +11,9 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		64CAC2B6404C21A0904B5816 /* libPods-icare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D18DB41FC0C23FE69E852631 /* libPods-icare.a */; };
+		4759C44852D837654DD1BAE0 /* libPods-icare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E7AF2E6E8FEB1B8843E896 /* libPods-icare.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		A5BD2BEE2A3BFEB3B0CB972C /* libPods-icare-icareTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3880BDF98162A1F75DDC75 /* libPods-icare-icareTests.a */; };
+		B858ABBA0C7D6B69696B9102 /* libPods-icare-icareTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 708F076516ED762D05AD19B9 /* libPods-icare-icareTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,19 +30,19 @@
 		00E356EE1AD99517003FC87E /* icareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = icareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* icareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = icareTests.m; sourceTree = "<group>"; };
-		0B8DDD0E9426817042334F10 /* Pods-icare-icareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icare-icareTests.release.xcconfig"; path = "Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* icare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = icare/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = icare/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = icare/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = icare/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = icare/main.m; sourceTree = "<group>"; };
-		1A3880BDF98162A1F75DDC75 /* libPods-icare-icareTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-icare-icareTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		708F076516ED762D05AD19B9 /* libPods-icare-icareTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-icare-icareTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7353F4837AC99D8FABDDADB5 /* Pods-icare-icareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icare-icareTests.release.xcconfig"; path = "Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests.release.xcconfig"; sourceTree = "<group>"; };
+		77E7AF2E6E8FEB1B8843E896 /* libPods-icare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-icare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = icare/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A304189D21171B60C41CF00E /* Pods-icare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icare.release.xcconfig"; path = "Target Support Files/Pods-icare/Pods-icare.release.xcconfig"; sourceTree = "<group>"; };
-		B3D7823CA969BBF304D16E71 /* Pods-icare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icare.debug.xcconfig"; path = "Target Support Files/Pods-icare/Pods-icare.debug.xcconfig"; sourceTree = "<group>"; };
-		D18DB41FC0C23FE69E852631 /* libPods-icare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-icare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1B1A4367E2E7F0131026FA5 /* Pods-icare-icareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icare-icareTests.debug.xcconfig"; path = "Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests.debug.xcconfig"; sourceTree = "<group>"; };
+		92856B4D7288DDD487020248 /* Pods-icare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icare.debug.xcconfig"; path = "Target Support Files/Pods-icare/Pods-icare.debug.xcconfig"; sourceTree = "<group>"; };
+		C147370B3FE70A8F68B1E7B8 /* Pods-icare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icare.release.xcconfig"; path = "Target Support Files/Pods-icare/Pods-icare.release.xcconfig"; sourceTree = "<group>"; };
+		C79DF04AE9235A4543067383 /* Pods-icare-icareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-icare-icareTests.debug.xcconfig"; path = "Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5BD2BEE2A3BFEB3B0CB972C /* libPods-icare-icareTests.a in Frameworks */,
+				B858ABBA0C7D6B69696B9102 /* libPods-icare-icareTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64CAC2B6404C21A0904B5816 /* libPods-icare.a in Frameworks */,
+				4759C44852D837654DD1BAE0 /* libPods-icare.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,19 +100,19 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				D18DB41FC0C23FE69E852631 /* libPods-icare.a */,
-				1A3880BDF98162A1F75DDC75 /* libPods-icare-icareTests.a */,
+				77E7AF2E6E8FEB1B8843E896 /* libPods-icare.a */,
+				708F076516ED762D05AD19B9 /* libPods-icare-icareTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4984DF1A3C0ECD600E3320BB /* Pods */ = {
+		4AB9B3E408D1C264B1DD471A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B3D7823CA969BBF304D16E71 /* Pods-icare.debug.xcconfig */,
-				A304189D21171B60C41CF00E /* Pods-icare.release.xcconfig */,
-				E1B1A4367E2E7F0131026FA5 /* Pods-icare-icareTests.debug.xcconfig */,
-				0B8DDD0E9426817042334F10 /* Pods-icare-icareTests.release.xcconfig */,
+				92856B4D7288DDD487020248 /* Pods-icare.debug.xcconfig */,
+				C147370B3FE70A8F68B1E7B8 /* Pods-icare.release.xcconfig */,
+				C79DF04AE9235A4543067383 /* Pods-icare-icareTests.debug.xcconfig */,
+				7353F4837AC99D8FABDDADB5 /* Pods-icare-icareTests.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -133,7 +133,7 @@
 				00E356EF1AD99517003FC87E /* icareTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				4984DF1A3C0ECD600E3320BB /* Pods */,
+				4AB9B3E408D1C264B1DD471A /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -156,12 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "icareTests" */;
 			buildPhases = (
-				CC53A10EA6163BA6D7EDD93F /* [CP] Check Pods Manifest.lock */,
+				FE515A0558C38C6125ABC094 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				3F8AD8E376EACD3B05D83CD1 /* [CP] Embed Pods Frameworks */,
-				F41DD2424295FDF97960DA1A /* [CP] Copy Pods Resources */,
+				1D43C4DD8C3F7D5C0FDE134C /* [CP] Embed Pods Frameworks */,
+				0BC920B34C628D3DB9E1D138 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -177,14 +177,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "icare" */;
 			buildPhases = (
-				73B2586415153E19B9CE165D /* [CP] Check Pods Manifest.lock */,
+				F54F22C4131E7A5C7753D318 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				B566735E7E3AC67839A3A190 /* [CP] Embed Pods Frameworks */,
-				FCF3F718BBE561D5CE2A58B9 /* [CP] Copy Pods Resources */,
+				78CBEE32B28D46188F6C1135 /* [CP] Embed Pods Frameworks */,
+				B2C0EAC7ED7F87A9B51024A8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,7 +265,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		3F8AD8E376EACD3B05D83CD1 /* [CP] Embed Pods Frameworks */ = {
+		0BC920B34C628D3DB9E1D138 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1D43C4DD8C3F7D5C0FDE134C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -282,7 +299,41 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		73B2586415153E19B9CE165D /* [CP] Check Pods Manifest.lock */ = {
+		78CBEE32B28D46188F6C1135 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2C0EAC7ED7F87A9B51024A8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F54F22C4131E7A5C7753D318 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -304,24 +355,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B566735E7E3AC67839A3A190 /* [CP] Embed Pods Frameworks */ = {
+		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+			);
+			name = "Start Packager";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-frameworks.sh\"\n";
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		CC53A10EA6163BA6D7EDD93F /* [CP] Check Pods Manifest.lock */ = {
+		FE515A0558C38C6125ABC094 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,59 +394,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F41DD2424295FDF97960DA1A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-icare-icareTests/Pods-icare-icareTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FCF3F718BBE561D5CE2A58B9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-icare/Pods-icare-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FD10A7F022414F080027D42C /* Start Packager */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Start Packager";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -429,7 +429,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1B1A4367E2E7F0131026FA5 /* Pods-icare-icareTests.debug.xcconfig */;
+			baseConfigurationReference = C79DF04AE9235A4543067383 /* Pods-icare-icareTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -456,7 +456,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B8DDD0E9426817042334F10 /* Pods-icare-icareTests.release.xcconfig */;
+			baseConfigurationReference = 7353F4837AC99D8FABDDADB5 /* Pods-icare-icareTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -480,7 +480,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3D7823CA969BBF304D16E71 /* Pods-icare.debug.xcconfig */;
+			baseConfigurationReference = 92856B4D7288DDD487020248 /* Pods-icare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -506,7 +506,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A304189D21171B60C41CF00E /* Pods-icare.release.xcconfig */;
+			baseConfigurationReference = C147370B3FE70A8F68B1E7B8 /* Pods-icare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
