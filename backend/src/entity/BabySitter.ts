@@ -20,17 +20,19 @@ export class BabySitter {
     @Column({nullable : false})
     career: string;
 
+
     @CreateDateColumn({})
     createdAt: Timestamp
 
 
-    // user(1) <->  Parent(N)
+    // babysitter(N) <->  user(1)
     @ManyToOne(
         type => User, 
         user => user.babySitter, { nullable: false, onDelete: 'CASCADE' }
         )
     user! : User
 
+    // babysitter(1) <->  user(N)
     @OneToMany(
         type => Mapping,
         mapping => mapping.babySitter,{ nullable: false, onDelete: 'CASCADE' }

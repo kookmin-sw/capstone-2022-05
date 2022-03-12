@@ -29,6 +29,7 @@ export class User {
     })
     createdAt: Timestamp
 
+    //user(1) <-> parent(N)
     @OneToMany(
         (type) => Parent, 
         parent => parent.user, { nullable: false, onDelete: 'CASCADE' }
@@ -36,6 +37,8 @@ export class User {
     )
     parent : Parent
 
+
+    //user(1) <-> babySitter(N)
     @OneToMany(
         (type) => BabySitter, 
         babySitter => babySitter.user, { nullable: false, onDelete: 'CASCADE' }

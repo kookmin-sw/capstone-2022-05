@@ -19,13 +19,15 @@ export class Mapping {
     createdAt: Timestamp
 
 
-    // mapping(1) <->  baby sitter(N)
+    // mapping(N) <->  baby sitter(1)
     @ManyToOne(
         type => BabySitter, 
         babySitter => babySitter.mapping, { nullable: false, onDelete: 'CASCADE' }
         )
     babySitter : BabySitter
 
+    
+    // mapping(N) <->  baby parent(1)
     @ManyToOne(
         type => Parent, 
         parent => parent.mapping, { nullable: false, onDelete: 'CASCADE' }

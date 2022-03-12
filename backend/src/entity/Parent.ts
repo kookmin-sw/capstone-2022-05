@@ -27,13 +27,14 @@ export class Parent {
     createdAt: Timestamp
 
 
-    // user(1) <->  Parent(N)
+    // user(N) <->  Parent(1)
     @ManyToOne(
         type => User, 
         user => user.parent, { nullable: false, onDelete: 'CASCADE' }
         )
     user! : User
 
+    // Parent(1) <->  mapping(N)
     @OneToMany(
         type => Mapping,
         mapping => mapping.babySitter,{ nullable: false, onDelete: 'CASCADE' }
