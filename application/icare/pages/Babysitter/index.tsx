@@ -6,14 +6,14 @@ import { RootStackParamList } from '../RootStackParams';
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
-const MainScreen: FC  = () => {
+const BSMainScreen: FC  = () => {
     const navigation = useNavigation<mainScreenProp>();
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Main Screen</Text>
-            <Button title="Login" onPress={() => navigation.navigate('Auth')} />
+            <Text>BSMain Screen</Text>
+            <Button title="Main" onPress={() => navigation.goBack()} />
         </View>
     );
 }
 
-export default MainScreen;
+export default BSMainScreen;
