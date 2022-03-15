@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import MainScreen from './src/pages/Main';
 import AuthScreen from './src/pages/Auth';
 import RegisterScreen from './src/pages/Register';
+import SetInfoParent from './src/pages/InfoParent/Set';
 import BSMainScreen from "./src/pages/Babysitter";
 import {RootStackParamList} from './src/RootStackParams';
 
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Screen name="Auth" component={AuthScreen} />
         <Stack.Screen name="BSMain" component={BSMainScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="SetInfoParent" component={SetInfoParent} />
       </Stack.Navigator>
     </NavigationContainer>
   );

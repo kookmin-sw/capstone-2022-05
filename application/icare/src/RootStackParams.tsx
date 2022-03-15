@@ -3,4 +3,5 @@ export type RootStackParamList = {
     BSMain: undefined;
     Auth: undefined;
     Register: undefined;
+    SetInfoParent: undefined;
 };
