@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import MainScreen from './src/pages/Main';
 import AuthScreen from './src/pages/Auth';
-import BSMainScreen from "./src/pages/Babysitter";
+import BSMainScreen from "./src/pages/BabysitterMain";
 import {RootStackParamList} from './src/RootStackParams';
 
 const Stack = createStackNavigator<RootStackParamList>();
