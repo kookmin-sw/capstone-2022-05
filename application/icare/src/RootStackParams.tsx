@@ -4,4 +4,5 @@ export type RootStackParamList = {
     Auth: undefined;
     Register: undefined;
     SetInfoParent: undefined;
+    EditInfoParent: undefined;
 };
