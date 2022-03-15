@@ -1,9 +1,8 @@
-import Hello from "../components/Hello"
 import {useNavigation} from '@react-navigation/native';
 import React, { FC }  from 'react';
 import {View, Text, Button, StyleSheet} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import { RootStackParamList } from './RootStackParams';
+import { RootStackParamList } from '../RootStackParams';
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
