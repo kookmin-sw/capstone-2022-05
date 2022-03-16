@@ -12,7 +12,7 @@ import * as style from "./style"
 
 // type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
-const SetInfoParent: FC = () => {
+const SetInfoBS: FC = () => {
     // const navigation = useNavigation<registerScreenProp>();
     return (
         <style.scrollViewContainer>
@@ -21,11 +21,10 @@ const SetInfoParent: FC = () => {
                     <Image source = {require("../../../../public/img/logo_92.png")}/>
                 </style.setInfoLogo>
                 <style.setInfoInputBox>
-                    <LabelInput label="아기 이름" />
-                    <SelectDate label="아기 출생일" />
-                    <LabelRadio title="아기 성별" label1='남자' label2='여자'/>
+                    <SelectDate label="생년월일" />
+                    <LabelRadio title="성별" label1='남자' label2='여자'/>
                     <LabelInput label="거주 지역" />
-                    <LabelTextarea label="아기 특이사항" placeholder="아이에 대한 주의사항을 적어주세요:)"/>
+                    <LabelTextarea label="자기소개/경력" placeholder="자기소개 및 경력을 입력해주세요."/>
                 </style.setInfoInputBox>
                 <style.setInfoButtonBox>
                     <LabelButton label="입력 완료"/>
@@ -35,4 +34,4 @@ const SetInfoParent: FC = () => {
     );
 }
 
-export default SetInfoParent;
+export default SetInfoBS;
