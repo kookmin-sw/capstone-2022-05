@@ -8,4 +8,5 @@ export type RootStackParamList = {
     DisplayInfoParent: undefined;
     SetInfoBS: undefined;
     EditInfoBS: undefined;
+    DisplayInfoBS: undefined;
 };

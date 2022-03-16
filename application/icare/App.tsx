@@ -9,6 +9,7 @@ import EditInfoParent from './src/pages/InfoParent/Edit';
 import DisplayInfoParent from './src/pages/InfoParent/Display';
 import SetInfoBS from './src/pages/InfoBabysitter/Set';
 import EditInfoBS from './src/pages/InfoBabysitter/Edit';
+import DisplayInfoBS from './src/pages/InfoBabysitter/Display';
 import BSMainScreen from "./src/pages/Babysitter";
 import {RootStackParamList} from './src/RootStackParams';
 
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Screen name="DisplayInfoParent" component={DisplayInfoParent} />
         <Stack.Screen name="SetInfoBS" component={SetInfoBS} />
         <Stack.Screen name="EditInfoBS" component={EditInfoBS} />
+        <Stack.Screen name="DisplayInfoBS" component={DisplayInfoBS} />
       </Stack.Navigator>
     </NavigationContainer>
   );
