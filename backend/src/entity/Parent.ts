@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany, OneToOne, JoinColumn} from "typeorm";
 import {User} from './User';
 import {Mapping} from './Mapping'
 
@@ -27,12 +27,16 @@ export class Parent {
     createdAt: Timestamp
 
 
-    // user(N) <->  Parent(1)
-    @ManyToOne(
-        type => User, 
-        user => user.parent, { nullable: false, onDelete: 'CASCADE' }
-        )
-    user! : User
+    // // user(N) <->  Parent(1)
+    // @ManyToOne(
+    //     type => User, 
+    //     user => user.parent, { nullable: false, onDelete: 'CASCADE' }
+    //     )
+    // user! : User
+
+    @OneToOne(() => User)
+    @JoinColumn()
+    user: User
 
     // Parent(1) <->  mapping(N)
     @OneToMany(
