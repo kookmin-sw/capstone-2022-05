@@ -3,4 +3,5 @@ export type RootStackParamList = {
     BSMain: undefined;
     Invitation: undefined;
     Auth: undefined;
+    BabyIndi: undefined;
 };

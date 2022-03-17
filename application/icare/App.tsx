@@ -5,6 +5,7 @@ import MainScreen from './src/pages/Main';
 import AuthScreen from './src/pages/Auth';
 import BSMainScreen from './src/pages/BabysitterMain';
 import InvitationScreen from './src/pages/InvitationScreen';
+import BabyIndiScreen from "./src/pages/BabyIndi";
 import {RootStackParamList} from './src/RootStackParams';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Screen name="Auth" component={AuthScreen} />
         <Stack.Screen name="BSMain" component={BSMainScreen} />
         <Stack.Screen name="Invitation" component={InvitationScreen} />
+        <Stack.Screen name="BabyIndi" component={BabyIndiScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
