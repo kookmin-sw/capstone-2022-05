@@ -9,7 +9,7 @@ import * as style from "./style"
 
 // type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
-const DisplayInfoParent: FC = () => {
+const DisplayInfoBS: FC = () => {
     // const navigation = useNavigation<registerScreenProp>();
     return (
         <style.scrollViewContainer>
@@ -18,11 +18,11 @@ const DisplayInfoParent: FC = () => {
                     <Image source = {require("../../../../public/img/logo_92.png")}/>
                 </style.displayInfoLogo>
                 <style.displayInfoInputBox>
-                    <LabelInfo label="아기 이름" content="김응애"/>
-                    <LabelInfo label="아기 출생일" content="2020.01.09"/>
-                    <LabelInfo label="아기 성별" content="남자"/>
+                    <LabelInfo label="이름" content="김보모"/>
+                    <LabelInfo label="나이" content="1980.01.02"/>
+                    <LabelInfo label="성별" content="여자"/>
                     <LabelInfo label="거주 지역" content="서울특별시 성북구"/>
-                    <LabelInfo label="아기 특이사항" content="우리 아이는 배고프면 예민해요. 밥 때를 잘 챙겨주세요. 우리 아이는 배고프면 예민해요. 밥 때를 잘 챙겨주세요. 우리 아이는 배고프면 예민해요. 밥 때를 잘 챙겨주세요."/>
+                    <LabelInfo label="자기소개/경력" content="베이비시터 경력 3년 / 거주 가능 베이비시터 경력 3년 / 거주 가능 베이비시터 경력 3년 / 거주 가능"/>
                 </style.displayInfoInputBox>
                 <style.displayInfoButtonBox>
                     <LabelButton label="수정 하기"/>
@@ -32,4 +32,4 @@ const DisplayInfoParent: FC = () => {
     );
 }
 
-export default DisplayInfoParent;
+export default DisplayInfoBS;

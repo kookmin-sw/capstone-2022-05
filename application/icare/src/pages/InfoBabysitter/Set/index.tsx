@@ -21,6 +21,7 @@ const SetInfoBS: FC = () => {
                     <Image source = {require("../../../../public/img/logo_92.png")}/>
                 </style.setInfoLogo>
                 <style.setInfoInputBox>
+                    <LabelInput label="이름" />
                     <SelectDate label="생년월일" />
                     <LabelRadio title="성별" label1='남자' label2='여자'/>
                     <LabelInput label="거주 지역" />
