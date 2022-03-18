@@ -5,6 +5,7 @@ export type RootStackParamList = {
     Register: undefined;
     SetInfoParent: undefined;
     EditInfoParent: undefined;
+    DisplayInfoParent: undefined;
     SetInfoBS: undefined;
     EditInfoBS: undefined;
 };
