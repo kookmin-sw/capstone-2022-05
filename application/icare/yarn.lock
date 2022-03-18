@@ -5926,6 +5926,11 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
+"react-native-date-picker@4.2.0":
+  "integrity" "sha512-IfbK7Eh5By8rdjiu/pvqLF8NkFX9pVsY7Vn6+MkLSiFcLIGFd7NaENRJKl75/xNZuY5CkIiRVksS9abEl/II8g=="
+  "resolved" "https://registry.npmjs.org/react-native-date-picker/-/react-native-date-picker-4.2.0.tgz"
+  "version" "4.2.0"
+
 "react-native-gesture-handler@*", "react-native-gesture-handler@^2.3.1", "react-native-gesture-handler@>= 1.0.0", "react-native-gesture-handler@>= 1.5.0":
   "integrity" "sha512-Yq7cov7BMX9CTZ9oEIc6iX/XWgU5i88zSky7Vaq7deRQTq2s1REH4Idh0APEFLdHFWN/NKZMkHBRT7vaQAgvqg=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.3.1.tgz"
