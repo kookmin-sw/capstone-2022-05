@@ -12,27 +12,26 @@ import * as style from "./style"
 
 // type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
-const EditInfoParent: FC = () => {
+const SetInfoBS: FC = () => {
     // const navigation = useNavigation<registerScreenProp>();
     return (
         <style.scrollViewContainer>
-            <style.editInfoContainer>
-                <style.editInfoLogo>
+            <style.setInfoContainer>
+                <style.setInfoLogo>
                     <Image source = {require("../../../../public/img/logo_92.png")}/>
-                </style.editInfoLogo>
-                <style.editInfoInputBox>
-                    <LabelInput label="아기 이름" />
-                    <SelectDate label="아기 출생일" />
-                    <LabelRadio title="아기 성별" label1='남자' label2='여자'/>
+                </style.setInfoLogo>
+                <style.setInfoInputBox>
+                    <SelectDate label="생년월일" />
+                    <LabelRadio title="성별" label1='남자' label2='여자'/>
                     <LabelInput label="거주 지역" />
-                    <LabelTextarea label="아기 특이사항" placeholder="아이에 대한 주의사항을 입력해주세요 :)"/>
-                </style.editInfoInputBox>
-                <style.editInfoButtonBox>
-                    <LabelButton label="수정 완료"/>
-                </style.editInfoButtonBox>
-            </style.editInfoContainer>
+                    <LabelTextarea label="자기소개/경력" placeholder="자기소개 및 경력을 입력해주세요."/>
+                </style.setInfoInputBox>
+                <style.setInfoButtonBox>
+                    <LabelButton label="입력 완료"/>
+                </style.setInfoButtonBox>
+            </style.setInfoContainer>
         </style.scrollViewContainer>
     );
 }
 
-export default EditInfoParent;
+export default SetInfoBS;

@@ -3,7 +3,8 @@ import { View, TextInput } from "react-native";
 import styled from 'styled-components/native';
 
 interface LabelTextareaProps {
-    label: string
+    label: string,
+    placeholder: string,
 }
 
 const LabelArea = styled.View`
@@ -35,7 +36,7 @@ const LabelTextarea: FC<LabelTextareaProps> = (props) => {
                 multiline={true}
                 numberOfLines={4}
                 onChange={(e:any) => setText(e.target.value)}
-                placeholder="아이에 대한 주의사항을 적어주세요:)"
+                placeholder={props.placeholder}
                 value={text}/>
         </View>
     );
