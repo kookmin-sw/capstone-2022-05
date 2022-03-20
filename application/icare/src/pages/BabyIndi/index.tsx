@@ -42,7 +42,7 @@ const BabyIndiScreen: FC  = () => {
       }
       <style.InfoView>
         <style.Profile>
-          <style.ProfilePhoto source={BabyInfo.photo != '' ? BabyInfo.photo : require('../../../public/img/logo_92.png')} />
+          <style.ProfilePhoto source={BabyInfo.photo != '' ? BabyInfo.photo : require('../../../public/img/logo_92_img.png')} />
           <style.ProfileInfo>
             <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.name}</style.StrongText>
             <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.gender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.age}</style.LightText>

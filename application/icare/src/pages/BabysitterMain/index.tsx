@@ -18,7 +18,7 @@ const BSMainScreen: FC  = () => {
         <style.BabyList>
           {Babys.map((e) => (
             <style.babyElem onPress={() => navigation.navigate('BabyIndi')}>
-              <style.babyPhoto source={e.photo != '' ? e.photo : require('../../../public/img/logo_92.png')} />
+              <style.babyPhoto source={e.photo != '' ? e.photo : require('../../../public/img/logo_92_img.png')} />
               <style.lightText>{e.name}</style.lightText>
             </style.babyElem>
           ))}
@@ -26,7 +26,7 @@ const BSMainScreen: FC  = () => {
       :
         <style.LogoView>
           <style.lightText>아직 돌보는 아이가 없어요</style.lightText>
-          <style.Logo source={require('../../../public/img/logo_92.png')}/>
+          <style.Logo source={require('../../../public/img/logo_92_img.png')}/>
         </style.LogoView>
       }
       <style.PlusBaby onPress={() => navigation.navigate('Invitation')}>
