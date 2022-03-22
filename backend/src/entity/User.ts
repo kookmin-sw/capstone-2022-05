@@ -1,13 +1,10 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, OneToMany, OneToOne, JoinColumn} from "typeorm";
-import {Parent} from './Parent'
-import {BabySitter} from './BabySitter'
-
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp} from "typeorm";
 
 @Entity()
 export class User {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    userId: number;
 
     @Column({nullable : false})
     email: string;
@@ -24,26 +21,8 @@ export class User {
     @Column({nullable : false})
     code: number;
 
-    @CreateDateColumn({
-        
-    })
+    @CreateDateColumn({ nullable: false})
     createdAt: Timestamp
 
-    // //user(1) <-> parent(N)
-    // @OneToMany(
-    //     () => Parent, 
-    //     parent => parent.user, { nullable: false, onDelete: 'CASCADE' }
-
-    // )
-    // parent : Parent
-
-
-    //user(1) <-> babySitter(N)
-    // @OneToMany(
-    //     (type) => BabySitter, 
-    //     babySitter => babySitter.user, { nullable: false, onDelete: 'CASCADE' }
-
-    // )
-    // babySitter : BabySitter
 
 }

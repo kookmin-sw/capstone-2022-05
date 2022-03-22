@@ -1,19 +1,14 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, JoinColumn, OneToMany} from "typeorm";
+import { Alarm } from './Alarm';
 import {BabySitter} from './BabySitter'
 import {Parent} from './Parent'
+import { WorkDiary } from './WorkDiary';
 
 @Entity()
 export class Mapping {
 
     @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column({nullable : false})
-    expected_salary: number;
-
-    @Column({nullable : false})
-    working_time: number;
-
+    mappingId: number;
 
     @CreateDateColumn({})
     createdAt: Timestamp
@@ -21,17 +16,34 @@ export class Mapping {
 
     // mapping(N) <->  baby sitter(1)
     @ManyToOne(
-        type => BabySitter, 
-        babySitter => babySitter.mapping, { nullable: false, onDelete: 'CASCADE' }
-        )
+        () => BabySitter, 
+        babySitter => babySitter.mapping, { nullable: false, onDelete: 'CASCADE' })
+    @JoinColumn({name: "bsId"})
     babySitter : BabySitter
 
     
     // mapping(N) <->  baby parent(1)
     @ManyToOne(
-        type => Parent, 
+        () => Parent, 
         parent => parent.mapping, { nullable: false, onDelete: 'CASCADE' }
         )
+    @JoinColumn({name: "parentId"})
     parent : Parent
+
+
+    // Mapping(1) <-> Alarm(N)
+    @OneToMany(
+        () => Alarm,
+        alarm => alarm.mapping,{ nullable: false, onDelete: 'CASCADE' }
+    )
+    alarm: Alarm[];
+
+
+    // Mapping(1) <-> WorkDiary(N)
+    @OneToMany(
+        () => WorkDiary,
+        workDiary => workDiary.mapping,{ nullable: false, onDelete: 'CASCADE' }
+    )
+    diary: WorkDiary[];
 
 }

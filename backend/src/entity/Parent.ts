@@ -1,48 +1,47 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany, OneToOne, JoinColumn} from "typeorm";
 import {User} from './User';
 import {Mapping} from './Mapping'
+import { Request } from './Request';
 
 @Entity()
 export class Parent {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    parentId: number;
 
     @Column({nullable : false})
-    baby_name: string;
+    babyName: string;
 
     @Column({nullable : false})
-    baby_birth: string;
+    babyBirth: string;
 
     @Column({nullable : false})
-    baby_gender: string;
+    babyGender: string;
 
     @Column({nullable : false})
     region: string;
 
     @Column({nullable : false})
-    career: number;
+    career: string;
 
     @CreateDateColumn({})
     createdAt: Timestamp
 
-
-    // // user(N) <->  Parent(1)
-    // @ManyToOne(
-    //     type => User, 
-    //     user => user.parent, { nullable: false, onDelete: 'CASCADE' }
-    //     )
-    // user! : User
-
-    @OneToOne(() => User)
-    @JoinColumn()
+    @OneToOne(() => User, { nullable: false, onDelete: 'CASCADE' })
+    @JoinColumn({name:"userId"})
     user: User
 
     // Parent(1) <->  mapping(N)
     @OneToMany(
-        type => Mapping,
-        mapping => mapping.babySitter,{ nullable: false, onDelete: 'CASCADE' }
+        () => Mapping,
+        mapping => mapping.parent,{ nullable: false, onDelete: 'CASCADE' }
     )
-    mapping: Mapping
+    mapping: Mapping[]
 
+    // Parent(1) <->  Request(N)
+    @OneToMany(
+        () => Request,
+        request => request.parent,{ nullable: false, onDelete: 'CASCADE' }
+    )
+    request: Request[];
 }
