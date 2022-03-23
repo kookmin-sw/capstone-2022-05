@@ -13,6 +13,7 @@ import DisplayInfoParent from './src/pages/InfoParent/Display';
 import SetInfoBS from './src/pages/InfoBabysitter/Set';
 import EditInfoBS from './src/pages/InfoBabysitter/Edit';
 import DisplayInfoBS from './src/pages/InfoBabysitter/Display';
+import MainParent from './src/pages/MainParent';
 import {RootStackParamList} from './src/RootStackParams';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -33,6 +34,7 @@ export default function App() {
         <Stack.Screen name="SetInfoBS" component={SetInfoBS} />
         <Stack.Screen name="EditInfoBS" component={EditInfoBS} />
         <Stack.Screen name="DisplayInfoBS" component={DisplayInfoBS} />
+        <Stack.Screen name="MainParent" component={MainParent} />
       </Stack.Navigator>
     </NavigationContainer>
   );
