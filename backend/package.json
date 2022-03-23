@@ -20,6 +20,7 @@
    },
    "scripts": {
       "start": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/index.ts",
-      "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
+      "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config server/environments/database.ts"
    }
+   
 }

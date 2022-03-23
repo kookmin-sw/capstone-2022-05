@@ -1,12 +1,13 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany, OneToOne, JoinColumn} from "typeorm";
 import {User} from './User';
 import {Mapping} from './Mapping'
+import {Request} from './Request'
 
 @Entity()
 export class BabySitter {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    bsId: number;
 
     @Column({nullable : false})
     age: number;
@@ -20,21 +21,26 @@ export class BabySitter {
     @Column({nullable : false})
     career: string;
 
+
     @CreateDateColumn({})
     createdAt: Timestamp
 
+    @OneToOne(() => User, { nullable: false, onDelete: 'CASCADE' })
+    @JoinColumn({name: "userId"})
+    user: User
 
-    // user(1) <->  Parent(N)
-    @ManyToOne(
-        type => User, 
-        user => user.babySitter, { nullable: false, onDelete: 'CASCADE' }
-        )
-    user! : User
-
+    // babysitter(1) <->  mapping(N)
     @OneToMany(
-        type => Mapping,
+        () => Mapping,
         mapping => mapping.babySitter,{ nullable: false, onDelete: 'CASCADE' }
     )
-    mapping: Mapping
+    mapping: Mapping[]
+
+    // babysitter(1) <->  Request(N)
+    @OneToMany(
+        () => Request,
+        request => request.babySitter,{ nullable: false, onDelete: 'CASCADE' }
+    )
+    request: Request[];
 
 }

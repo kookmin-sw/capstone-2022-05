@@ -19,6 +19,7 @@ export = {
     "subscribers": [
         "src/subscriber/**/*.ts"
     ],
+    
     "cli": {
         "entitiesDir": "src/entity",
         "migrationsDir": "src/migration",
