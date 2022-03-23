@@ -12,4 +12,5 @@ export type RootStackParamList = {
     EditInfoBS: undefined;
     DisplayInfoBS: undefined;
     MainParent: undefined;
+    BabyDiary: undefined;
 };
