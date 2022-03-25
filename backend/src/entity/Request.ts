@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, CreateDateColumn, Timestamp, DeleteDateColumn,OneToMany, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, CreateDateColumn, Timestamp, DeleteDateColumn,OneToMany, ManyToOne, JoinColumn, BaseEntity } from 'typeorm';
 import {BabySitter} from './BabySitter';
 import {Parent} from './Parent';
 
 @Entity()
-export class Request{
+export class Request extends BaseEntity {
     @PrimaryGeneratedColumn()
     requestId: number;
 

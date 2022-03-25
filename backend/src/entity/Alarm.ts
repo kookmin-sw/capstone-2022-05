@@ -1,9 +1,9 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn,Timestamp } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn,Timestamp, BaseEntity } from 'typeorm';
 import { Mapping } from './Mapping';
 
 
 @Entity()
-export class Alarm{
+export class Alarm extends BaseEntity {
     @PrimaryGeneratedColumn()
     alarmId: number
 

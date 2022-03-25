@@ -1,8 +1,8 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Timestamp } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, Timestamp, BaseEntity } from 'typeorm';
 import { WorkDiary } from './WorkDiary';
 
 @Entity()
-export class WorkDiaryImg{
+export class WorkDiaryImg extends BaseEntity {
     @PrimaryGeneratedColumn()
     diaryImg: number;
 

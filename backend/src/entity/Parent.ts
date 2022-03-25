@@ -1,10 +1,10 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany, OneToOne, JoinColumn} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany, OneToOne, JoinColumn, BaseEntity} from "typeorm";
 import {User} from './User';
 import {Mapping} from './Mapping'
 import { Request } from './Request';
 
 @Entity()
-export class Parent {
+export class Parent extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     parentId: number;
