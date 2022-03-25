@@ -14,6 +14,7 @@ import SetInfoBS from './src/pages/InfoBabysitter/Set';
 import EditInfoBS from './src/pages/InfoBabysitter/Edit';
 import DisplayInfoBS from './src/pages/InfoBabysitter/Display';
 import MainParent from './src/pages/MainParent';
+import BabyDiary from './src/pages/BabyDiary';
 import {RootStackParamList} from './src/RootStackParams';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -35,6 +36,7 @@ export default function App() {
         <Stack.Screen name="EditInfoBS" component={EditInfoBS} />
         <Stack.Screen name="DisplayInfoBS" component={DisplayInfoBS} />
         <Stack.Screen name="MainParent" component={MainParent} />
+        <Stack.Screen name="BabyDiary" component={BabyDiary} />
       </Stack.Navigator>
     </NavigationContainer>
   );

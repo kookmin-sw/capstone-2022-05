@@ -7,7 +7,12 @@ interface ButtonProps {
     color?: string
 }
 
-const LabelBtn = styled.TouchableOpacity`
+const defaultProps: ButtonProps = {
+    label: "Btn",
+    color: "#AEC4BA"
+}
+
+const LabelBtn = styled.TouchableOpacity<{color: string}>`
     justify-content: center;
     align-items: center;
     background-color: ${props => props.color || "#AEC4BA"};
@@ -33,4 +38,6 @@ const LabelButton: FC<ButtonProps> = (props) => {
         </View>
     );
 };
+
+LabelButton.defaultProps = defaultProps;
 export default LabelButton;
