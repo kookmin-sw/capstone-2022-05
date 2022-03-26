@@ -29,23 +29,15 @@ const getBSInfo = async (req:Request, res:Response, next:NextFunction) => {
     const bsId: number = +req.params.bsId;
     const bs = await BabySitter.findOne({bsId: bsId});
 
-    res.json({bs})
+    res.status(200).json({bs})
 
     console.log(bs)
 }
 
-const updateBSInfo = async (req:Request, res:Response, next:NextFunction) => {
-    const {age, gender, region, career} : BsInputInfo = req.body
-    // req.params.userId -> string이라 number로 변환
-    const bsId: number = +req.params.bsId;
-    const bs = await BabySitter.update({bsId: bsId},req.body);
 
-    console.log(bs)
-}
 export default {
     inputBSInfo,
-    getBSInfo,
-    updateBSInfo
+    getBSInfo
 }
 
 
