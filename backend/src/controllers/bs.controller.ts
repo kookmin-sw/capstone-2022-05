@@ -23,8 +23,17 @@ const inputBSInfo = async (req:Request, res:Response, next:NextFunction) => {
     await bs.save()
 }
 
+const getBSInfo = async (req:Request, res:Response, next:NextFunction) => {
+
+    // req.params.userId -> string이라 number로 변환
+    const bsId: number = +req.params.bsId;
+    const bs = await BabySitter.findOne({bsId: bsId});
+
+    console.log(bs)
+}
 export default {
-    inputBSInfo
+    inputBSInfo,
+    getBSInfo
 }
 
 
