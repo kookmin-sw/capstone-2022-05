@@ -1,11 +1,11 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, JoinColumn, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, JoinColumn, OneToMany, BaseEntity} from "typeorm";
 import { Alarm } from './Alarm';
 import {BabySitter} from './BabySitter'
 import {Parent} from './Parent'
 import { WorkDiary } from './WorkDiary';
 
 @Entity()
-export class Mapping {
+export class Mapping extends BaseEntity {
 
     @PrimaryGeneratedColumn()
     mappingId: number;
