@@ -34,10 +34,29 @@ const getBSInfo = async (req:Request, res:Response, next:NextFunction) => {
     console.log(bs)
 }
 
+const updateBSInfo = async (req:Request, res:Response, next:NextFunction) => {
+    
+    // req.params.userId -> string이라 number로 변환
+    const bsId: number = +req.params.bsId;
+    const data: object = req.body
+
+    try{
+        await BabySitter.findById(bsId);
+        await BabySitter.updateBsInfo(bsId, data);
+        
+        
+        res.status(201).end();
+    }
+    catch(e){
+        res.status(400).json({message:e})
+    }
+    
+}
 
 export default {
     inputBSInfo,
-    getBSInfo
+    getBSInfo,
+    updateBSInfo
 }
 
 
