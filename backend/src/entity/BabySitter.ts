@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany, OneToOne, JoinColumn, BaseEntity} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany, OneToOne, JoinColumn, BaseEntity, UpdateDateColumn} from "typeorm";
 import {User} from './User';
 import {Mapping} from './Mapping'
 import {Request} from './Request'
@@ -22,8 +22,13 @@ export class BabySitter extends BaseEntity {
     career: string;
 
 
-    @CreateDateColumn({})
+    @CreateDateColumn({nullable:false})
     createdAt: Timestamp
+
+    @UpdateDateColumn({nullable: false})
+    updatedAt: Timestamp
+
+
 
     @OneToOne(() => User, { nullable: false, onDelete: 'CASCADE' })
     @JoinColumn({name: "userId"})
@@ -43,4 +48,11 @@ export class BabySitter extends BaseEntity {
     )
     request: Request[];
 
+    static findById(bsId:number){
+        return this.findOneOrFail({bsId:bsId});
+    }
+
+    static updateBsInfo(bsId:number, data:object){
+        return this.update({bsId:bsId}, data)
+    }
 }
