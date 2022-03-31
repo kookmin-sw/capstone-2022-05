@@ -15,4 +15,5 @@ export type RootStackParamList = {
     MainParent: undefined;
     BabyDiary: undefined;
     Calendar: undefined;
+    Chatting: undefined;
 };
