@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { User } from '../entity/User';
 import bcrypt from "bcrypt";
+import * as jwt from 'jsonwebtoken';
 
 const signup = async (req: Request, res: Response, next: NextFunction) => {
     const saltRound = 10;
@@ -49,7 +50,36 @@ const signup = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
-    const saltRound = 10;
+    const {email, password} = req.body;
+    
+    const user = await User.find({
+        email: email
+    });
+
+    const check = await bcrypt.compare(password, user[0].password);
+
+    if(check) { // 패스워드 일치 시 토큰 발행
+        const token = jwt.sign({
+            type: 'JWT',
+            email: email,
+            }, process.env.SECRET_KEY, {
+            expiresIn: '24h', // 만료시간 24h
+            issuer: 'icare',
+            }
+        );
+        
+        res.status(200).json({
+            success: true,
+            message: "토큰 발행 완료",
+            token: token
+        });
+        
+    }
+    else {
+        res.status(400).json({
+            message: "이메일 또는 비밀번호가 일치하지 않습니다."
+        })
+    }
 };
 
-export default signup;
+export default {signup, login};
