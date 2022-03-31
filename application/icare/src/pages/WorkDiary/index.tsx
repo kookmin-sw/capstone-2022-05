@@ -5,6 +5,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../RootStackParams';
 import * as style from './styles';
 import LabelButton from '../../components/LabelButton';
+import ConfirmModal from '../../components/ConfirmModal';
 import {Container, LightText, MsgInput} from "../BabyIndi/styles";
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
@@ -14,11 +15,18 @@ const WorkDiaryScreen: FC  = () => {
   const TemplateList = ['오늘은 밥을 덜 먹었어요','오늘은 낮잠을 안잤어요'];
   const [Notice, setNotice] = useState('');
   const [PhotoList, setPhotoList] = useState([]);
+  const [modal, setModal] = useState(false);
   const AddPhoto = () => {
     setPhotoList([...PhotoList.concat(require('../../../public/img/logo_92_img.png'))])
   }
+  const ControlModal = () => {
+    setModal(!modal);
+  }
   return(
     <Container>
+      {modal ?
+      <ConfirmModal></ConfirmModal>
+      : null}
       <style.NoticeView>
         <LightText style={{ fontWeight: '600' }}>오늘의 특이사항</LightText>
         <MsgInput placeholder="오늘의 특이사항을 입력해주세요" multiline numberOfLines={4} value={Notice} />
@@ -41,8 +49,9 @@ const WorkDiaryScreen: FC  = () => {
           ))}
         </style.PhotoView>
       </style.PhotoAttach>
-      <style.ButtonView>
-        <LabelButton label="퇴근하기" />
+      <style.ButtonView onPress={ControlModal}>
+        <Text>퇴근하기</Text>
+        {/*<LabelButton label="퇴근하기" />*/}
       </style.ButtonView>
       <style.ButtonView>
         <LabelButton label="취소" />

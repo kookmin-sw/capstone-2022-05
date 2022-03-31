@@ -45,7 +45,7 @@ export const Photos = styled.Image`
   height: 100px;
   margin-bottom: 20px;
 `;
-export const ButtonView = styled.View`
+export const ButtonView = styled.TouchableOpacity`
   width: 80%;
   margin: 20px auto 0 auto;
 `;
