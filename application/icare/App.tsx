@@ -17,6 +17,7 @@ import WorkDiaryScreen from './src/pages/WorkDiary';
 import MainParent from './src/pages/MainParent';
 import BabyDiary from './src/pages/BabyDiary';
 import Calendar from './src/pages/Calendar';
+import ChattingScreen from './src/pages/Chatting';
 import {RootStackParamList} from './src/RootStackParams';
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -41,6 +42,7 @@ export default function App() {
         <Stack.Screen name="MainParent" component={MainParent} />
         <Stack.Screen name="BabyDiary" component={BabyDiary} />
         <Stack.Screen name="Calendar" component={Calendar} />
+        <Stack.Screen name="Chatting" component={ChattingScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -62,7 +62,8 @@ const BabyIndiScreen: FC  = () => {
       </style.InfoView>
       <style.AlertView>
         <style.LightText style={{ fontWeight: '600' }}>알림 보내기</style.LightText>
-        <style.AlertBtn>
+        <style.AlertBtn onPress={() => {navigation.navigate('Chatting')}}>
+        {/*<style.AlertBtn>*/}
           <Text>밥 먹었어요 🍼</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
