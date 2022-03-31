@@ -15,6 +15,7 @@
       "body-parser": "^1.19.2",
       "dotenv": "^16.0.0",
       "express": "^4.17.3",
+      "jsonwebtoken": "^8.5.1",
       "mysql": "^2.18.1",
       "mysql2": "^2.3.3",
       "nodemon": "^2.0.15",
@@ -23,6 +24,8 @@
    },
    "scripts": {
       "start": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/index.ts",
-      "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config server/environments/database.ts"
+      "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config server/environments/database.ts",
+      "build": "tsc -p .",
+      "dev": "nodemon build/index.js"
    }
 }
