@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany, OneToOne, JoinColumn, BaseEntity, UpdateDateColumn} from "typeorm";
 import {User} from './User';
 import {Mapping} from './Mapping'
-import {Request} from './Request'
+import {RequestToParent} from './RequestToParent'
 
 @Entity()
 export class BabySitter extends BaseEntity {
@@ -43,10 +43,10 @@ export class BabySitter extends BaseEntity {
 
     // babysitter(1) <->  Request(N)
     @OneToMany(
-        () => Request,
+        () => RequestToParent,
         request => request.babySitter,{ nullable: false, onDelete: 'CASCADE' }
     )
-    request: Request[];
+    request: RequestToParent[];
 
     static findById(bsId:number){
         return this.findOneOrFail({bsId:bsId});

@@ -3,7 +3,7 @@ import {BabySitter} from './BabySitter';
 import {Parent} from './Parent';
 
 @Entity()
-export class Request extends BaseEntity {
+export class RequestToParent extends BaseEntity {
     @PrimaryGeneratedColumn()
     requestId: number;
 
@@ -30,4 +30,14 @@ export class Request extends BaseEntity {
         )
         @JoinColumn({name: "bsId"})
     babySitter : BabySitter
+
+
+    // 이미 동일한 요청이 있는 경우 체크하기 위한 함수
+    static async checkDuplicate(parentId: number, bsId: number){
+
+        return await this.createQueryBuilder("request_to_parent")
+            .where("request_to_parent.parentId = parentId", {parentId})
+            .andWhere("request_to_parent.bsId = bsId", {bsId})
+            .getMany();
+    }
 }
