@@ -12,4 +12,7 @@ export type RootStackParamList = {
     EditInfoBS: undefined;
     DisplayInfoBS: undefined;
     WorkDiary: undefined;
+    MainParent: undefined;
+    BabyDiary: undefined;
+    Calendar: undefined;
 };
