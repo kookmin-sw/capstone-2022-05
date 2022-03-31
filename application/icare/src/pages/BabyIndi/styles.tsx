@@ -4,6 +4,7 @@ export const Container = styled.ScrollView`
   height: 100%;
   padding: 9% 0 18% 0;
   background: #fff;
+  flex: 1;
 `;
 export const InfoView = styled.View`
   width: 80%;
