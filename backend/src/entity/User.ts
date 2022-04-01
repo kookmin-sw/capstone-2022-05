@@ -6,13 +6,13 @@ export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
     userId: number;
 
-    @Column({nullable : false})
+    @Column({nullable : false, unique:true})
     email: string;
 
     @Column({nullable : false})
     username: string;
 
-    @Column({nullable : false})
+    @Column({nullable : false, unique: true})
     nickname: string;
 
     @Column({nullable : false})
@@ -24,5 +24,10 @@ export class User extends BaseEntity {
     @CreateDateColumn({ nullable: false})
     createdAt: Timestamp
 
+    static async findByEmail(email: string){
 
+        return await this.createQueryBuilder("user")
+            .where("user.email = email", {email})
+            .getOneOrFail();
+    }
 }
