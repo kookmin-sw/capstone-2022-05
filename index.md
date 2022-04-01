@@ -72,9 +72,9 @@ E-mail: cyh6099@kookmin.ac.kr
 <p align="center">
     <img src="https://user-images.githubusercontent.com/39997876/161226405-b24013a6-0f7a-4c5d-837b-604559f87731.png" alt="Logo" width="36">
     <br/>
-    <a href="https://documenter.getpostman.com/view/12565112/UVeMKQKz"><strong>Figma Link »</strong></a>
+    <a href="https://www.figma.com/file/opGJWmV35hTEjhr7ZoqOg8/%EC%BA%A1%EC%8A%A4%ED%86%A42022?node-id=0%3A1"><strong>Figma Link »</strong></a>
     <br/>
     <img src="https://user-images.githubusercontent.com/39997876/161226189-91bb4b81-96d1-42e8-a1ee-9b3115c0af6b.png" alt="Logo" width="64">
     <br/>
-    <a href="https://documenter.getpostman.com/view/12565112/UVeMKQKz"><strong>Miro Link »</strong></a>
+    <a href="https://miro.com/app/board/uXjVOYc2F9A=/"><strong>Miro Link »</strong></a>
 </p>
