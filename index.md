@@ -6,7 +6,6 @@
     <img src="https://user-images.githubusercontent.com/39997876/161223797-bb810439-2c98-4dbe-a107-c3e79e2ae41d.png" alt="Logo" width="256">
 </div>
 <br/>
-<br/>
 
 아이 돌봄 서비스 이용 추세가 지속적으로 증가함에 따라 부모와 아이돌보미 간 갈등이 일어날 수 있는 문제들을 해결하고자 해당 프로젝트를 기획하게 되었습니다. 기존 아이돌보미 서비스 시장에는 단순히 아이돌보미와 부모를 매칭해주는 서비스와 돌보미에 대한 평점과 리뷰만을 지원해줄 뿐 아이를 돌보는 과정에서 생기는 일에 대해서는 관여하지 않았습니다. 저희 서비스에서는 아이를 돌보는 과정에서 일어날 수 있는 이슈를 관리하고 문제점을 해결할 수 있게 하여 기존 매칭 서비스 만을 지원하였던 기업들에게 다른 플랫폼과 차별성을 줄 수 있는 어플리케이션을 만드는 것을 목표로 하고 있습니다.
 
@@ -69,4 +68,13 @@ E-mail: cyh6099@kookmin.ac.kr
 
 ### 5. 기타
 
-추가적인 내용은 자유롭게 작성하세요.
+
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/39997876/161226405-b24013a6-0f7a-4c5d-837b-604559f87731.png" alt="Logo" width="36">
+    <br/>
+    <a href="https://documenter.getpostman.com/view/12565112/UVeMKQKz"><strong>Figma Link »</strong></a>
+    <br/>
+    <img src="https://user-images.githubusercontent.com/39997876/161226189-91bb4b81-96d1-42e8-a1ee-9b3115c0af6b.png" alt="Logo" width="64">
+    <br/>
+    <a href="https://documenter.getpostman.com/view/12565112/UVeMKQKz"><strong>Miro Link »</strong></a>
+</p>
