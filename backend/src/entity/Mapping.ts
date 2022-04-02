@@ -46,4 +46,11 @@ export class Mapping extends BaseEntity {
     )
     diary: WorkDiary[];
 
+    static async findMappingParentList(bsId: number){
+
+        return await this.createQueryBuilder("mapping")
+            .leftJoinAndSelect("mapping.parent", "parent")
+            .where("mapping.bsId = :bsId", {bsId:bsId})
+            .getMany();
+    }
 }
