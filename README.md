@@ -1,3 +1,8 @@
+# ICARE
+<a href="./docs/팀05-중간보고서.pdf"><strong>중간 보고서 링크</strong></a>
+<br/>
+<a href="./docs/팀05-중간발표자료.pdf"><strong>중간 발표 자료 링크</strong></a>
+
 ## 1. 프로젝트 소개
 
 ### 프로젝트 설명
