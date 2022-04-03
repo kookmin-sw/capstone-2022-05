@@ -25,9 +25,9 @@ export class User extends BaseEntity {
     createdAt: Timestamp
 
     static async findByEmail(email: string){
-
+        
         return await this.createQueryBuilder("user")
-            .where("user.email = email", {email})
+            .where("user.email = :email", {email: email})
             .getOneOrFail();
     }
 }
