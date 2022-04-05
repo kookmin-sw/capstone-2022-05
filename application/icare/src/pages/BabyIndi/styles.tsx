@@ -1,15 +1,14 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   height: 100%;
   padding: 9% 0 18% 0;
-  align-items: center;
-  justify-content: space-between;
   background: #fff;
+  flex: 1;
 `;
 export const InfoView = styled.View`
   width: 80%;
-  margin-bottom: 40px;
+  margin: 0 auto 40px auto;
 `;
 export const Profile = styled.View`
   height: 140px;
@@ -47,6 +46,7 @@ export const DetailText = styled.Text`
 `;
 export const AlertView = styled.View`
   width: 80%;
+  margin: 0 auto;
 `;
 export const AlertBtn = styled.TouchableOpacity`
   justify-content: center;
@@ -86,6 +86,7 @@ export const ModalContainer = styled.View`
 export const MsgInput = styled.TextInput`
   margin: 20px 0;
   width: 100%;
+  height: 132px;
   border: 1px solid #DBDBDB;
   border-radius: 10px;
   padding: 10px;

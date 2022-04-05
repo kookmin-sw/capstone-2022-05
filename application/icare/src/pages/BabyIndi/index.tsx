@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {FC, useState} from 'react';
-import {View, Text, Image, Modal} from "react-native";
+import React, {FC, useEffect, useState} from 'react';
+import {View, Text, Image, Modal, TouchableOpacity} from "react-native";
 import {StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../RootStackParams';
 import * as style from './styles';
@@ -17,7 +17,10 @@ const BabyIndiScreen: FC  = () => {
     setAlertModal(!AlertModal);
   }
   const workControl = () => {
-    setWork(!working);
+    if (working) {
+      navigation.navigate('WorkDiary');
+    }
+    else setWork(!working);
   }
   return (
     <style.Container>
@@ -42,11 +45,14 @@ const BabyIndiScreen: FC  = () => {
       }
       <style.InfoView>
         <style.Profile>
-          <style.ProfilePhoto source={BabyInfo.photo != '' ? BabyInfo.photo : require('../../../public/img/logo_92.png')} />
+          <style.ProfilePhoto source={BabyInfo.photo != '' ? BabyInfo.photo : require('../../../public/img/logo_92_img.png')} />
           <style.ProfileInfo>
             <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.name}</style.StrongText>
             <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.gender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.age}</style.LightText>
-            <LabelButton label={working? '퇴근하기' : '출근하기'} />
+            <TouchableOpacity onPress={workControl}>
+              <Text>{working? '퇴근하기' : '출근하기'}</Text>
+            {/*<LabelButton label={working? '퇴근하기' : '출근하기'} />*/}
+            </TouchableOpacity>
           </style.ProfileInfo>
         </style.Profile>
         <style.DetailInfo>
@@ -56,7 +62,8 @@ const BabyIndiScreen: FC  = () => {
       </style.InfoView>
       <style.AlertView>
         <style.LightText style={{ fontWeight: '600' }}>알림 보내기</style.LightText>
-        <style.AlertBtn>
+        <style.AlertBtn onPress={() => {navigation.navigate('Chatting')}}>
+        {/*<style.AlertBtn>*/}
           <Text>밥 먹었어요 🍼</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>

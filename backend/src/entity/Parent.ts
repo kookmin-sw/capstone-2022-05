@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, Timestamp, ManyToOne, OneToMany, OneToOne, JoinColumn, BaseEntity} from "typeorm";
 import {User} from './User';
 import {Mapping} from './Mapping'
-import { Request } from './Request';
+import { RequestToParent } from './RequestToParent';
 
 @Entity()
 export class Parent extends BaseEntity {
@@ -40,8 +40,8 @@ export class Parent extends BaseEntity {
 
     // Parent(1) <->  Request(N)
     @OneToMany(
-        () => Request,
-        request => request.parent,{ nullable: false, onDelete: 'CASCADE' }
+        () => RequestToParent,
+        requestToParent => requestToParent.parent,{ nullable: false, onDelete: 'CASCADE' }
     )
-    request: Request[];
+    request: RequestToParent[];
 }

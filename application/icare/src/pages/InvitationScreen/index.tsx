@@ -14,7 +14,7 @@ const InvitationScreen: FC  = () => {
   return (
     <style.Container>
       <style.LogoView>
-        <Image source={require('../../../public/img/logo_92_txt.png')} />
+        <Image source={require('../../../public/img/logo_92.png')} />
       </style.LogoView>
       <style.LabelComponent>
         <LabelInput label="초대코드를 입력해주세요" />
