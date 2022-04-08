@@ -46,7 +46,6 @@ export class Mapping extends BaseEntity {
     )
     diary: WorkDiary[];
 
-    
     // 부모 ID를 기준으로 매핑되어 있는 보모 정보를 반환
     static async findMappingList(parentId: number) {
         return await this.createQueryBuilder("mapping")
@@ -54,5 +53,11 @@ export class Mapping extends BaseEntity {
             .where("mapping.parentId = :parentId", { parentId: parentId })
             .getMany();
     }
+    static async findMappingParentList(bsId: number){
 
+        return await this.createQueryBuilder("mapping")
+            .leftJoinAndSelect("mapping.parent", "parent")
+            .where("mapping.bsId = :bsId", {bsId:bsId})
+            .getMany();
+    }
 }

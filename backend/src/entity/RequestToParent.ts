@@ -36,8 +36,8 @@ export class RequestToParent extends BaseEntity {
     static async checkDuplicate(parentId: number, bsId: number){
 
         return await this.createQueryBuilder("request_to_parent")
-            .where("request_to_parent.parentId = parentId", {parentId})
-            .andWhere("request_to_parent.bsId = bsId", {bsId})
+            .where("request_to_parent.parentId = :parentId", {parentId:parentId})
+            .andWhere("request_to_parent.bsId = :bsId", {bsId:bsId})
             .getMany();
     }
 
