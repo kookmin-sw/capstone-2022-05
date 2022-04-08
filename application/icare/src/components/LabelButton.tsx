@@ -1,15 +1,22 @@
 import React, { FC } from "react";
 import { View } from "react-native";
 import styled from 'styled-components/native';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../RootStackParams';
+
+type ScreenProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
 interface ButtonProps {
     label: string,
-    color?: string
+    color?: string,
+    navigate?: string,
 }
 
 const defaultProps: ButtonProps = {
     label: "Btn",
-    color: "#AEC4BA"
+    color: "#AEC4BA",
+    navigate: ""
 }
 
 const LabelBtn = styled.TouchableOpacity<{color: string}>`
@@ -30,9 +37,10 @@ const LabelBtnText = styled.Text`
 `;
 
 const LabelButton: FC<ButtonProps> = (props) => {
+    const navigation = useNavigation<ScreenProp>();
     return (
         <View>
-            <LabelBtn color={props.color}>
+            <LabelBtn color={props.color} onPress={() => navigation.push(props.navigate)}>
                 <LabelBtnText>{props.label}</LabelBtnText>
             </LabelBtn>
         </View>
