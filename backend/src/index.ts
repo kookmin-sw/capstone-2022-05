@@ -7,6 +7,7 @@ import express from 'express';
 import userRouter from "./routes/user.route";
 import parentRouter from './routes/parent.route';
 import bsRouter from "./routes/bs.route"
+import mappingRouter from "./routes/mapping.route";
 
 const app = express();
 
@@ -23,3 +24,4 @@ app.listen(3000, () => {
 app.use('/user', userRouter);
 app.use('/bs', bsRouter);
 app.use('/parent', parentRouter);
+app.use('/mapping', mappingRouter);
