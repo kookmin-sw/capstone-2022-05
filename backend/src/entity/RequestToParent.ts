@@ -40,4 +40,13 @@ export class RequestToParent extends BaseEntity {
             .andWhere("request_to_parent.bsId = :bsId", {bsId:bsId})
             .getMany();
     }
+
+    // 부모 ID를 기준으로 요청 테이블 조회하여 요청 리스트 반환
+    static async findReqeustList(parentId: number) {
+
+        return await this.createQueryBuilder("request_to_parent")
+        .leftJoinAndSelect("request_to_parent.babySitter", "babySitter")
+        .where("request_to_parent.parentId = :parentId", {parentId: parentId})
+        .getMany();
+    }
 }
