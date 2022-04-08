@@ -82,16 +82,16 @@ const MainParent: FC = () => {
                 }
                 <style.mainBtnContainer>
                     <style.mainBtnList>
-                        <LabelButton label="아이 기록 캘린더" />
+                        <LabelButton label="아이 기록 캘린더" navigate='Calendar' />
+                    </style.mainBtnList>
+                    {/* <style.mainBtnList>
+                        <LabelButton label="우리 아이 패턴" navigate='Calendar' />
+                    </style.mainBtnList> */}
+                    <style.mainBtnList>
+                        <LabelButton label="오늘의 특이사항" navigate='BabyDiary' />
                     </style.mainBtnList>
                     <style.mainBtnList>
-                        <LabelButton label="우리 아이 패턴" />
-                    </style.mainBtnList>
-                    <style.mainBtnList>
-                        <LabelButton label="오늘의 특이사항" />
-                    </style.mainBtnList>
-                    <style.mainBtnList>
-                        <LabelButton label="아이 정보 수정하기" />
+                        <LabelButton label="우리 아이 정보" navigate='DisplayInfoParent' />
                     </style.mainBtnList>
                 </style.mainBtnContainer>
             </style.mainContainer>

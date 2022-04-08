@@ -25,7 +25,7 @@ const DisplayInfoParent: FC = () => {
                     <LabelInfo label="아기 특이사항" content="우리 아이는 배고프면 예민해요. 밥 때를 잘 챙겨주세요. 우리 아이는 배고프면 예민해요. 밥 때를 잘 챙겨주세요. 우리 아이는 배고프면 예민해요. 밥 때를 잘 챙겨주세요."/>
                 </style.displayInfoInputBox>
                 <style.displayInfoButtonBox>
-                    <LabelButton label="수정 하기"/>
+                    <LabelButton label="수정 하기" navigate='EditInfoParent'/>
                 </style.displayInfoButtonBox>
             </style.displayInfoContainer>
         </style.scrollViewContainer>
