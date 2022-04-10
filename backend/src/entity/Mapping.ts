@@ -13,6 +13,8 @@ export class Mapping extends BaseEntity {
     @CreateDateColumn({})
     createdAt: Timestamp
 
+    @Column()
+    status : number
 
     // mapping(N) <->  baby sitter(1)
     @ManyToOne(
