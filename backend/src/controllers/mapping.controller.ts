@@ -1,10 +1,12 @@
 import { NextFunction, Request, Response } from 'express';
+import { BabySitter } from '../entity/BabySitter';
 import { Mapping } from '../entity/Mapping';
 
 const findParentList = async (req:Request, res: Response, next: NextFunction) => {
     try{
         const bsId : number = +req.params.bsId; 
-
+    
+    await BabySitter.findById(bsId)
     const result = await Mapping.findMappingParentList(bsId);
 
     const returnData = []

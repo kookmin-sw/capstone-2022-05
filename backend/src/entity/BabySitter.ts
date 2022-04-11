@@ -48,8 +48,12 @@ export class BabySitter extends BaseEntity {
     )
     request: RequestToParent[];
 
-    static findById(bsId:number){
-        return this.findOneOrFail({bsId:bsId});
+    static async findById(bsId:number){
+        const result = await this.findOne({bsId:bsId});
+        if(!result){
+            throw "no exist babysitter"
+        }
+        return result
     }
 
     static updateBsInfo(bsId:number, data:object){
