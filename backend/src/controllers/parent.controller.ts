@@ -157,4 +157,27 @@ const acceptMapping = async (req: Request, res: Response, next: NextFunction) =>
     }
 }
 
-export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping};
+const rejectMapping = async (req: Request, res: Response, next: NextFunction) => {
+    const mappingId: number = +req.params.mappingId;
+
+    const mapping_info = await Mapping.findOne({mappingId: mappingId});
+
+    if (mapping_info) {
+        await Mapping.delete({mappingId: mappingId})
+        .then(() => {
+            res.status(200).json({
+                message: "보모의 매핑 요청 거절 완료"
+            })
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        })
+    }
+    else {
+        return res.status(400).json({
+            message: "Invalid maapingId."
+        })
+    }
+}
+
+export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping};
