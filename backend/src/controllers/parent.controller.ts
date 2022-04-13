@@ -85,34 +85,49 @@ const getMainPage = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const parent_id: number = +req.params.parentId;
 
-        // Mapping 정보 반환
         const existMappingList = await Mapping.findMappingList(parent_id);
-        
-        // 매핑 정보가 있는 경우
+
+        let mapping_info = [];
+        let request_info = [];
+
         if (existMappingList.length !== 0) {
-            return res.status(200).json({
-                message: "매핑 리스트",
-                existMappingList
-            });
-        }
-        else { // 없는 경우 Request 테이블 확인
-            const existRequestList = await RequestToParent.findReqeustList(parent_id)
+            // status 값에 따라 매핑 정보인지 요청 정보인지 나눔
+            existMappingList.map((m) => {
+                if (m.status === 1) {
+                    mapping_info.push(m);
+                }
+                else if (m.status === 2) {
+                    request_info.push(m);
+                }
+            })
             
-            // 보모 요청 정보가 있는 경우
-            if (existRequestList.length !== 0) {
+            // 매핑 정보가 있는 경우
+            if (mapping_info.length !== 0) {
                 return res.status(200).json({
-                    message: "요청 리스트",
-                    existRequestList
+                    message: "매핑 리스트",
+                    mapping_info
                 });
-            }
-            
-            // 보모 요청이 없는 경우
+            } // 매핑 정보는 없고 요청 정보만 있는 경우
+            else if (mapping_info.length === 0 && request_info.length !== 0) {
+                return res.status(200).json({
+                    message: "보모의 매핑 요청 리스트",
+                    request_info
+                })
+            } // 둘 다 없는 경우
             else {
                 return res.status(404).json({
-                    message: "매핑 정보와 요청 정보 없음"
+                    message: "매핑 및 요청 정보 없음"
                 })
             }
         }
+        // 존재하지 않는 parentId로 요청 보낸 경우
+        else {
+            return res.status(400).json({
+                message: "Invalid parentId"
+            });
+        }
+        
+        
     }
     catch(err) {
         res.status(400).json(err);

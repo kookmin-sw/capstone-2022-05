@@ -13,6 +13,9 @@ export class Mapping extends BaseEntity {
     @CreateDateColumn({})
     createdAt: Timestamp
 
+    // 1: 매핑된거 2: 대기 3: 거절
+    @Column({default : 2})
+    status : number
 
     // mapping(N) <->  baby sitter(1)
     @ManyToOne(
