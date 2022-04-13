@@ -134,4 +134,27 @@ const getMainPage = async (req: Request, res: Response, next: NextFunction) => {
     }
 }
 
-export default {getParentInfo, editParentInfo, createParentInfo, getMainPage};
+const acceptMapping = async (req: Request, res: Response, next: NextFunction) => {
+    const mappingId: number = +req.params.mappingId;
+
+    const mapping_info = await Mapping.findOne({mappingId: mappingId});
+
+    if (mapping_info) {
+        await Mapping.update({mappingId: mappingId}, {status: 1})
+        .then(() => {
+            res.status(200).json({
+                message: "보모와 매핑이 완료됨"
+            })
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        })
+    }
+    else {
+        return res.status(400).json({
+            message: "Invalid maapingId."
+        })
+    }
+}
+
+export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping};
