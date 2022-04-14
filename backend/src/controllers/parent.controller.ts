@@ -3,6 +3,8 @@ import { User } from '../entity/User';
 import { Parent } from '../entity/Parent';
 import { RequestToParent } from "../entity/RequestToParent";
 import { Mapping } from "../entity/Mapping";
+import { WorkDiary } from "../entity/WorkDiary";
+import { WorkDiaryImg } from "../entity/WorkDiaryImg";
 
 const getParentInfo = async (req: Request, res: Response, next: NextFunction) => {
     const parent_id: number = +req.params.parentId;
@@ -180,4 +182,26 @@ const rejectMapping = async (req: Request, res: Response, next: NextFunction) =>
     }
 }
 
-export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping};
+const getDailyDiary = async (req: Request, res: Response, next: NextFunction) => {
+    try {    
+        const mappingId: number = +req.params.mappingId;
+
+        // mappingId를 이용하여 금일 퇴근일지 가져오기
+        const daily_work_diary = await WorkDiary.findDiarybyMappingId(mappingId);
+
+        // 가져온 퇴근일지 ID를 이용하여 금일 퇴근일지에 저장된 이미지 리스트 가져오기
+        const daily_diary_img_list = await WorkDiaryImg.findImgbyDiaryId(daily_work_diary.diaryId);
+
+        return res.status(200).json({
+            dailyDiary: daily_work_diary,
+            dailyImageList: daily_diary_img_list
+        })
+
+    }
+    // 올바르지 않은 mappingId 입력된 경우
+    catch(error) {
+        return res.status(400).json({error});
+    }
+}
+
+export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping, getDailyDiary};

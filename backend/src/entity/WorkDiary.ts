@@ -29,4 +29,17 @@ export class WorkDiary extends BaseEntity {
         workDiaryImg => workDiaryImg.workDiary,{ nullable: false, onDelete: 'CASCADE' }
     )
     workDiaryImg: WorkDiaryImg[]
+
+    static async findDiarybyMappingId(mappingId: number) {
+
+        const date = new Date();
+        let year: number = date.getFullYear();
+        let month: string = ("0" + (1 + date.getMonth())).slice(-2);
+        let day: string = ("0" + date.getDate()).slice(-2);
+
+        return await this.createQueryBuilder("work_diary")
+            .where("work_diary.mappingId = :mappingId", {mappingId: mappingId})
+            .andWhere("DATE_FORMAT(work_diary.createdAt, '%Y-%m-%d') = :date", {date: year + "-" + month + "-" + day})
+            .getOneOrFail();
+    }
 }
