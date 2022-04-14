@@ -30,8 +30,9 @@ const BabyIndiScreen: FC  = () => {
   return (
     <style.Container>
       {AlertModal ?
-        <style.AlertModal onPress={modalControl}>
+        <style.AlertModal>
           <style.ModalContainer>
+            <style.CloseBtn onPress={modalControl}><style.CloseText>X</style.CloseText></style.CloseBtn>
             <style.LightText style={{ fontWeight: '600' }}>기타 알림 사항을 입력해주세요</style.LightText>
             <style.MsgInput placeholder="기타 알림 사항을 입력해 주세요"
                             multiline
@@ -49,8 +50,8 @@ const BabyIndiScreen: FC  = () => {
       :null
       }
       {AlarmModalState ?
-        <style.AlertModal onPress={AlarmModalControl}>
-          <AlarmModal />
+        <style.AlertModal>
+          <AlarmModal closeEvent={AlarmModalControl}/>
         </style.AlertModal>
         :null
       }

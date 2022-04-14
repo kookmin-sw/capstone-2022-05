@@ -67,7 +67,7 @@ export const sendIcon = styled.Image`
   width: 22px;
   height: 22px;
 `;
-export const AlertModal = styled.TouchableOpacity`
+export const AlertModal = styled.View`
   position: absolute;
   top: 0;
   align-items: center;
@@ -83,6 +83,15 @@ export const ModalContainer = styled.View`
   padding: 40px 20px;
   align-items: center;
   border-radius: 10px;
+`;
+export const CloseBtn = styled.TouchableOpacity`
+  top: 10px;
+  right: 20px;
+  position: absolute;
+`;
+export const CloseText = styled.Text`
+  font-size: 20px;
+  font-weight: 700;
 `;
 export const MsgInput = styled.TextInput`
   margin: 20px 0;

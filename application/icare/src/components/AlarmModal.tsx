@@ -3,7 +3,10 @@ import {Text} from "react-native";
 import styled from 'styled-components/native';
 import SelectTime from './SelectTime';
 
-const AlarmModal: FC = () => {
+interface AlarmModal {
+    closeEvent() : void
+}
+const AlarmModal: FC<AlarmModal> = (props) => {
   const [start, setStart] = useState(new Date())
   const [end, setEnd] = useState(new Date())
   const [timeset, setTimeset] = useState(false);
@@ -12,7 +15,7 @@ const AlarmModal: FC = () => {
   }
   return(
     <ModalView>
-      <CloseBtn><CloseText>X</CloseText></CloseBtn>
+      <CloseBtn onPress={props.closeEvent}><CloseText>X</CloseText></CloseBtn>
       <ModalTitle>
         알림을 보내시겠습니까 ?
       </ModalTitle>
@@ -41,6 +44,7 @@ const AlarmModal: FC = () => {
   )
 }
 const ModalView = styled.View`
+  z-index: 1;
   width: 80%;
   margin: 0 10%;
   background-color: #fff;
