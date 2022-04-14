@@ -22,8 +22,15 @@ export class WorkDiaryImg extends BaseEntity {
     workDiary: WorkDiary;
 
     static async findImgbyDiaryId(diaryId: number) {
+
+        const date = new Date();
+        let year: number = date.getFullYear();
+        let month: string = ("0" + (1 + date.getMonth())).slice(-2);
+        let day: string = ("0" + date.getDate()).slice(-2);
+
         return await this.createQueryBuilder("work_diary_img")
         .where("work_diary_img.workDiaryId = :diaryId", {diaryId: diaryId})
+        .andWhere("DATE_FORMAT(work_diary_img.createdAt, '%Y-%m-%d') = :date", {date: year + "-" + month + "-" + day})
         .getMany();
     }
 }
