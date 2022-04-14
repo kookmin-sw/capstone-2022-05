@@ -4,7 +4,7 @@ import { WorkDiary } from './WorkDiary';
 @Entity()
 export class WorkDiaryImg extends BaseEntity {
     @PrimaryGeneratedColumn()
-    diaryImg: number;
+    diaryImgId: number;
 
     @Column()
     image: string;
@@ -20,4 +20,10 @@ export class WorkDiaryImg extends BaseEntity {
     @JoinColumn({name: "workDiaryId"})
 
     workDiary: WorkDiary;
+
+    static async findImgbyDiaryId(diaryId: number) {
+        return await this.createQueryBuilder("work_diary_img")
+        .where("work_diary_img.workDiaryId = :diaryId", {diaryId: diaryId})
+        .getMany();
+    }
 }
