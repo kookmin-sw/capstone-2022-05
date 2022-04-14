@@ -30,6 +30,7 @@ export class WorkDiary extends BaseEntity {
     )
     workDiaryImg: WorkDiaryImg[]
 
+    // 당일 작성된 퇴근일지 가져오기
     static async findDiarybyMappingId(mappingId: number) {
 
         const date = new Date();
@@ -40,6 +41,15 @@ export class WorkDiary extends BaseEntity {
         return await this.createQueryBuilder("work_diary")
             .where("work_diary.mappingId = :mappingId", {mappingId: mappingId})
             .andWhere("DATE_FORMAT(work_diary.createdAt, '%Y-%m-%d') = :date", {date: year + "-" + month + "-" + day})
+            .getOneOrFail();
+    }
+
+    // 캘린더에서 클릭한 날짜에 작성된  퇴근일지 가져오기
+    static async findCalendarDiary(mappingId: number, date: string) {
+
+        return await this.createQueryBuilder("work_diary")
+            .where("work_diary.mappingId = :mappingId", {mappingId: mappingId})
+            .andWhere("DATE_FORMAT(work_diary.createdAt, '%Y-%m-%d') = :date", {date: date})
             .getOneOrFail();
     }
 }
