@@ -204,4 +204,27 @@ const getDailyDiary = async (req: Request, res: Response, next: NextFunction) =>
     }
 }
 
-export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping, getDailyDiary};
+const getCalendarDiary = async (req: Request, res: Response, next: NextFunction) => {
+    try {    
+        const mappingId: number = +req.params.mappingId;
+        const date: string = req.body.date; // ex) 2022-04-14
+
+        // mappingId, 날짜를 이용하여 특정 날짜의 퇴근일지 가져오기
+        const calendar_work_diary = await WorkDiary.findCalendarDiary(mappingId, date);
+
+        // 가져온 퇴근일지 ID, 날짜를 이용하여 특정 날짜에 작성된 퇴근일지 이미지 리스트 가져오기
+        const calendar_diary_img_list = await WorkDiaryImg.findImgUsingIdAndDate(calendar_work_diary.diaryId, date);
+
+        return res.status(200).json({
+            CalendarDiary: calendar_work_diary,
+            CalendarImageList: calendar_diary_img_list
+        })
+
+    }
+    // 올바르지 않은 mappingId 또는 date가 입력된 경우
+    catch(error) {
+        return res.status(400).json({error});
+    }
+}
+
+export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping, getDailyDiary, getCalendarDiary};
