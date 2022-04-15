@@ -1,8 +1,12 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {FC} from 'react';
-import styled from 'styled-components/native';
+import React, { FC } from 'react';
 import { RNCamera } from 'react-native-camera';
+import * as style from './styles';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../RootStackParams';
 
+
+type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
 // const TakePhoto = () => {
 //     const cameraRef = React.useRef(null); // useRef로 camera를 위한 ref를 하나 만들어주고
@@ -18,38 +22,22 @@ import { RNCamera } from 'react-native-camera';
 //     };
 // }
 
-const View = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Button = styled.View`
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  border: 10px solid lightgrey;
-  background-color: pink;
-`;
-
-const Touchable = styled.TouchableOpacity``;
-
-const CameraScreen: FC  = () => {
-  return(
-      <>
-        <RNCamera
-            style={{width: '100%', height: '80%'}}
-            type={RNCamera.Constants.Type.back}
-            captureAudio={false}
-        />
-    
-        <View>
-        <Touchable>
-            <Button />
-        </Touchable>
-        </View>
-      </>
-  )
+const CameraScreen: FC = () => {
+    const navigation = useNavigation<mainScreenProp>();
+    return (
+        <>
+            <RNCamera
+                style={{ width: '100%', height: '80%' }}
+                type={RNCamera.Constants.Type.back}
+                captureAudio={false}
+            />
+            <style.CameraBtnView>
+                <style.CameraTouchable onPress={() => { navigation.navigate('BabyIndi') }}>
+                    <style.CameraBtn />
+                </style.CameraTouchable>
+            </style.CameraBtnView>
+        </>
+    )
 };
 
 
