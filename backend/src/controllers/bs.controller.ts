@@ -7,6 +7,7 @@ import { Agent } from 'http';
 import { RequestToParent } from '../entity/RequestToParent';
 import { Parent } from '../entity/Parent';
 import { error } from 'console';
+import { Mapping } from '../entity/Mapping';
 
 const inputBSInfo = async (req:Request, res:Response, next:NextFunction) => {
     const {age, gender, region, career} : BsInputInfo = req.body
@@ -56,7 +57,7 @@ const updateBSInfo = async (req:Request, res:Response, next:NextFunction) => {
     
 }
 
-const requestToParent = async (req:Request, res:Response, next:NextFunction)=>{
+const mappingRequest = async (req:Request, res:Response, next:NextFunction)=>{
 
     const parentEmail :string = req.body.email
     const bsId: number = +req.params.bsId;
@@ -69,19 +70,21 @@ const requestToParent = async (req:Request, res:Response, next:NextFunction)=>{
         // console.log(babySitter);
         // console.log(parent)
 
-        const isDuple = await RequestToParent.checkDuplicate(parent.parentId, babySitter.bsId);
+        const isDuple = await Mapping.checkDuplicate(parent.parentId, babySitter.bsId);
+        
+
         console.log(isDuple.length)
         if(isDuple.length >= 1){
             
             throw "duplicate"
         }
 
-        const requestInstance = new RequestToParent();
+        const mapping = new Mapping();
 
-        requestInstance.parent = parent;
-        requestInstance.babySitter = babySitter;
+        mapping.parent = parent;
+        mapping.babySitter = babySitter;
 
-        const result = await requestInstance.save();
+        const result = await mapping.save();
         console.log(result)
 
         res.status(201).end();
@@ -95,7 +98,7 @@ export default {
     inputBSInfo,
     getBSInfo,
     updateBSInfo,
-    requestToParent
+    mappingRequest
 }
 
 

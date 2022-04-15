@@ -63,4 +63,13 @@ export class Mapping extends BaseEntity {
             .where("mapping.bsId = :bsId", {bsId:bsId})
             .getMany();
     }
+
+    // 이미 동일한 요청이 있는 경우 체크하기 위한 함수
+    static async checkDuplicate(parentId: number, bsId: number){
+
+        return await this.createQueryBuilder("mapping")
+            .where("mapping.parentId = :parentId", {parentId:parentId})
+            .andWhere("mapping.bsId = :bsId", {bsId:bsId})
+            .getMany();
+    }
 }
