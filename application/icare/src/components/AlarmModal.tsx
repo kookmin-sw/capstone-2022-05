@@ -2,10 +2,16 @@ import React, {FC, useEffect, useState} from 'react';
 import {Text} from "react-native";
 import styled from 'styled-components/native';
 import SelectTime from './SelectTime';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import { RootStackParamList } from '../RootStackParams';
 
 interface AlarmModal {
     closeEvent() : void
 }
+
+type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
+
 const AlarmModal: FC<AlarmModal> = (props) => {
   const [start, setStart] = useState(new Date())
   const [end, setEnd] = useState(new Date())
@@ -13,6 +19,7 @@ const AlarmModal: FC<AlarmModal> = (props) => {
   const constTimeSet = () => {
       setTimeset(!timeset)
   }
+  const navigation = useNavigation<mainScreenProp>();
   return(
     <ModalView>
       <CloseBtn onPress={props.closeEvent}><CloseText>X</CloseText></CloseBtn>
@@ -31,7 +38,7 @@ const AlarmModal: FC<AlarmModal> = (props) => {
         </TimeView>
       </TimeStampView>
       <SendBtnView>
-        <SendBtn style={{ backgroundColor: '#c4c4c4'}}>
+        <SendBtn style={{ backgroundColor: '#c4c4c4'}} onPress={() => {navigation.navigate('Camera')}}>
           <SendText>사진 보내기</SendText>
         </SendBtn>
         <SendBtn style={{ backgroundColor: '#aec4ba'}}>
