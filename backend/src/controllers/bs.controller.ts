@@ -24,7 +24,15 @@ const inputBSInfo = async (req:Request, res:Response, next:NextFunction) => {
     bs.career= career;
     bs.user = user;
 
-    await bs.save()
+    const isExist = await BabySitter.checkDuple(userId)
+    if(isExist){
+        res.status(400).json({message: "이미 입력한 정보가 존재합니다."})
+    }
+    else{
+        res.status(201).end()
+    }
+
+    //await bs.save()
 }
 
 const getBSInfo = async (req:Request, res:Response, next:NextFunction) => {
