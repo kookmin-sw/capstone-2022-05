@@ -82,6 +82,16 @@ export const ModalContainer = styled.View`
   width: 80%;
   padding: 40px 20px;
   align-items: center;
+  border-radius: 10px;
+`;
+export const CloseBtn = styled.TouchableOpacity`
+  top: 10px;
+  right: 20px;
+  position: absolute;
+`;
+export const CloseText = styled.Text`
+  font-size: 20px;
+  font-weight: 700;
 `;
 export const MsgInput = styled.TextInput`
   margin: 20px 0;
