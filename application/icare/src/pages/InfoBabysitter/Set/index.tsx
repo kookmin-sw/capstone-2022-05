@@ -27,7 +27,7 @@ const SetInfoBS: FC = () => {
                     <LabelTextarea label="자기소개/경력" placeholder="자기소개 및 경력을 입력해주세요."/>
                 </style.setInfoInputBox>
                 <style.setInfoButtonBox>
-                    <LabelButton label="입력 완료"/>
+                    <LabelButton label="입력 완료" navigate='BSMain'/>
                 </style.setInfoButtonBox>
             </style.setInfoContainer>
         </style.scrollViewContainer>

@@ -34,9 +34,9 @@ const BSMainScreen: FC  = () => {
       </style.PlusBaby>
       <style.NextPage>
         <View style={{ marginBottom: 28 }}>
-          <LabelButton label="내 정보" />
+          <LabelButton label="내 정보" navigate='DisplayInfoBS'/>
         </View>
-        <LabelButton label="근무일지 확인하기" />
+        <LabelButton label="근무일지 확인하기" navigate='Calendar'/>
       </style.NextPage>
     </style.Container>
   );
