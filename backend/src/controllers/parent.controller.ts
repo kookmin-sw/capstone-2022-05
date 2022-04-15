@@ -3,6 +3,8 @@ import { User } from '../entity/User';
 import { Parent } from '../entity/Parent';
 import { RequestToParent } from "../entity/RequestToParent";
 import { Mapping } from "../entity/Mapping";
+import { WorkDiary } from "../entity/WorkDiary";
+import { WorkDiaryImg } from "../entity/WorkDiaryImg";
 
 const getParentInfo = async (req: Request, res: Response, next: NextFunction) => {
     const parent_id: number = +req.params.parentId;
@@ -85,38 +87,144 @@ const getMainPage = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const parent_id: number = +req.params.parentId;
 
-        // Mapping 정보 반환
         const existMappingList = await Mapping.findMappingList(parent_id);
-        
-        // 매핑 정보가 있는 경우
+
+        let mapping_info = [];
+        let request_info = [];
+
         if (existMappingList.length !== 0) {
-            return res.status(200).json({
-                message: "매핑 리스트",
-                existMappingList
-            });
-        }
-        else { // 없는 경우 Request 테이블 확인
-            const existRequestList = await RequestToParent.findReqeustList(parent_id)
+            // status 값에 따라 매핑 정보인지 요청 정보인지 나눔
+            existMappingList.map((m) => {
+                if (m.status === 1) {
+                    mapping_info.push(m);
+                }
+                else if (m.status === 2) {
+                    request_info.push(m);
+                }
+            })
             
-            // 보모 요청 정보가 있는 경우
-            if (existRequestList.length !== 0) {
+            // 매핑 정보가 있는 경우
+            if (mapping_info.length !== 0) {
                 return res.status(200).json({
-                    message: "요청 리스트",
-                    existRequestList
+                    message: "매핑 리스트",
+                    mapping_info
                 });
-            }
-            
-            // 보모 요청이 없는 경우
+            } // 매핑 정보는 없고 요청 정보만 있는 경우
+            else if (mapping_info.length === 0 && request_info.length !== 0) {
+                return res.status(200).json({
+                    message: "보모의 매핑 요청 리스트",
+                    request_info
+                })
+            } // 둘 다 없는 경우
             else {
                 return res.status(404).json({
-                    message: "매핑 정보와 요청 정보 없음"
+                    message: "매핑 및 요청 정보 없음"
                 })
             }
         }
+        // 존재하지 않는 parentId로 요청 보낸 경우
+        else {
+            return res.status(400).json({
+                message: "Invalid parentId"
+            });
+        }
+        
+        
     }
     catch(err) {
         res.status(400).json(err);
     }
 }
 
-export default {getParentInfo, editParentInfo, createParentInfo, getMainPage};
+const acceptMapping = async (req: Request, res: Response, next: NextFunction) => {
+    const mappingId: number = +req.params.mappingId;
+
+    const mapping_info = await Mapping.findOne({mappingId: mappingId});
+
+    if (mapping_info) {
+        await Mapping.update({mappingId: mappingId}, {status: 1})
+        .then(() => {
+            res.status(200).json({
+                message: "보모와 매핑이 완료됨"
+            })
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        })
+    }
+    else {
+        return res.status(400).json({
+            message: "Invalid maapingId."
+        })
+    }
+}
+
+const rejectMapping = async (req: Request, res: Response, next: NextFunction) => {
+    const mappingId: number = +req.params.mappingId;
+
+    const mapping_info = await Mapping.findOne({mappingId: mappingId});
+
+    if (mapping_info) {
+        await Mapping.delete({mappingId: mappingId})
+        .then(() => {
+            res.status(200).json({
+                message: "보모의 매핑 요청 거절 완료"
+            })
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        })
+    }
+    else {
+        return res.status(400).json({
+            message: "Invalid maapingId."
+        })
+    }
+}
+
+const getDailyDiary = async (req: Request, res: Response, next: NextFunction) => {
+    try {    
+        const mappingId: number = +req.params.mappingId;
+
+        // mappingId를 이용하여 금일 퇴근일지 가져오기
+        const daily_work_diary = await WorkDiary.findDiarybyMappingId(mappingId);
+
+        // 가져온 퇴근일지 ID를 이용하여 금일 퇴근일지에 저장된 이미지 리스트 가져오기
+        const daily_diary_img_list = await WorkDiaryImg.findImgbyDiaryId(daily_work_diary.diaryId);
+
+        return res.status(200).json({
+            dailyDiary: daily_work_diary,
+            dailyImageList: daily_diary_img_list
+        })
+
+    }
+    // 올바르지 않은 mappingId 입력된 경우
+    catch(error) {
+        return res.status(400).json({error});
+    }
+}
+
+const getCalendarDiary = async (req: Request, res: Response, next: NextFunction) => {
+    try {    
+        const mappingId: number = +req.params.mappingId;
+        const date: string = req.body.date; // ex) 2022-04-14
+
+        // mappingId, 날짜를 이용하여 특정 날짜의 퇴근일지 가져오기
+        const calendar_work_diary = await WorkDiary.findCalendarDiary(mappingId, date);
+
+        // 가져온 퇴근일지 ID, 날짜를 이용하여 특정 날짜에 작성된 퇴근일지 이미지 리스트 가져오기
+        const calendar_diary_img_list = await WorkDiaryImg.findImgUsingIdAndDate(calendar_work_diary.diaryId, date);
+
+        return res.status(200).json({
+            CalendarDiary: calendar_work_diary,
+            CalendarImageList: calendar_diary_img_list
+        })
+
+    }
+    // 올바르지 않은 mappingId 또는 date가 입력된 경우
+    catch(error) {
+        return res.status(400).json({error});
+    }
+}
+
+export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping, getDailyDiary, getCalendarDiary};
