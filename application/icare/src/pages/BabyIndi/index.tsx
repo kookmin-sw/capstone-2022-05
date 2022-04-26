@@ -50,9 +50,7 @@ const BabyIndiScreen: FC  = () => {
       :null
       }
       {AlarmModalState ?
-        <style.AlertModal>
-          <AlarmModal closeEvent={AlarmModalControl}/>
-        </style.AlertModal>
+        <AlarmModal closeEvent={AlarmModalControl}/>
         :null
       }
       <style.InfoView>
@@ -63,7 +61,6 @@ const BabyIndiScreen: FC  = () => {
             <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.gender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.age}</style.LightText>
             <TouchableOpacity onPress={workControl}>
               <Text>{working? '퇴근하기' : '출근하기'}</Text>
-            {/*<LabelButton label={working? '퇴근하기' : '출근하기'} />*/}
             </TouchableOpacity>
           </style.ProfileInfo>
         </style.Profile>
@@ -75,7 +72,6 @@ const BabyIndiScreen: FC  = () => {
       <style.AlertView>
         <style.LightText style={{ fontWeight: '600' }}>알림 보내기</style.LightText>
         <style.AlertBtn onPress={() => {navigation.navigate('Chatting')}}>
-        {/*<style.AlertBtn>*/}
           <Text>밥 먹었어요 🍼</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>

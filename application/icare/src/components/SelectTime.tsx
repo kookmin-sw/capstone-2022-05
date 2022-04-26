@@ -5,9 +5,8 @@ import DatePicker from 'react-native-date-picker'
 
 interface SelectTimeProps {
     time: Date,
-    //close는 먹는데 setTime은 안먹음 ㅎㅎ !!ㅋㅋ~!~
-    setTime(): void,
-    close() : void
+    setTime: (time: Date) => void,
+    close(): void
 }
 const SelectTime: FC<SelectTimeProps> = (props) => {
     return(
@@ -26,12 +25,15 @@ const SelectTime: FC<SelectTimeProps> = (props) => {
         </BottomSection>
     );
 };
-//이것도 수정해야됨,, 따흐흐흑
 const BottomSection = styled.View`
   position: absolute;
-  bottom: -200px;
+  bottom: 0;
   flex: 1;
+  width: 100%;
   background: #fff;
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
 `;
 const CompleteBtn = styled.TouchableOpacity`
   background-color: #AEC4BA;

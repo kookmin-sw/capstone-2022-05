@@ -25,7 +25,7 @@ const WorkDiaryScreen: FC  = () => {
   return(
     <Container>
       {modal ?
-      <ConfirmModal></ConfirmModal>
+      <ConfirmModal close={ControlModal}/>
       : null}
       <style.NoticeView>
         <LightText style={{ fontWeight: '600' }}>오늘의 특이사항</LightText>
@@ -53,9 +53,11 @@ const WorkDiaryScreen: FC  = () => {
         <Text>퇴근하기</Text>
         {/*<LabelButton label="퇴근하기" />*/}
       </style.ButtonView>
-      <style.ButtonView>
+      <style.ButtonView onPress={() => {navigation.goBack()}}>
         <LabelButton label="취소" />
       </style.ButtonView>
+      {/* 야매로 아래에 공간을 만듬..이거 어케해결함 ㅜ */}
+      <View style={{flex: 1, marginBottom: PhotoList.length != 0 ? '45%' : '80%'}} />
     </Container>
   )
 }
