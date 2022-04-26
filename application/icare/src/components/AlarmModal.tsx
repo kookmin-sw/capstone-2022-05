@@ -15,26 +15,32 @@ type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 const AlarmModal: FC<AlarmModal> = (props) => {
   const [start, setStart] = useState(new Date())
   const [end, setEnd] = useState(new Date())
+  const [target, setTarget] = useState(true); //true: start, false: end
   const [timeset, setTimeset] = useState(false);
+  const targetControl = (time: boolean) => {
+      setTarget(time)
+      constTimeSet()
+  }
   const constTimeSet = () => {
       setTimeset(!timeset)
   }
   const navigation = useNavigation<mainScreenProp>();
   return(
+  <ModalBackGround>
     <ModalView>
       <CloseBtn onPress={props.closeEvent}><CloseText>X</CloseText></CloseBtn>
       <ModalTitle>
         알림을 보내시겠습니까 ?
       </ModalTitle>
       <TimeStampView>
-        <TimeView onPress={constTimeSet}>
+        <TimeView onPress={() => {targetControl(true)}}>
           <Text>시작 시간</Text>
           <TimeText>{start.getHours() + ' : ' + start.getMinutes()}</TimeText>
         </TimeView>
         <Text style={{marginTop: 30, fontSize: 20}}> ~ </Text>
-        <TimeView onPress={constTimeSet}>
+        <TimeView onPress={() => {targetControl(false)}}>
           <Text>종료 시간</Text>
-          <TimeText>{start.getHours() + ' : ' + start.getMinutes()}</TimeText>
+          <TimeText>{end.getHours() + ' : ' + end.getMinutes()}</TimeText>
         </TimeView>
       </TimeStampView>
       <SendBtnView>
@@ -45,11 +51,21 @@ const AlarmModal: FC<AlarmModal> = (props) => {
           <SendText>텍스트만 보내기</SendText>
         </SendBtn>
       </SendBtnView>
-      {/* 나중에 end 값도 보내게 수정해야함........어렵다 타입스크립트... */}
-      {timeset ? <SelectTime time={start} setTime={()=>{setStart}} close={constTimeSet}/> : null}
     </ModalView>
+    {timeset ? <SelectTime time={target? start : end} setTime={target ? setStart : setEnd} close={constTimeSet} /> : null}
+  </ModalBackGround>
   )
 }
+const ModalBackGround = styled.View`
+  position: absolute;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+`;
 const ModalView = styled.View`
   z-index: 1;
   width: 80%;

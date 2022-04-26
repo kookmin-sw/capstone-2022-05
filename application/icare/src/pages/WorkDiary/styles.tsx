@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const NoticeView = styled.View`
   width: 80%;
+  padding-top: 20px;
   margin: 0 auto;
 `;
 export const TextTemplate = styled.View`

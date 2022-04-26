@@ -2,13 +2,14 @@ import styled from 'styled-components/native';
 
 export const Container = styled.ScrollView`
   height: 100%;
-  padding: 9% 0 18% 0;
+  padding: 0;
   background: #fff;
   flex: 1;
 `;
 export const InfoView = styled.View`
   width: 80%;
-  margin: 0 auto 40px auto;
+  padding: 20px 0 40px 0;
+  margin: 0 auto 0 auto;
 `;
 export const Profile = styled.View`
   height: 140px;
@@ -46,6 +47,7 @@ export const DetailText = styled.Text`
 `;
 export const AlertView = styled.View`
   width: 80%;
+  padding-bottom: 40px;
   margin: 0 auto;
 `;
 export const AlertBtn = styled.TouchableOpacity`
