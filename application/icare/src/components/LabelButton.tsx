@@ -11,6 +11,7 @@ interface ButtonProps {
     label: string,
     color?: string,
     navigate?: string,
+    function?: void,
 }
 
 const defaultProps: ButtonProps = {
@@ -40,7 +41,7 @@ const LabelButton: FC<ButtonProps> = (props) => {
     const navigation = useNavigation<ScreenProp>();
     return (
         <View>
-            <LabelBtn color={props.color} onPress={() => navigation.push(props.navigate)}>
+            <LabelBtn color={props.color} onPress={() => {navigation.push(props.navigate); props.function}}>
                 <LabelBtnText>{props.label}</LabelBtnText>
             </LabelBtn>
         </View>
