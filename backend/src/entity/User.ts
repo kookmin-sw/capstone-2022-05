@@ -26,8 +26,12 @@ export class User extends BaseEntity {
 
     static async findByEmail(email: string){
         
-        return await this.createQueryBuilder("user")
+        const result = await this.createQueryBuilder("user")
             .where("user.email = :email", {email: email})
-            .getOneOrFail();
+            .getOne();
+        if (!result){
+            throw "no exist"
+        }
+        return result
     }
 }

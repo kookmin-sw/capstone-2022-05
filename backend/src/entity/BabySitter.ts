@@ -48,11 +48,29 @@ export class BabySitter extends BaseEntity {
     )
     request: RequestToParent[];
 
-    static findById(bsId:number){
-        return this.findOneOrFail({bsId:bsId});
+    static async findById(bsId:number){
+        const result = await this.findOne({bsId:bsId});
+        if(!result){
+            throw "no exist babysitter"
+        }
+        return result
     }
 
-    static updateBsInfo(bsId:number, data:object){
-        return this.update({bsId:bsId}, data)
+    static async updateBsInfo(bsId:number, data:object){
+        return await this.update({bsId:bsId}, data)
+    }
+
+    static async checkDuple(userId:number){
+        const result = await this.createQueryBuilder("babySitter")
+        .where("babySitter.userId = :userId", {userId:userId})
+        .getOne();
+
+        console.log(result)
+        if (result){
+            return true
+        }
+        else{
+            return false
+        }
     }
 }

@@ -29,4 +29,27 @@ export class WorkDiary extends BaseEntity {
         workDiaryImg => workDiaryImg.workDiary,{ nullable: false, onDelete: 'CASCADE' }
     )
     workDiaryImg: WorkDiaryImg[]
+
+    // 당일 작성된 퇴근일지 가져오기
+    static async findDiarybyMappingId(mappingId: number) {
+
+        const date = new Date();
+        let year: number = date.getFullYear();
+        let month: string = ("0" + (1 + date.getMonth())).slice(-2);
+        let day: string = ("0" + date.getDate()).slice(-2);
+
+        return await this.createQueryBuilder("work_diary")
+            .where("work_diary.mappingId = :mappingId", {mappingId: mappingId})
+            .andWhere("DATE_FORMAT(work_diary.createdAt, '%Y-%m-%d') = :date", {date: year + "-" + month + "-" + day})
+            .getOneOrFail();
+    }
+
+    // 캘린더에서 클릭한 날짜에 작성된  퇴근일지 가져오기
+    static async findCalendarDiary(mappingId: number, date: string) {
+
+        return await this.createQueryBuilder("work_diary")
+            .where("work_diary.mappingId = :mappingId", {mappingId: mappingId})
+            .andWhere("DATE_FORMAT(work_diary.createdAt, '%Y-%m-%d') = :date", {date: date})
+            .getOneOrFail();
+    }
 }

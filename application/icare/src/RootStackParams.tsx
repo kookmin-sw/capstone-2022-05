@@ -16,4 +16,5 @@ export type RootStackParamList = {
     BabyDiary: undefined;
     Calendar: undefined;
     Chatting: undefined;
+    Camera: undefined;
 };

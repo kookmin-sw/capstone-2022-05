@@ -28,7 +28,7 @@ const EditInfoParent: FC = () => {
                     <LabelTextarea label="아기 특이사항" placeholder="아이에 대한 주의사항을 입력해주세요 :)"/>
                 </style.editInfoInputBox>
                 <style.editInfoButtonBox>
-                    <LabelButton label="수정 완료"/>
+                    <LabelButton label="수정 완료" navigate='MainParent'/>
                 </style.editInfoButtonBox>
             </style.editInfoContainer>
         </style.scrollViewContainer>

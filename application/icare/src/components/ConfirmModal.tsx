@@ -2,18 +2,22 @@ import React, {FC, useEffect, useState} from 'react';
 import {View, Text, Image, Modal, TouchableOpacity} from "react-native";
 import styled from 'styled-components/native';
 
-const ConfirmModal: FC = () => {
+interface ConfirmModalProps {
+  close(): void
+}
+
+const ConfirmModal: FC<ConfirmModalProps> = (props) => {
   return(
     <ModalBg>
       <ModalView>
-        <Logo source={require('../../public/img/logo_50.png')}></Logo>
+        <Logo source={require('../../public/img/logo_50.png')} />
           <NoticeText>소중한 아이를 위해 </NoticeText>
           <NoticeText>입력하신 내용을 한번 더 확인해주세요!</NoticeText>
           <BtnView>
             <ModalBtn>
               <BtnLabel>저장</BtnLabel>
             </ModalBtn>
-            <ModalBtn>
+            <ModalBtn onPress={props.close}>
               <BtnLabel>취소</BtnLabel>
             </ModalBtn>
           </BtnView>
@@ -25,10 +29,7 @@ const ConfirmModal: FC = () => {
 const ModalBg = styled.View`
   position: absolute;
   flex: 1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  height: 100%;
   z-index: 1;
   background: rgba(0,0,0,0.16);
   width: 100%;
