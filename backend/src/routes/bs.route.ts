@@ -9,6 +9,6 @@ router.get('/info/:bsId', BSController.getBSInfo);
 router.patch('/info/:bsId', BSController.updateBSInfo);
 
 router.post('/mapping/:bsId', BSController.mappingRequest);
-router.get('mapping/:bsId', mappingController.findParentList)
+router.get('/mapping/:bsId', mappingController.findParentList)
 
 export = router;
