@@ -17,7 +17,7 @@ interface MulterRequest extends Request {
 const upload = multer({
     storage: multerS3({ 
         s3: s3,
-        bucket: 'icare-test',
+        bucket: 'icare-s3',
         contentType: multerS3.AUTO_CONTENT_TYPE, 
         acl: 'public-read',
         
