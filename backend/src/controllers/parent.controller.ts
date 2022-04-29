@@ -200,7 +200,10 @@ const getDailyDiary = async (req: Request, res: Response, next: NextFunction) =>
     }
     // 올바르지 않은 mappingId 입력된 경우
     catch(error) {
-        return res.status(400).json({error});
+        return res.status(400).json({
+            error,
+            message: "잘못된 매핑 ID가 입력됨"
+        });
     }
 }
 
@@ -223,7 +226,10 @@ const getCalendarDiary = async (req: Request, res: Response, next: NextFunction)
     }
     // 올바르지 않은 mappingId 또는 date가 입력된 경우
     catch(error) {
-        return res.status(400).json({error});
+        return res.status(400).json({
+            error,
+            message: "잘못된 매핑 ID가 입력되었거나 해당 날짜에 대한 퇴근일지가 존재하지 않음"
+        });
     }
 }
 
