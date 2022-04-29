@@ -6,21 +6,21 @@ const findParentList = async (req:Request, res: Response, next: NextFunction) =>
     try{
         const bsId : number = +req.params.bsId; 
     
-    await BabySitter.findById(bsId)
-    const result = await Mapping.findMappingParentList(bsId);
+        await BabySitter.findById(bsId)
+        const result = await Mapping.findMappingParentList(bsId);
 
-    const returnData = []
+        const returnData = []
 
-    if(result.length == 0){
-        return res.status(200).json(returnData);
-    }
+        if(result.length == 0){
+            return res.status(200).json(returnData);
+        }
 
-    result.map((value: any, index: number) => {
-        console.log(typeof(value))
-        returnData.push(value.parent)
-    })
+        result.map((value: any, index: number) => {
+            console.log(typeof(value))
+            returnData.push(value.parent)
+        })
 
-    res.status(200).json(returnData)
+        res.status(200).json(returnData)
 
     // console.log(result);
     }
