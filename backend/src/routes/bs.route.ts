@@ -2,6 +2,7 @@ import express from 'express';
 import BSController from '../controllers/bs.controller';
 import mappingController from '../controllers/mapping.controller';
 import alarmController from "../controllers/alarm.controller";
+import workdiaryController from "../controllers/workdiary.controller"
 
 
 const router = express.Router();
@@ -14,4 +15,6 @@ router.post('/mapping/:bsId', BSController.mappingRequest);
 router.get('/mapping/:bsId', mappingController.findParentList)
 
 router.post('/alarm/:mappingId',  alarmController.upload.single("img"),alarmController.sendAlarm);
+
+router.post('/diary/:mappingId',workdiaryController.upload.array("img"),workdiaryController.writeWorkdiary)
 export = router;
