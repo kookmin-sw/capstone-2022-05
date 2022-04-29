@@ -17,4 +17,6 @@ router.get('/mapping/:bsId', mappingController.findParentList)
 router.post('/alarm/:mappingId',  alarmController.upload.single("img"),alarmController.sendAlarm);
 
 router.post('/diary/:mappingId',workdiaryController.upload.array("img"),workdiaryController.writeWorkdiary)
+
+router.get('/test',(req,res) => res.send("test"))
 export = router;
