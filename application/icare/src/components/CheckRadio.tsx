@@ -1,7 +1,12 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { View } from "react-native";
 import styled from 'styled-components/native';
 import { RadioButton } from 'react-native-paper';
+
+interface RadioAndroidProps {
+    function_state?: number,
+    function?: void,
+}
 
 const RadioBox = styled.TouchableOpacity`
     justify-content: center;
@@ -26,8 +31,15 @@ const RadioLabelText = styled.Text`
     margin: 0 24px 0 6px;
 `;
 
-const CheckRadio: FC = (props) => {
+const CheckRadio: FC<RadioAndroidProps> = (props) => {
     const [checked, setChecked] = React.useState('parents');
+
+    useEffect(() => {
+        if(props.function) {
+            if(checked === 'label1') props.function(1)
+            else props.function(2)
+        }
+    }, [checked])
 
     return (
         <RadioBox>

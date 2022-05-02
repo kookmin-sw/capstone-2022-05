@@ -1,11 +1,13 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styled from 'styled-components/native';
 import { RadioButton } from 'react-native-paper';
 
 interface RadioAndroidProps {
     title: string,
-    label1: string
-    label2: string
+    label1: string,
+    label2: string,
+    function_state?: string,
+    function?: void,
 }
 
 const RadioArea = styled.View`
@@ -36,7 +38,12 @@ const RadioLabelText = styled.Text`
 `;
 
 const RadioAndroid: FC<RadioAndroidProps> = (props) => {
-    const [checked, setChecked] = React.useState('label1');
+    const [checked, setChecked] = useState('label1');
+
+    useEffect(() => {
+        if(checked === 'label1') props.function(1)
+        else props.function(2)
+    }, [checked])
 
     return (
         <RadioArea>

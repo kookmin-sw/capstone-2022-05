@@ -1,9 +1,11 @@
-import React, { FC } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { View, TextInput } from "react-native";
 import styled from 'styled-components/native';
 
 interface LabelProps {
-    label: string
+    label: string,
+    function_state?: string,
+    function?: void,
 }
 
 const LabelArea = styled.View`
@@ -22,7 +24,6 @@ const TextInputArea = styled.View`
 `;
 
 const LabelInput: FC<LabelProps> = (props) => {
-    const [text, setText] = React.useState("");
     return (
         <View>
             <LabelArea>
@@ -30,8 +31,8 @@ const LabelInput: FC<LabelProps> = (props) => {
             </LabelArea>
             <TextInputArea>
                 <TextInput
-                    value={text}
-                    onChangeText={text => setText(text)}
+                    value={props.function_state}
+                    onChangeText={text => props.function(text)}
                 />
             </TextInputArea>
         </View>
