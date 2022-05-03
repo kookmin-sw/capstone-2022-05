@@ -5,6 +5,7 @@ import { RequestToParent } from "../entity/RequestToParent";
 import { Mapping } from "../entity/Mapping";
 import { WorkDiary } from "../entity/WorkDiary";
 import { WorkDiaryImg } from "../entity/WorkDiaryImg";
+import { BabySitter } from "../entity/BabySitter";
 
 const getParentInfo = async (req: Request, res: Response, next: NextFunction) => {
     const parent_id: number = +req.params.parentId;
@@ -95,13 +96,17 @@ const getMainPage = async (req: Request, res: Response, next: NextFunction) => {
         if (existMappingList.length !== 0) {
             // status 값에 따라 매핑 정보인지 요청 정보인지 나눔
             existMappingList.map((m) => {
+                
                 if (m.status === 1) {
                     mapping_info.push(m);
                 }
-                else if (m.status === 2) {
+                else {
                     request_info.push(m);
                 }
+                
             })
+
+            
             
             // 매핑 정보가 있는 경우
             if (mapping_info.length !== 0) {
