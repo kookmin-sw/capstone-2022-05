@@ -1,10 +1,12 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { View } from "react-native";
 import styled from 'styled-components/native';
 import DatePicker from 'react-native-date-picker'
 
 interface SelectDateProps {
-    label: string
+    label: string,
+    function_state? : string,
+    function?: void
 }
 
 const LabelArea = styled.View`
@@ -20,6 +22,18 @@ const SelectboxArea = styled.View`
 
 const SelectDate: FC<SelectDateProps> = (props) => {
     const [date, setDate] = useState(new Date())
+    useEffect(() => {
+        if(props.function) {
+            props.function(date)
+        }
+    }, [date])
+
+    useEffect(() => {
+        if(props.function_state) {
+            setDate(new Date(props.function_state))
+        }
+    }, [props.function_state])
+
     return (
         <View>
             <LabelArea>

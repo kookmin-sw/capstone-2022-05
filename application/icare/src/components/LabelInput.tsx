@@ -32,7 +32,7 @@ const LabelInput: FC<LabelProps> = (props) => {
             <TextInputArea>
                 <TextInput
                     value={props.function_state}
-                    onChangeText={text => props.function(text)}
+                    onChangeText={(text) => {props.function ? props.function(text) : null}}
                 />
             </TextInputArea>
         </View>
