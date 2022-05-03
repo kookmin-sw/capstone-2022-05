@@ -54,31 +54,39 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
     
     const user = await User.find({
         email: email
-    });
-
-    const check = await bcrypt.compare(password, user[0].password);
-
-    if(check) { // 패스워드 일치 시 토큰 발행
-        const token = jwt.sign({
-            type: 'JWT',
-            email: email,
-            }, process.env.SECRET_KEY, {
-            expiresIn: '24h', // 만료시간 24h
-            issuer: 'icare',
-            }
-        );
-        
-        res.status(200).json({
-            success: true,
-            message: "토큰 발행 완료",
-            token: token
-        });
-        
+    })
+    
+    if (user.length === 0) {
+        return res.status(404).json({
+            message: "등록되지 않은 이메일입니다."
+        })
     }
     else {
-        res.status(400).json({
-            message: "이메일 또는 비밀번호가 일치하지 않습니다."
-        })
+        const check = await bcrypt.compare(password, user[0].password);
+
+        if(check) { // 패스워드 일치 시 토큰 발행
+            const token = jwt.sign({
+                type: 'JWT',
+                email: email,
+                }, process.env.SECRET_KEY, {
+                expiresIn: '24h', // 만료시간 24h
+                issuer: 'icare',
+                }
+            );
+            
+            res.status(200).json({
+                success: true,
+                message: "토큰 발행 완료",
+                token: token,
+                userInfo: user
+            });
+            
+        }
+        else {
+            res.status(400).json({
+                message: "비밀번호가 일치하지 않습니다."
+            })
+        }
     }
 };
 
