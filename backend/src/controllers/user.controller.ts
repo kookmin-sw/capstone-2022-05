@@ -77,7 +77,8 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
             res.status(200).json({
                 success: true,
                 message: "토큰 발행 완료",
-                token: token
+                token: token,
+                userInfo: user
             });
             
         }
