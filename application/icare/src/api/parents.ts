@@ -112,7 +112,7 @@ export const getCalendarDiary = (id: number, data: calendarInterface, callback: 
         },
         CalendarImageList : []
     })=> void) => {
-    axios.post('http://3.39.149.92:3000/parent/calendar/' + id, data)
+    axios.post(process.env.BASE_URL + 'parent/calendar/' + id, data)
     .then(function (response) {
         console.log(response);
         callback(response.data)
