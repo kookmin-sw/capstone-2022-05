@@ -8,6 +8,10 @@ interface parentInterface {
   career: string;
 }
 
+interface calendarInterface {
+  date: string;
+}
+
 //부모 정보 입력하기
 export const setParentInfo = (data: parentInterface, id: number) => {
     axios.post(process.env.BASE_URL + 'parent/info/' + id, data)
@@ -83,6 +87,35 @@ export const rejectBS = (id: number) => {
     axios.delete(process.env.BASE_URL + 'parent/mapping/rejection' + id)
     .then(function (response) {
         console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+};
+
+//금일 퇴근일지 가져오기
+export const getTodayDiary = (id: number, callback: (value:[])=> void) => {
+    axios.get(process.env.BASE_URL + 'parent/diary/' + id)
+    .then(function (response) {
+        console.log(response);
+        callback(response.data.mapping_info)
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+};
+
+//캘린더 날짜별 퇴근일지 가져오기
+export const getCalendarDiary = (id: number, data: calendarInterface, callback: (value:{
+        CalendarDiary: {
+            issue: ""
+        },
+        CalendarImageList : []
+    })=> void) => {
+    axios.post('http://3.39.149.92:3000/parent/calendar/' + id, data)
+    .then(function (response) {
+        console.log(response);
+        callback(response.data)
     })
     .catch(function (error) {
         console.log(error);
