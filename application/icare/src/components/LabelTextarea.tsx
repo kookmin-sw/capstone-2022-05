@@ -1,10 +1,12 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { View, TextInput } from "react-native";
 import styled from 'styled-components/native';
 
 interface LabelTextareaProps {
     label: string,
     placeholder: string,
+    function_state?: string,
+    function?: void
 }
 
 const LabelArea = styled.View`
@@ -27,6 +29,13 @@ const TextArea = styled.TextInput`
 
 const LabelTextarea: FC<LabelTextareaProps> = (props) => {
     const [text, setText] = useState()
+
+    useEffect(() => {
+        if(props.function) {
+            props.function(text)
+        }
+    }, [text])
+
     return (
         <View>
             <LabelArea>
@@ -35,9 +44,9 @@ const LabelTextarea: FC<LabelTextareaProps> = (props) => {
             <TextArea
                 multiline={true}
                 numberOfLines={4}
-                onChange={(e:any) => setText(e.target.value)}
+                onChangeText={(e:any) => setText(e)}
                 placeholder={props.placeholder}
-                value={text}/>
+                value={props.function_state ? props.function_state : text}/>
         </View>
     );
 };

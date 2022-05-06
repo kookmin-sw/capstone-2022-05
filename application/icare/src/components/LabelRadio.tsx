@@ -41,9 +41,18 @@ const RadioAndroid: FC<RadioAndroidProps> = (props) => {
     const [checked, setChecked] = useState('label1');
 
     useEffect(() => {
-        if(checked === 'label1') props.function(1)
-        else props.function(2)
+        if(props.function) {
+            if(checked === 'label1') props.function('male')
+            else props.function('female')
+        }
     }, [checked])
+
+    useEffect(() => {
+        if(props.function_state) {
+            if(props.function_state === 'male') setChecked('label1')
+            else setChecked('label2')
+        }
+    }, [props.function_state])
 
     return (
         <RadioArea>
