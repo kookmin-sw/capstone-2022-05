@@ -6,22 +6,22 @@ interface babysitterInfoInterface {
     region?: string,
     career?: string
 }
-
-interface babysitterIdInterface {
-    id: number
-}
-interface mappingInterface {
-    email: string
+interface parentsInfoInterface {
+    parentId : number
+    babyName : string,
+    babyBirth: string,
+    babyGender: string,
+    region: string,
+    career: string,
+    createdAt: string
 }
 interface AlarmInterface {
     alarmCode: string,
     alarmText: string,
 }
-interface DiaryInterface {
-    issue: string,
-}
+
 //get babysitter info
-export const getBabysitterInfo = (id: babysitterIdInterface) => {
+export const getBabysitterInfo = (id: number) => {
     axios.get(process.env.BASE_URL + 'bs/info/'+ id)
         .then( (response) =>{
             return response
@@ -32,7 +32,7 @@ export const getBabysitterInfo = (id: babysitterIdInterface) => {
 };
 
 //post babysitter info
-export const postBabysitterInfo = (id:babysitterIdInterface, data:babysitterInfoInterface) => {
+export const postBabysitterInfo = (id:number, data:babysitterInfoInterface) => {
     axios.post(process.env.BASE_URL + 'bs/info/' + id, data)
         .then((response) => {
             console.log(response);
@@ -43,7 +43,7 @@ export const postBabysitterInfo = (id:babysitterIdInterface, data:babysitterInfo
 }
 
 //patch babysitter info
-export const patchBabysitterInfo = (id:babysitterIdInterface, data:babysitterInfoInterface) => {
+export const patchBabysitterInfo = (id:number, data:babysitterInfoInterface) => {
     axios.patch(process.env.BASE_URL + 'bs/info/' + id, data)
         .then((response) => {
             console.log(response);
@@ -54,10 +54,10 @@ export const patchBabysitterInfo = (id:babysitterIdInterface, data:babysitterInf
 }
 
 //get babysitter mapping info
-export const getBabysitterMapping = (id: babysitterIdInterface) => {
+export const getBabysitterMapping = (id: number, callback: (response:any) => void) => {
     axios.get(process.env.BASE_URL + 'bs/mapping/'+ id)
         .then( (response) =>{
-            return response
+            callback(response.data)
         })
         .catch((error) => {
             console.log(error);
@@ -65,8 +65,8 @@ export const getBabysitterMapping = (id: babysitterIdInterface) => {
 };
 
 //post mapping request from babysitter to parents
-export const postMappingRequest = (id:babysitterIdInterface, data:mappingInterface) => {
-    axios.post(process.env.BASE_URL + 'bs/mapping/'+ id, data)
+export const postMappingRequest = (id:number, eamil:string) => {
+    axios.post(process.env.BASE_URL + 'bs/mapping/'+ id, eamil)
         .then( (response) =>{
             console.log(response)
         })
@@ -76,7 +76,7 @@ export const postMappingRequest = (id:babysitterIdInterface, data:mappingInterfa
 }
 
 //post Alarm
-export const postAlarm = (id:babysitterIdInterface, data:AlarmInterface) => {
+export const postAlarm = (id:number, data:AlarmInterface) => {
     axios.post(process.env.BASE_URL + 'bs/alarm/'+ id, data)
         .then( (response) =>{
             console.log(response)
@@ -86,8 +86,8 @@ export const postAlarm = (id:babysitterIdInterface, data:AlarmInterface) => {
         });
 }
 //post workDiary
-export const postWorkDiary = (id:babysitterIdInterface, data:DiaryInterface) => {
-    axios.post(process.env.BASE_URL + 'bs/diary/'+ id, data)
+export const postWorkDiary = (id:number) => {
+    axios.post(process.env.BASE_URL + 'bs/diary/'+ id)
         .then( (response) =>{
             console.log(response)
         })
