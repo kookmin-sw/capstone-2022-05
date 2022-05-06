@@ -1,42 +1,25 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
 import { View } from "react-native";
 import {StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../RootStackParams';
 import * as style from './styles';
 import LabelButton from '../../components/LabelButton';
-import {getBabysitterMapping} from "../../api/babysitter";
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
 const BSMainScreen: FC  = () => {
   // const [Babys, setBabys] = useState([]);
-  const [sitterId, setSitterId] = useState(1);
-  const [Babys, setBabys] = useState([{
-      "parentId": 1,
-      "babyName": "임창식",
-      "babyBirth": "2022-04-30",
-      "babyGender": "male",
-      "region": "서울특별시",
-      "career": "잠만보",
-      "createdAt": "2022-04-30T04:57:44.103Z"
-  }]);
-  useEffect(() => {
-      // const list = getBabysitterMapping({
-      //     id: sitterId
-      // })
-      // setBabys(list)
-  })
+  const [Babys, setBabys] = useState([{'name': '김하율', 'photo': '', 'id': 1}, {'name': '이준후', 'photo': '', 'id': 2}, {'name': '박가람', 'photo': '', 'id': 3}, {'name': '최예나', 'photo': '', 'id': 4}]);
   const navigation = useNavigation<mainScreenProp>();
   return (
     <style.Container>
       {Babys.length > 0 ?
         <style.BabyList>
           {Babys.map((e) => (
-            <style.babyElem onPress={() => navigation.navigate("BabyIndi", {id : e.parentId})}>
-              {/*<style.babyPhoto source={e.photo != '' ? e.photo : require('../../../public/img/logo_92_img.png')} />*/}
-              <style.babyPhoto source={require('../../../public/img/logo_92_img.png')} />
-              <style.lightText>{e.babyName}</style.lightText>
+            <style.babyElem onPress={() => navigation.navigate('BabyIndi')}>
+              <style.babyPhoto source={e.photo != '' ? e.photo : require('../../../public/img/logo_92_img.png')} />
+              <style.lightText>{e.name}</style.lightText>
             </style.babyElem>
           ))}
         </style.BabyList>
