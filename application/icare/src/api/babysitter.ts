@@ -21,10 +21,10 @@ interface AlarmInterface {
 }
 
 //get babysitter info
-export const getBabysitterInfo = (id: number) => {
+export const getBabysitterInfo = (id: number, callback: (response:any) => void) => {
     axios.get(process.env.BASE_URL + 'bs/info/'+ id)
         .then( (response) =>{
-            return response
+            callback(response.data)
         })
         .catch((error) => {
             console.log(error);
@@ -86,8 +86,8 @@ export const postAlarm = (id:number, data:AlarmInterface) => {
         });
 }
 //post workDiary
-export const postWorkDiary = (id:number) => {
-    axios.post(process.env.BASE_URL + 'bs/diary/'+ id)
+export const postWorkDiary = (id:number, issue:string) => {
+    axios.post(process.env.BASE_URL + 'bs/diary/'+ id, issue)
         .then( (response) =>{
             console.log(response)
         })

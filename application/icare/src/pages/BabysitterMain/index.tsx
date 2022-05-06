@@ -16,7 +16,7 @@ const BSMainScreen: FC  = () => {
       getBabysitterMapping(1, setBabys)
   })
   // const [Babys, setBabys] = useState([]);
-  const [Babys, setBabys] = useState([]);
+  const [Babys, setBabys] = useState([{babyName:''}]);
   const navigation = useNavigation<mainScreenProp>();
   return (
     <style.Container>
