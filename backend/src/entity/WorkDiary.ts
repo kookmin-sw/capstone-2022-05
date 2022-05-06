@@ -41,7 +41,7 @@ export class WorkDiary extends BaseEntity {
         return await this.createQueryBuilder("work_diary")
             .where("work_diary.mappingId = :mappingId", {mappingId: mappingId})
             .andWhere("DATE_FORMAT(work_diary.createdAt, '%Y-%m-%d') = :date", {date: year + "-" + month + "-" + day})
-            .getOneOrFail();
+            .getOne();
     }
 
     // 캘린더에서 클릭한 날짜에 작성된  퇴근일지 가져오기
@@ -50,6 +50,6 @@ export class WorkDiary extends BaseEntity {
         return await this.createQueryBuilder("work_diary")
             .where("work_diary.mappingId = :mappingId", {mappingId: mappingId})
             .andWhere("DATE_FORMAT(work_diary.createdAt, '%Y-%m-%d') = :date", {date: date})
-            .getOneOrFail();
+            .getOne();
     }
 }
