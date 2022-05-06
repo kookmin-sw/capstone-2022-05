@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { StyleSheet, View, Image, ScrollView, TouchableOpacity, Text } from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -6,11 +6,26 @@ import {RootStackParamList} from '../../RootStackParams';
 import CheckRadio from "../../components/CheckRadio"
 import LabelInput from "../../components/LabelInput"
 import LabelButton from "../../components/LabelButton"
+import { login } from "../../api/users"
 
 type authScreenProp = StackNavigationProp<RootStackParamList, 'Auth'>;
 
 const AuthScreen: FC = () => {
     const navigation = useNavigation<authScreenProp>();
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [dataForm, setDataForm] = useState({
+        "email" : "",
+        "password" : ""
+    })
+
+    useEffect(() => {
+        setDataForm({
+            "email" : email,
+            "password" : password
+        })
+        console.log(dataForm)
+    },[email, password])
 
     return (
         <ScrollView style={styles.scrollViewContainer}>
@@ -23,11 +38,11 @@ const AuthScreen: FC = () => {
                         <CheckRadio />
                     </View>
                     <View style={styles.authLabelinput}>
-                        <LabelInput label="이메일"/>
-                        <LabelInput label="비밀번호"/>
+                        <LabelInput label="이메일" function_state={email} function={setEmail}/>
+                        <LabelInput label="비밀번호" function_state={password} function={setPassword}/>
                     </View>
                     <View style={styles.authLabelButton}>
-                        <LabelButton label="로그인"/>
+                        <LabelButton label="로그인" function={login(dataForm)} />
                     </View>
                     <View style={styles.authRegisterLabel}>
                         <Text>계정이 없으신가요?</Text>

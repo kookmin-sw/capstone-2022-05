@@ -8,6 +8,7 @@ import userRouter from "./routes/user.route";
 import parentRouter from './routes/parent.route';
 import bsRouter from "./routes/bs.route"
 
+
 const app = express();
 
 app.use(express.json());

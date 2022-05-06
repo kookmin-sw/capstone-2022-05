@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { Image } from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -9,11 +9,23 @@ import LabelRadio from "../../../components/LabelRadio"
 import LabelButton from "../../../components/LabelButton"
 import LabelTextarea from "../../../components/LabelTextarea"
 import * as style from "./style"
+import {getBabysitterInfo, patchBabysitterInfo} from "../../../api/babysitter";
 
 // type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 const EditInfoBS: FC = () => {
     // const navigation = useNavigation<registerScreenProp>();
+    const [info, setInfo] = useState({age:'', gender:'', region:'', career:'', user:{userName:''}});
+    const [edit, setEdit] = useState({})
+    useEffect(() => {
+        getBabysitterInfo(1, setInfo)
+    })
+    //edit info change
+    const changeEdit = () => {}
+    //post edit info
+    const completeEdit = () => {
+        patchBabysitterInfo(1, edit)
+    }
     return (
         <style.scrollViewContainer>
             <style.editInfoContainer>

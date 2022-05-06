@@ -5,6 +5,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../RootStackParams';
 import * as style from './styles';
 import LabelButton from '../../components/LabelButton';
+import AlarmModal from "../../components/AlarmModal";
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
@@ -12,6 +13,7 @@ const BabyIndiScreen: FC  = () => {
   const [BabyInfo, setBabyInfo] = useState({'name': '김하율', 'photo': '', 'id': 1, 'gender': 'female', 'age': '8개월', 'detail': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'});
   const [AlertModal, setAlertModal] = useState(false);
   const [working, setWork] = useState(false);
+  const [AlarmModalState, setAlarmModalState] = useState(false);
   const navigation = useNavigation<mainScreenProp>();
   const modalControl = () => {
     setAlertModal(!AlertModal);
@@ -22,11 +24,15 @@ const BabyIndiScreen: FC  = () => {
     }
     else setWork(!working);
   }
+  const AlarmModalControl = () => {
+    setAlarmModalState(!AlarmModalState)
+  }
   return (
     <style.Container>
       {AlertModal ?
         <style.AlertModal>
           <style.ModalContainer>
+            <style.CloseBtn onPress={modalControl}><style.CloseText>X</style.CloseText></style.CloseBtn>
             <style.LightText style={{ fontWeight: '600' }}>기타 알림 사항을 입력해주세요</style.LightText>
             <style.MsgInput placeholder="기타 알림 사항을 입력해 주세요"
                             multiline
@@ -43,6 +49,10 @@ const BabyIndiScreen: FC  = () => {
         </style.AlertModal>
       :null
       }
+      {AlarmModalState ?
+        <AlarmModal closeEvent={AlarmModalControl}/>
+        :null
+      }
       <style.InfoView>
         <style.Profile>
           <style.ProfilePhoto source={BabyInfo.photo != '' ? BabyInfo.photo : require('../../../public/img/logo_92_img.png')} />
@@ -51,7 +61,6 @@ const BabyIndiScreen: FC  = () => {
             <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.gender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.age}</style.LightText>
             <TouchableOpacity onPress={workControl}>
               <Text>{working? '퇴근하기' : '출근하기'}</Text>
-            {/*<LabelButton label={working? '퇴근하기' : '출근하기'} />*/}
             </TouchableOpacity>
           </style.ProfileInfo>
         </style.Profile>
@@ -63,19 +72,18 @@ const BabyIndiScreen: FC  = () => {
       <style.AlertView>
         <style.LightText style={{ fontWeight: '600' }}>알림 보내기</style.LightText>
         <style.AlertBtn onPress={() => {navigation.navigate('Chatting')}}>
-        {/*<style.AlertBtn>*/}
           <Text>밥 먹었어요 🍼</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
-        <style.AlertBtn>
+        <style.AlertBtn onPress={AlarmModalControl}>
           <Text>자는중이에요 💤</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
-        <style.AlertBtn>
+        <style.AlertBtn onPress={AlarmModalControl}>
           <Text>응가 했어요 💩</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
-        <style.AlertBtn>
+        <style.AlertBtn onPress={AlarmModalControl}>
           <Text>목욕 했어요 🛁</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>

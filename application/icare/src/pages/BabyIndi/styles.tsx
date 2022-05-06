@@ -2,13 +2,14 @@ import styled from 'styled-components/native';
 
 export const Container = styled.ScrollView`
   height: 100%;
-  padding: 9% 0 18% 0;
+  padding: 0;
   background: #fff;
   flex: 1;
 `;
 export const InfoView = styled.View`
   width: 80%;
-  margin: 0 auto 40px auto;
+  padding: 20px 0 40px 0;
+  margin: 0 auto 0 auto;
 `;
 export const Profile = styled.View`
   height: 140px;
@@ -46,6 +47,7 @@ export const DetailText = styled.Text`
 `;
 export const AlertView = styled.View`
   width: 80%;
+  padding-bottom: 40px;
   margin: 0 auto;
 `;
 export const AlertBtn = styled.TouchableOpacity`
@@ -82,6 +84,16 @@ export const ModalContainer = styled.View`
   width: 80%;
   padding: 40px 20px;
   align-items: center;
+  border-radius: 10px;
+`;
+export const CloseBtn = styled.TouchableOpacity`
+  top: 10px;
+  right: 20px;
+  position: absolute;
+`;
+export const CloseText = styled.Text`
+  font-size: 20px;
+  font-weight: 700;
 `;
 export const MsgInput = styled.TextInput`
   margin: 20px 0;

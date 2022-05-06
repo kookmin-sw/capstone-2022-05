@@ -1,16 +1,22 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { View } from "react-native";
 import {StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../RootStackParams';
 import * as style from './styles';
 import LabelButton from '../../components/LabelButton';
+import {getBabysitterMapping} from "../../api/babysitter";
+import axios from "axios";
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
 const BSMainScreen: FC  = () => {
+  useEffect(() => {
+      // axios.get('http://3.39.149.92:3000/bs/mapping/1').then((response) => console.log(response.data))
+      getBabysitterMapping(1, setBabys)
+  })
   // const [Babys, setBabys] = useState([]);
-  const [Babys, setBabys] = useState([{'name': '김하율', 'photo': '', 'id': 1}, {'name': '이준후', 'photo': '', 'id': 2}, {'name': '박가람', 'photo': '', 'id': 3}, {'name': '최예나', 'photo': '', 'id': 4}]);
+  const [Babys, setBabys] = useState([{babyName:''}]);
   const navigation = useNavigation<mainScreenProp>();
   return (
     <style.Container>
@@ -18,8 +24,8 @@ const BSMainScreen: FC  = () => {
         <style.BabyList>
           {Babys.map((e) => (
             <style.babyElem onPress={() => navigation.navigate('BabyIndi')}>
-              <style.babyPhoto source={e.photo != '' ? e.photo : require('../../../public/img/logo_92_img.png')} />
-              <style.lightText>{e.name}</style.lightText>
+              <style.babyPhoto source={require('../../../public/img/logo_92_img.png')} />
+              <style.lightText>{e.babyName}</style.lightText>
             </style.babyElem>
           ))}
         </style.BabyList>
@@ -34,9 +40,9 @@ const BSMainScreen: FC  = () => {
       </style.PlusBaby>
       <style.NextPage>
         <View style={{ marginBottom: 28 }}>
-          <LabelButton label="내 정보" />
+          <LabelButton label="내 정보" navigate='DisplayInfoBS'/>
         </View>
-        <LabelButton label="근무일지 확인하기" />
+        <LabelButton label="근무일지 확인하기" navigate='Calendar'/>
       </style.NextPage>
     </style.Container>
   );

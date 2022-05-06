@@ -13,6 +13,9 @@ export class Mapping extends BaseEntity {
     @CreateDateColumn({})
     createdAt: Timestamp
 
+    // 1: 매핑된거 2: 대기 3: 거절
+    @Column({default : 2})
+    status : number
 
     // mapping(N) <->  baby sitter(1)
     @ManyToOne(
@@ -46,4 +49,29 @@ export class Mapping extends BaseEntity {
     )
     diary: WorkDiary[];
 
+    // 부모 ID를 기준으로 매핑되어 있는 보모 정보를 반환
+    static async findMappingList(parentId: number) {
+        return await this.createQueryBuilder("mapping")
+            .leftJoinAndSelect("mapping.babySitter", "babySitter")
+            .leftJoinAndSelect("babySitter.user", "user")
+            .select(["mapping.mappingId", "mapping.status", "babySitter.bsId", "babySitter.age", "babySitter.region", "babySitter.career", "user.username"])
+            .where("mapping.parentId = :parentId", { parentId: parentId })
+            .getMany();
+    }
+    static async findMappingParentList(bsId: number){
+
+        return await this.createQueryBuilder("mapping")
+            .leftJoinAndSelect("mapping.parent", "parent")
+            .where("mapping.bsId = :bsId", {bsId:bsId})
+            .getMany();
+    }
+
+    // 이미 동일한 요청이 있는 경우 체크하기 위한 함수
+    static async checkDuplicate(parentId: number, bsId: number){
+
+        return await this.createQueryBuilder("mapping")
+            .where("mapping.parentId = :parentId", {parentId:parentId})
+            .andWhere("mapping.bsId = :bsId", {bsId:bsId})
+            .getMany();
+    }
 }
