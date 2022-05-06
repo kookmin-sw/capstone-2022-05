@@ -18,5 +18,5 @@ router.post('/alarm/:mappingId',  alarmController.upload.single("img"),alarmCont
 
 router.post('/diary/:mappingId',workdiaryController.upload.array("img"),workdiaryController.writeWorkdiary)
 
-router.get('/test',(req,res) => res.send("test"))
+router.get('/test',(req,res) => res.send("test1"))
 export = router;
