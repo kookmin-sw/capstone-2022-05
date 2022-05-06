@@ -1,7 +1,7 @@
 import axios from 'axios'
 interface babysitterInfoInterface {
     id?: number,
-    age?: number,
+    age?: string,
     gender?: string,
     region?: string,
     career?: string

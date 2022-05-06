@@ -9,7 +9,7 @@ import LabelRadio from "../../../components/LabelRadio"
 import LabelButton from "../../../components/LabelButton"
 import LabelTextarea from "../../../components/LabelTextarea"
 import * as style from "./style"
-import {getBabysitterInfo, postBabysitterInfo} from "../../../api/babysitter";
+import {getBabysitterInfo, patchBabysitterInfo} from "../../../api/babysitter";
 
 // type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
@@ -24,7 +24,7 @@ const EditInfoBS: FC = () => {
     const changeEdit = () => {}
     //post edit info
     const completeEdit = () => {
-        postBabysitterInfo(1, edit)
+        patchBabysitterInfo(1, edit)
     }
     return (
         <style.scrollViewContainer>
