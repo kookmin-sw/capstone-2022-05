@@ -1,16 +1,20 @@
 import {useNavigation} from '@react-navigation/native';
-import React, { FC }  from 'react';
+import React, {FC, useState} from 'react';
 import {View, Text, Image} from "react-native";
 import {StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../RootStackParams';
 import * as style from './styles';
 import LabelButton from '../../components/LabelButton';
 import LabelInput from "../../components/LabelInput"
-
+import {postMappingRequest} from '../../api/babysitter'
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'Invitation'>;
 
 const InvitationScreen: FC  = () => {
   const navigation = useNavigation<mainScreenProp>();
+  const [eamil, setEmail] = useState('');
+  const requestMapping = () => {
+      postMappingRequest(1, eamil)
+  }
   return (
     <style.Container>
       <style.LogoView>

@@ -1,19 +1,23 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../RootStackParams';
 import {Calendar, CalendarProps} from 'react-native-calendars';
 import * as style from "./style"
 
-// type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
+type calendarScreenProp = StackNavigationProp<RootStackParamList, 'Calendar'>;
 
 const CalendarScreen: FC = () => {
-    // const navigation = useNavigation<registerScreenProp>();
+    const navigation = useNavigation<calendarScreenProp>();
 
     return (
         <style.scrollViewContainer>
             <Calendar
                 monthFormat={'yyyy MM'}
+                onDayPress={(day) => navigation.navigate({
+                    name: 'BabyDiary',
+                    params: day
+                })}
             />
         </style.scrollViewContainer>
     );

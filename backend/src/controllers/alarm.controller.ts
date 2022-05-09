@@ -28,12 +28,12 @@ const upload = multer({
 })
 
 const sendAlarm = async (req:Request, res:Response, next:NextFunction) => {
-    console.log(req.body)
+    
     const alarmCode: string = req.body.alarmCode
     const alarmText: string = req.body.alarmText
 
     if(!alarmCode || !alarmText){
-        res.status(404).json({msg:"값을 채워주세요"}).end()
+        return res.status(400).json({msg:"값을 채워주세요"});
     }
 
     const mappingId: number = +req.params.mappingId
@@ -44,18 +44,19 @@ const sendAlarm = async (req:Request, res:Response, next:NextFunction) => {
 
     const mapping : Mapping=  await Mapping.findOne({mappingId:mappingId})
 
-    if (mapping){
+    if (mapping) {
         alarm.alarmCode = alarmCode
         alarm.alarmText = alarmText
         alarm.alarmImg = imgName
         alarm.mapping = mapping
     
         await alarm.save()
-    
-        res.status(201).end()
+        .then((result) => {
+            res.status(201).json(result);
+        });
     }
-    else{
-        res.status(404).json({msg:"잘못된 mapping요청입니다."}).end()
+    else {
+        res.status(400).json({msg:"잘못된 mappingID 요청"});
     }
     
 }

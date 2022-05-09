@@ -1,6 +1,11 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, Timestamp, BaseEntity } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, Timestamp, BaseEntity, Transaction, EntityManager, TransactionManager } from 'typeorm';
 import { Mapping } from './Mapping';
 import { WorkDiaryImg } from './WorkDiaryImg';
+
+import {s3} from "../../config/s3"
+import multerS3 from "multer-s3"
+import multer from "multer"
+import upload from "../controllers/multer";
 
 @Entity()
 export class WorkDiary extends BaseEntity {
@@ -41,7 +46,7 @@ export class WorkDiary extends BaseEntity {
         return await this.createQueryBuilder("work_diary")
             .where("work_diary.mappingId = :mappingId", {mappingId: mappingId})
             .andWhere("DATE_FORMAT(work_diary.createdAt, '%Y-%m-%d') = :date", {date: year + "-" + month + "-" + day})
-            .getOneOrFail();
+            .getOne();
     }
 
     // 캘린더에서 클릭한 날짜에 작성된  퇴근일지 가져오기
@@ -50,6 +55,31 @@ export class WorkDiary extends BaseEntity {
         return await this.createQueryBuilder("work_diary")
             .where("work_diary.mappingId = :mappingId", {mappingId: mappingId})
             .andWhere("DATE_FORMAT(work_diary.createdAt, '%Y-%m-%d') = :date", {date: date})
-            .getOneOrFail();
+            .getOne();
+    }
+
+    @Transaction()
+    static async saveWorkDiary(mappingId : number ,imgList : string[], issue: string,
+        @TransactionManager() manager? : EntityManager
+        ){
+            const mappingInfo:Mapping = await Mapping.findOne({mappingId:mappingId});
+            if(Mapping){
+                throw "존재하지 않는 mapping"
+            }
+            const diary: WorkDiary = new WorkDiary();
+            diary.issue = issue;
+            diary.mapping = mappingInfo
+            const writeDiaryRes = await manager.save(WorkDiary, diary);
+            // throw "error"
+            for(let i = 0; i < imgList.length;i++){
+                const workdiaryImg:WorkDiaryImg = new WorkDiaryImg();
+                workdiaryImg.image = imgList[i];
+                workdiaryImg.workDiary = writeDiaryRes;
+                workdiaryImg.save();
+            }
+
+            // upload.upload.array("img");
+            // upload('img');
+
     }
 }
