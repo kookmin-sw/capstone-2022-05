@@ -62,7 +62,7 @@ export class WorkDiary extends BaseEntity {
     static async saveWorkDiary(mappingId : number ,imgList : string[], issue: string,
         @TransactionManager() manager? : EntityManager
         ){
-            // console.log(mappingId)
+            
             const mappingInfo:Mapping = await Mapping.findOne({mappingId:mappingId});
             // console.log(mappingInfo)
             if(!mappingInfo){
