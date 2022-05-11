@@ -14,9 +14,9 @@ router.patch('/info/:bsId', BSController.updateBSInfo);
 router.post('/mapping/:bsId', BSController.mappingRequest);
 router.get('/mapping/:bsId', mappingController.findParentList)
 
-router.post('/alarm/:mappingId',  alarmController.upload.single("img"),alarmController.sendAlarm);
+router.post('/alarm/:mappingId',  alarmController.upload.single("img"), alarmController.sendAlarm);
 
-router.post('/diary/:mappingId',workdiaryController.upload.array("img"),workdiaryController.writeWorkdiary)
+router.post('/diary/:mappingId', workdiaryController.writeWorkdiary) //,workdiaryController.upload.array("img")
 
 router.get('/test',(req,res) => res.send("test1"))
 export = router;

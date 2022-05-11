@@ -1,66 +1,69 @@
-import { Request, Response, NextFunction } from "express";
-import {s3} from "../../config/s3"
-import multerS3 from "multer-s3"
-import multer from "multer"
+import { Request, Response, NextFunction, response } from "express";
+// import * as upload from "./multer";
 import { Mapping } from '../entity/Mapping';
 import { WorkDiary } from '../entity/WorkDiary';
-import { WorkDiaryImg } from '../entity/WorkDiaryImg';
+import upload from "../controllers/multer";
+
+
+
 
 interface MulterRequest extends Request {
     files: any;
 }
 
-const upload = multer({
-    storage: multerS3({ 
-        s3: s3,
-        bucket: 'icare-s3',
-        contentType: multerS3.AUTO_CONTENT_TYPE, 
-        acl: 'public-read',
-        
-        key: function (req, file, cb) { 
-            cb(null, `workdiary/${Date.now()}_${file.originalname}`)
-        },
-    })
-})
+const uploadImg = upload.upload.array('img');
+
 
 const writeWorkdiary = async (req:Request, res:Response, next:NextFunction) => {
-    const issue:string = req.body.issue;
-    const mappingId:number = +req.params.mappingId;
-    // const filesList = req.files
-    const fileList = (req as MulterRequest).files
-    if(!issue){
-        res.status(400).json({msg:"값이 없습니다."})
-    }
-    else{
-        const mappingInfo:Mapping = await Mapping.findOne({mappingId:mappingId});
-        const diary: WorkDiary = new WorkDiary();
+    console.log(req.body)
+    // console.log(req)
+    // console.log("-------------------")
+    // console.log((req as MulterRequest))
+    
 
-        let imageList: string[] = [];
+    uploadImg(req,res,async (err) => {
+        if(err){
+            // console.log(req.body)
+            res.status(500).json({msg: "이미지 업로드 중 에러발생....."})
+        }
+        else{
+            const issue:string = req.body.issue;
+            const mappingId:number = +req.params.mappingId;
+            const fileList = (req as MulterRequest).files
+            console.log(req.body)
 
-        if(fileList.length > 0){
-            for(let i = 0; i < fileList.length;i++){
-                imageList.push(fileList[i].key)
-                console.log(imageList[i])
+            if(!issue){
+                res.status(400).json({msg:"값이 없습니다."})
             }
+            else{
+                try{
+                    let imageList: string[] = [];
+        
+                    if(fileList.length > 0){
+                        for(let i = 0; i < fileList.length;i++){
+                            imageList.push(fileList[i].key)
+                            console.log(imageList[i])
+                        }
+                        
+                    }
+                    
+                    await WorkDiary.saveWorkDiary(mappingId, imageList, issue);
+                }
+                catch(e){
+                    // 방금 업로든 된 s3파일들 삭제 해야함
+
+
+                    res.status(500).json({msg: e})
+                }
+            }
+
+            res.status(201).end()
         }
+    })
 
-        diary.issue = issue;
-        diary.mapping = mappingInfo
-        const writeDiaryRes = await diary.save();
-
-        for(let i = 0; i < imageList.length;i++){
-            const workdiaryImg:WorkDiaryImg = new WorkDiaryImg();
-            workdiaryImg.image = imageList[i];
-            workdiaryImg.workDiary = writeDiaryRes;
-            workdiaryImg.save();
-        }
-
-        res.status(201).end()
-    }
     
 }
 
 export default{
     writeWorkdiary,
-    upload
 }
