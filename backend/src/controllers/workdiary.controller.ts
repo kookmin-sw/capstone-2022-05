@@ -16,10 +16,6 @@ const uploadImg = upload.upload.array('img');
 
 const writeWorkdiary = async (req:Request, res:Response, next:NextFunction) => {
     console.log(req.body)
-    // console.log(req)
-    // console.log("-------------------")
-    // console.log((req as MulterRequest))
-    
 
     uploadImg(req,res,async (err) => {
         if(err){
@@ -29,7 +25,7 @@ const writeWorkdiary = async (req:Request, res:Response, next:NextFunction) => {
         else{
             const issue:string = req.body.issue;
             const mappingId:number = +req.params.mappingId;
-            const fileList = req.files
+            const fileList = (req as MulterRequest).files
             console.log(req.body)
 
             if(!issue){
