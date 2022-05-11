@@ -29,7 +29,7 @@ const writeWorkdiary = async (req:Request, res:Response, next:NextFunction) => {
         else{
             const issue:string = req.body.issue;
             const mappingId:number = +req.params.mappingId;
-            const fileList = req.files
+            const fileList = (req as MulterRequest).files
             console.log(req.body)
 
             if(!issue){
