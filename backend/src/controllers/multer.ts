@@ -9,7 +9,7 @@ const upload = multer({
         contentType: multerS3.AUTO_CONTENT_TYPE, 
         acl: 'public-read',
         
-        key: function (reqest, file, cb) { 
+        key: function (req, file, cb) { 
             // console.log(req)
             cb(null, `workdiary/${Date.now()}_${file.originalname}`)
         },
