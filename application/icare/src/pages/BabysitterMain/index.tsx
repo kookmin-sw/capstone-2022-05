@@ -5,6 +5,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../RootStackParams';
 import * as style from './styles';
 import LabelButton from '../../components/LabelButton';
+import ChattingBtn from '../../components/ChattingBtn';
 import {getBabysitterMapping} from "../../api/babysitter";
 import axios from "axios";
 
