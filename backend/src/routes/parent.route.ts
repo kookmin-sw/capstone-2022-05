@@ -14,6 +14,6 @@ router.get('/diary/:mappingId', Authorization, parentController.getDailyDiary);
 router.post('/calendar/:mappingId', Authorization, parentController.getCalendarDiary);
 router.get('/sensor', Authorization, parentController.getSensorInfo);
 router.patch('/sensor', Authorization, parentController.updateSensorInfo);
-router.patch('/sensor/alert', Authorization, parentController.updateSensorAlert);
+router.patch('/sensor/alert', parentController.updateSensorAlert);
 
 export = router;
