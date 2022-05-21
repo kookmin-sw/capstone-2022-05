@@ -17,7 +17,7 @@ type parentScreenProp = StackNavigationProp<RootStackParamList, 'MainParent'>;
 
 const MainParent: FC = () => {
     const navigation = useNavigation<parentScreenProp>();
-    const [Id, setID] = useState(1);
+    const [Id, setID] = useState(0);
     const [mainData, setMainData] = useState([])
     const [mappingList, setMappingList] = useState({})
     const [existBS, setExistBS] = useState(false)
@@ -34,7 +34,7 @@ const MainParent: FC = () => {
     
     useEffect(() => {
         getParentMainInfo(Id, setMainData)
-    }, [])
+    }, [Id])
 
     useEffect(() => {
         if(mainData.message === '보모의 매핑 요청 리스트') {
