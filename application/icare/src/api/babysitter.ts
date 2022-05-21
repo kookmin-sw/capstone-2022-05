@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {useState} from "react";
 interface babysitterInfoInterface {
     id?: number,
     age?: string,
@@ -22,7 +23,7 @@ interface AlarmInterface {
 
 //get babysitter info
 export const getBabysitterInfo = (id: number, callback: (response:any) => void) => {
-    axios.get(process.env.BASE_URL + 'bs/info/'+ id)
+    axios.get('http://3.39.149.92:3000/' + 'bs/info/'+ id)
         .then( (response) =>{
             callback(response.data)
         })
@@ -54,9 +55,12 @@ export const patchBabysitterInfo = (id:number, data:babysitterInfoInterface) => 
 }
 
 //get babysitter mapping info
-export const getBabysitterMapping = (id: number, callback: (response:any) => void) => {
-    axios.get(process.env.BASE_URL + 'bs/mapping/'+ id)
-        .then( (response) =>{
+export const getBabysitterMapping = (id: number, token, callback: (response:any) => void) => {
+    axios.get('http://3.39.149.92:3000/' + 'bs/mapping/'+ id,{
+        headers: {
+        "Authorization" : token
+    }})
+        .then((response) =>{
             callback(response.data)
         })
         .catch((error) => {

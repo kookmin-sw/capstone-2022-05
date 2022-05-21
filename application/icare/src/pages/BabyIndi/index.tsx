@@ -11,7 +11,9 @@ import { getSensor, setSensorFalse } from "../../api/babysitter"
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
-const BabyIndiScreen: FC  = () => {
+const BabyIndiScreen: FC  = (props) => {
+  console.log(props.route.params.state);
+  const [BabyInfo, setBabyInfo] = useState({'name': '김하율', 'photo': '', 'id': 1, 'gender': 'female', 'age': '8개월', 'detail': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'});
   // const [BabyInfo, setBabyInfo] = useState({'name': '김하율', 'photo': '', 'id': 1, 'gender': 'female', 'age': '8개월', 'detail': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'});
   const [BabyInfo, setBabyInfo] = useState({
     babyName: "",
@@ -91,11 +93,11 @@ const BabyIndiScreen: FC  = () => {
         <style.Profile>
           <style.ProfilePhoto source={require('../../../public/img/logo_92_img.png')}/>
           <style.ProfileInfo>
-            <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.babyName}</style.StrongText>
-            <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.babyGender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.babyBirth}</style.LightText>
-            <TouchableOpacity onPress={workControl}>
-              <Text>{working? '퇴근하기' : '출근하기'}</Text>
-            </TouchableOpacity>
+            <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.name}</style.StrongText>
+            <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.gender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.age}</style.LightText>
+            <style.Workbutton onPress={workControl}>
+              <style.LabelBtnText>{working? '퇴근하기' : '출근하기'}</style.LabelBtnText>
+            </style.Workbutton>
           </style.ProfileInfo>
         </style.Profile>
         <style.DetailInfo>
