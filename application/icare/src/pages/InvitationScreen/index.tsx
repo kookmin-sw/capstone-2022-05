@@ -10,13 +10,11 @@ import {postMappingRequest} from '../../api/babysitter'
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'Invitation'>;
 
 const InvitationScreen: FC  = (props) => {
-    console.log(props)
   const navigation = useNavigation<mainScreenProp>();
   const [email, setEmail] = useState('');
   const requestMapping = () => {
       postMappingRequest(props.route.params.userId, email)
   }
-  console.log(email)
   return (
     <style.Container>
       <style.LogoView>

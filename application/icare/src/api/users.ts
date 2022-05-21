@@ -25,7 +25,17 @@ const _storeData = async (token:string, userId:number, jobId:number) => {
             'jobId', String(jobId)
         )
     } catch (error) {
+        console.log(error)
         // Error saving data
+    }
+}
+const _signUpSession = async (userId:number) => {
+    try {
+        await AsyncStorage.setItem(
+            'userId',String(userId)
+        )
+    }catch (error){
+        console.log(error)
     }
 }
 export const _getData = async (keyName:string, callback: (response:any) => void) => {
@@ -35,9 +45,11 @@ export const _getData = async (keyName:string, callback: (response:any) => void)
         })
     } catch (error){}
 }
-export const signup = (data: signupInterface) => {
+export const signup = (data: signupInterface, callback:(respose:any) => void) => {
     axios.post('http://3.39.149.92:3000/' + 'user/signup', data)
     .then(function (response) {
+      callback(response.status);
+        _signUpSession(response.data.userInfo.userId)
       console.log(response);
     })
     .catch(function (error) {
