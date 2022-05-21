@@ -42,7 +42,7 @@ const BabyDiary: FC = (props) => {
     ]
 
     useEffect(() => {
-        if(props.route.params)
+        if(props.route.params.dateString)
             setDate(props.route.params.dateString)
         else {
             var today = new Date()
@@ -54,7 +54,10 @@ const BabyDiary: FC = (props) => {
     }, [props])
 
     useEffect(() => {
-        getCalendarDiary(1, {"date": date}, setIssue)
+        var mapping_id = props.route.params.id
+        if(mapping_id) {
+            getCalendarDiary(mapping_id, {"date": date}, setIssue)
+        }
     }, [date])
 
     return (
