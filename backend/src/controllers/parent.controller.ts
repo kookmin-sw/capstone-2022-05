@@ -289,4 +289,13 @@ const updateSensorInfo = async (req: Request, res: Response, next: NextFunction)
     })
 }
 
-export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping, getDailyDiary, getCalendarDiary, getSensorInfo, updateSensorInfo};
+const updateSensorAlert = async (req: Request, res: Response, next: NextFunction) => {
+    await Mapping.update({mappingId: 1}, {alert: true})
+    .then((result) => {
+        res.status(200).json({
+            message: "success"
+        })
+    })
+}
+
+export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping, getDailyDiary, getCalendarDiary, getSensorInfo, updateSensorInfo, updateSensorAlert};
