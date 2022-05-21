@@ -13,9 +13,8 @@ import {_getData} from "../../api/users";
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
 const BSMainScreen: FC  = () => {
-  const [Id, setID] = useState();
+  const [Id, setID] = useState(0);
   const [Token, setToken] = useState('');
-    console.log(Id)
   useEffect(() => {
       _getData('jobId', setID);
       // axios.get('http://3.39.149.92:3000/bs/mapping/1').then((response) => console.log(response.data))
