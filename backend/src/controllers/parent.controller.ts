@@ -271,4 +271,22 @@ const getCalendarDiary = async (req: Request, res: Response, next: NextFunction)
     }
 }
 
-export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping, getDailyDiary, getCalendarDiary};
+const getSensorInfo = async (req: Request, res: Response, next: NextFunction) => {
+    const mappingInfo = await Mapping.find({mappingId: 1})
+
+    return res.status(200).json({
+        alert: mappingInfo[0].alert
+    })
+
+}
+
+const updateSensorInfo = async (req: Request, res: Response, next: NextFunction) => {
+    await Mapping.update({mappingId: 1}, {alert: false})
+    .then((result) => {
+        res.status(200).json({
+            message: "success"
+        })
+    })
+}
+
+export default {getParentInfo, editParentInfo, createParentInfo, getMainPage, acceptMapping, rejectMapping, getDailyDiary, getCalendarDiary, getSensorInfo, updateSensorInfo};
