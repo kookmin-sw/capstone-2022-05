@@ -18,7 +18,7 @@ const Main: FC = () => {
     <View style={styles.container}>
         <Button title="Login" onPress={() => navigation.navigate('Auth')} />
         <Button title="Parents" onPress={() => navigation.navigate('SetInfoParent')} />
-        <Button title="BabySitter" onPress={() => navigation.navigate('SetInfoBS')} />
+        <Button title="BabySitter" onPress={() => navigation.navigate('BSMain')} />
     </View>
   );
 };

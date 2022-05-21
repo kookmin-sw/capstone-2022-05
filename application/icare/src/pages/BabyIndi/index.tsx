@@ -59,9 +59,9 @@ const BabyIndiScreen: FC  = () => {
           <style.ProfileInfo>
             <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.name}</style.StrongText>
             <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.gender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.age}</style.LightText>
-            <TouchableOpacity onPress={workControl}>
-              <Text>{working? '퇴근하기' : '출근하기'}</Text>
-            </TouchableOpacity>
+            <style.Workbutton onPress={workControl}>
+              <style.LabelBtnText>{working? '퇴근하기' : '출근하기'}</style.LabelBtnText>
+            </style.Workbutton>
           </style.ProfileInfo>
         </style.Profile>
         <style.DetailInfo>
