@@ -128,7 +128,8 @@ const getMainPage = async (req: Request, res: Response, next: NextFunction) => {
         // 매핑 정보가 없는 경우
         else {
             return res.status(200).json({
-                request_info: []
+                request_info: [],
+                inviteEmail: parentEmail
             })
         }
         
