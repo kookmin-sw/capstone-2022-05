@@ -21,13 +21,23 @@ const DisplayInfoParent: FC = () => {
         career: "",
         region: ""
     })
+    const [birth, setBirth] = useState("")
+
     useEffect(() => {
         _getData('jobId', setID);
     });
-    
+
     useEffect(() => {
         getParentInfo(Id, setData)
     }, [Id])
+    
+    useEffect(() => {
+        var today = new Date(data.babyBirth)
+        const year = today.getFullYear()
+        const month = today.getMonth() + 1
+        const date = today.getDate()
+        setBirth(`${year}-${month >= 10 ? month : '0' + month}-${date >= 10 ? date : '0' + date}`)
+    }, [data])
 
     return (
         <style.scrollViewContainer>
@@ -37,7 +47,7 @@ const DisplayInfoParent: FC = () => {
                 </style.displayInfoLogo>
                 <style.displayInfoInputBox>
                     <LabelInfo label="아기 이름" content={data.babyName}/>
-                    <LabelInfo label="아기 출생일" content={data.babyBirth}/>
+                    <LabelInfo label="아기 출생일" content={birth}/>
                     <LabelInfo label="아기 성별" content={data.babyGender == "male" ? "남자" : "여자"}/>
                     <LabelInfo label="거주 지역" content={data.region}/>
                     <LabelInfo label="아기 특이사항" content={data.career}/>
