@@ -15,6 +15,7 @@ type authScreenProp = StackNavigationProp<RootStackParamList, 'Auth'>;
 const AuthScreen: FC = () => {
     const navigation = useNavigation<authScreenProp>();
     const [email, setEmail] = useState('')
+    const [status, setStatus] = useState('');
     const [password, setPassword] = useState('')
     const [dataForm, setDataForm] = useState({
         "email" : "",
@@ -28,7 +29,15 @@ const AuthScreen: FC = () => {
         })
         // console.log(dataForm)
     },[email, password])
-
+    const LoginEvent = () => {
+        login(dataForm, job, setStatus);
+    }
+    useEffect(() => {
+        if (status==200) {
+            let route = job == 1 ? 'MainParent' : 'BSMain';
+            navigation.navigate(route);
+        }
+    },[status])
     return (
         <ScrollView style={styles.scrollViewContainer}>
             <View style={styles.container}>
@@ -44,7 +53,7 @@ const AuthScreen: FC = () => {
                         <LabelInput label="비밀번호" function_state={password} function={setPassword}/>
                     </View>
                     <View style={styles.authLabelButton}>
-                        <TouchableOpacity style={styles.Loginbutton} onPress={()=>login(dataForm, job)}>
+                        <TouchableOpacity style={styles.Loginbutton} onPress={LoginEvent}>
                             <Text style={styles.LabelBtnText}>로그인</Text>
                         </TouchableOpacity>
                     </View>

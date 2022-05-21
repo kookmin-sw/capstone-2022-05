@@ -45,10 +45,11 @@ export const signup = (data: signupInterface) => {
     });
 };
 
-export const login = (data: loginInterface, job:number) => {
+export const login = (data: loginInterface, job:number, callback: (response:any) => void) => {
     axios.post('http://3.39.149.92:3000/' + 'user/login', data)
     .then(function (response) {
       console.log(response);
+      callback(response.status)
       _storeData(response.data.token, response.data.userInfo[0].userId, job===1 ? response.data.parentId : response.data.sitterId);
     })
     .catch(function (error) {
