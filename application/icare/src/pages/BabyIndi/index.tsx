@@ -1,19 +1,29 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useEffect, useState} from 'react';
-import {View, Text, Image, Modal, TouchableOpacity} from "react-native";
+import {View, Text, Image, Modal, TouchableOpacity, Alert} from "react-native";
 import {StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../../RootStackParams';
 import * as style from './styles';
 import LabelButton from '../../components/LabelButton';
 import AlarmModal from "../../components/AlarmModal";
+import { getParentInfo } from "../../api/parents"
+import { getSensor, setSensorFalse } from "../../api/babysitter"
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
 const BabyIndiScreen: FC  = () => {
-  const [BabyInfo, setBabyInfo] = useState({'name': '김하율', 'photo': '', 'id': 1, 'gender': 'female', 'age': '8개월', 'detail': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'});
+  // const [BabyInfo, setBabyInfo] = useState({'name': '김하율', 'photo': '', 'id': 1, 'gender': 'female', 'age': '8개월', 'detail': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'});
+  const [BabyInfo, setBabyInfo] = useState({
+    babyName: "",
+    babyBirth: "",
+    babyGender: "",
+    region: "",
+    career: ""
+  });
   const [AlertModal, setAlertModal] = useState(false);
   const [working, setWork] = useState(false);
   const [AlarmModalState, setAlarmModalState] = useState(false);
+  const [sensor, setSensor] = useState(false);
   const [alarmId, setAlarmId] = useState(0);
   const navigation = useNavigation<mainScreenProp>();
   const modalControl = () => {
@@ -28,7 +38,29 @@ const BabyIndiScreen: FC  = () => {
   const AlarmModalControl = () => {
     setAlarmModalState(!AlarmModalState)
   }
-  
+
+  const IotAlert = () => {
+    Alert.alert(
+      "아이의 기저귀를 확인해주세요",
+      "아이가 용변을 보았나요?",
+      [
+        {
+          text: "아니요",
+          style: "cancel",
+          onPress : () => {setSensorFalse()}
+        },
+        {
+          text: "네",
+          onPress : () => {setSensorFalse()}
+        }
+      ]
+    )
+  }
+
+  useEffect(() => {
+    // getParentInfo(1, setBabyInfo)
+  }, [])
+
   return (
     <style.Container>
       {AlertModal ?
@@ -57,10 +89,10 @@ const BabyIndiScreen: FC  = () => {
       }
       <style.InfoView>
         <style.Profile>
-          <style.ProfilePhoto source={BabyInfo.photo != '' ? BabyInfo.photo : require('../../../public/img/logo_92_img.png')} />
+          <style.ProfilePhoto source={require('../../../public/img/logo_92_img.png')}/>
           <style.ProfileInfo>
-            <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.name}</style.StrongText>
-            <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.gender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.age}</style.LightText>
+            <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.babyName}</style.StrongText>
+            <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.babyGender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.babyBirth}</style.LightText>
             <TouchableOpacity onPress={workControl}>
               <Text>{working? '퇴근하기' : '출근하기'}</Text>
             </TouchableOpacity>
@@ -68,7 +100,7 @@ const BabyIndiScreen: FC  = () => {
         </style.Profile>
         <style.DetailInfo>
           <style.LightText style={{ fontWeight: '600' }}>상세 정보</style.LightText>
-          <style.DetailText>{BabyInfo.detail}</style.DetailText>
+          <style.DetailText>{BabyInfo.career}</style.DetailText>
         </style.DetailInfo>
       </style.InfoView>
       <style.AlertView>
@@ -89,6 +121,8 @@ const BabyIndiScreen: FC  = () => {
           <Text>목욕 했어요 🛁</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
+        <style.SensorBtn onPress={() => {getSensor(setSensor); IotAlert()}}>
+        </style.SensorBtn>
         {/* <style.AlertBtn onPress={modalControl}>
           <Text>기타 알림 사항 보내기</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
