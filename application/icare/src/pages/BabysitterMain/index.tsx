@@ -8,25 +8,46 @@ import LabelButton from '../../components/LabelButton';
 import ChattingBtn from '../../components/ChattingBtn';
 import {getBabysitterMapping} from "../../api/babysitter";
 import axios from "axios";
+import {_getData} from "../../api/users";
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
 const BSMainScreen: FC  = () => {
+  const [Id, setID] = useState();
+  const [Token, setToken] = useState('');
+    console.log(Id)
   useEffect(() => {
+      _getData('jobId', setID);
+      _getData('token',setToken);
       // axios.get('http://3.39.149.92:3000/bs/mapping/1').then((response) => console.log(response.data))
-      getBabysitterMapping(1, setBabys)
-  })
-  // const [Babys, setBabys] = useState([]);
-  const [Babys, setBabys] = useState([{babyName:''}]);
+  });
+    useEffect(() => {
+        getBabysitterMapping(Id, Token, setBabys);
+            // axios.get('http://3.39.149.92:3000/' + 'bs/mapping/' + id, {
+            //     headers: {
+            //         "Authorization": Token
+            //     }
+            // })
+            //     .then((response) => {
+            //         setBabys(response.data)
+            //         console.log(response.data)
+            //     })
+            //     .catch((error) => {
+            //         console.log(error);
+            //     });
+    },[Id, Token])
+
+    // const [Babys, setBabys] = useState([]);
+  const [Babys, setBabys] = useState([]);
   const navigation = useNavigation<mainScreenProp>();
   return (
     <style.Container>
       {Babys.length > 0 ?
         <style.BabyList>
           {Babys.map((e) => (
-            <style.babyElem onPress={() => navigation.navigate('BabyIndi')}>
+            <style.babyElem onPress={() => navigation.navigate('BabyIndi', {state: {mappingId:e.mappingId, parentId:e.parent.parentId}})}>
               <style.babyPhoto source={require('../../../public/img/logo_92_img.png')} />
-              <style.lightText>{e.babyName}</style.lightText>
+              <style.lightText>{e.parent.babyName}</style.lightText>
             </style.babyElem>
           ))}
         </style.BabyList>

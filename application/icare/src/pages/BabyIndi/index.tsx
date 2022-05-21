@@ -9,7 +9,8 @@ import AlarmModal from "../../components/AlarmModal";
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
-const BabyIndiScreen: FC  = () => {
+const BabyIndiScreen: FC  = (props) => {
+  console.log(props.route.params.state);
   const [BabyInfo, setBabyInfo] = useState({'name': '김하율', 'photo': '', 'id': 1, 'gender': 'female', 'age': '8개월', 'detail': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'});
   const [AlertModal, setAlertModal] = useState(false);
   const [working, setWork] = useState(false);

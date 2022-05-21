@@ -12,7 +12,7 @@ const Main: FC = () => {
   //token 가져오는거 여기잇슴다~
   const [token, setToken] = useState('');
   useEffect(()=>{
-      _getData(setToken);
+      _getData('token',setToken);
   })
   return (
     <View style={styles.container}>
