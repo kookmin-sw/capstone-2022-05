@@ -18,11 +18,10 @@ const BSMainScreen: FC  = () => {
     console.log(Id)
   useEffect(() => {
       _getData('jobId', setID);
-      _getData('token',setToken);
       // axios.get('http://3.39.149.92:3000/bs/mapping/1').then((response) => console.log(response.data))
   });
     useEffect(() => {
-        getBabysitterMapping(Id, Token, setBabys);
+        getBabysitterMapping(Id, setBabys);
             // axios.get('http://3.39.149.92:3000/' + 'bs/mapping/' + id, {
             //     headers: {
             //         "Authorization": Token
@@ -57,7 +56,7 @@ const BSMainScreen: FC  = () => {
           <style.Logo source={require('../../../public/img/logo_92_img.png')}/>
         </style.LogoView>
       }
-      <style.PlusBaby onPress={() => navigation.navigate('Invitation')}>
+      <style.PlusBaby onPress={() => navigation.navigate('Invitation', {userId: Id})}>
         <style.plusIcon source={require('../../../public/img/plusIcon.png')}/>
       </style.PlusBaby>
       <style.NextPage>

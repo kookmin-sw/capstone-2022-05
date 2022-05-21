@@ -12,6 +12,6 @@ export const LogoView = styled.View`
   align-items: center;
   justify-content: center;
 `;
-export const LabelComponent = styled.View`
+export const LabelComponent = styled.TouchableOpacity`
   width: 80%;
 `;
