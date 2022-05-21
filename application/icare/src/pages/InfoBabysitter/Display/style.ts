@@ -27,7 +27,7 @@ export const displayInfoInputBox = styled.View`
     width: 80%;
 `;
 
-export const displayInfoButtonBox = styled.View`
+export const displayInfoButtonBox = styled.TouchableOpacity`
     margin: 24px 0;
     width: 80%;
 `;
