@@ -41,12 +41,7 @@ export const getParentInfo = (id: number, callback: (value: parentInterface)=> v
 
 //부모 정보 수정하기
 export const editParentInfo = (data: parentInterface, id: number) => {
-    axios.patch('http://3.39.149.92:3000/' + 'parent/info/' + id, {
-        headers: {
-            // "Authorization" :
-        },
-        data
-    })
+    axios.patch('http://3.39.149.92:3000/' + 'parent/info/' + id, data)
     .then(function (response) {
         console.log(response);
     })
@@ -64,7 +59,7 @@ export const getParentMainInfo = (id: number, callback: (value:[])=> void) => {
     })
     .then(function (response) {
         console.log(response);
-        callback(response.data.mapping_info)
+        callback(response.data)
     })
     .catch(function (error) {
         console.log(error);
@@ -73,7 +68,7 @@ export const getParentMainInfo = (id: number, callback: (value:[])=> void) => {
 
 //보모 매핑 요청 수락하기
 export const acceptBS = (id: number) => {
-    axios.patch('http://3.39.149.92:3000/' + 'parent/mapping/acceptance' + id)
+    axios.patch('http://3.39.149.92:3000/' + 'parent/mapping/acceptance/' + id)
     .then(function (response) {
         console.log(response);
     })
@@ -84,7 +79,7 @@ export const acceptBS = (id: number) => {
 
 //보모 매핑 요청 거절하기
 export const rejectBS = (id: number) => {
-    axios.delete('http://3.39.149.92:3000/' + 'parent/mapping/rejection' + id)
+    axios.delete('http://3.39.149.92:3000/' + 'parent/mapping/rejection/' + id)
     .then(function (response) {
         console.log(response);
     })
@@ -113,7 +108,7 @@ export const getCalendarDiary = (id: number, data: calendarInterface, callback: 
         CalendarImageList : [],
         CalendarAlarmList : []
     })=> void) => {
-    axios.post(process.env.BASE_URL + '/parent/calendar/' + id, data, {
+    axios.post('http://3.39.149.92:3000' + '/parent/calendar/' + id, data, {
         headers: {
             // 'Authorization' : 
         }
