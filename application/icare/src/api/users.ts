@@ -36,7 +36,7 @@ export const _getData = async (keyName:string, callback: (response:any) => void)
     } catch (error){}
 }
 export const signup = (data: signupInterface) => {
-    axios.post(process.env.BASE_URL + 'user/signup', data)
+    axios.post('http://3.39.149.92:3000/' + 'user/signup', data)
     .then(function (response) {
       console.log(response);
     })
