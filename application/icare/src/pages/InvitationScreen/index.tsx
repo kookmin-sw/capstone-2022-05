@@ -9,21 +9,23 @@ import LabelInput from "../../components/LabelInput"
 import {postMappingRequest} from '../../api/babysitter'
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'Invitation'>;
 
-const InvitationScreen: FC  = () => {
+const InvitationScreen: FC  = (props) => {
+    console.log(props)
   const navigation = useNavigation<mainScreenProp>();
-  const [eamil, setEmail] = useState('');
+  const [email, setEmail] = useState('');
   const requestMapping = () => {
-      postMappingRequest(1, eamil)
+      postMappingRequest(props.route.params.userId, email)
   }
+  console.log(email)
   return (
     <style.Container>
       <style.LogoView>
         <Image source={require('../../../public/img/logo_92.png')} />
       </style.LogoView>
-      <style.LabelComponent>
-        <LabelInput label="초대코드를 입력해주세요" />
-      </style.LabelComponent>
-      <style.LabelComponent>
+      <View style={{width: '80%'}}>
+        <LabelInput label="초대코드를 입력해주세요" function_state={email} function={setEmail}/>
+      </View>
+      <style.LabelComponent onPress={requestMapping}>
         <LabelButton label="입력완료" />
       </style.LabelComponent>
     </style.Container>
