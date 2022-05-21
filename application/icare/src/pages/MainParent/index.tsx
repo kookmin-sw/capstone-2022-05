@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, {FC, useState, useEffect, useCallback} from 'react';
 import { Image } from "react-native";
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
@@ -16,6 +16,8 @@ import {_getData} from "../../api/users";
 type parentScreenProp = StackNavigationProp<RootStackParamList, 'MainParent'>;
 
 const MainParent: FC = () => {
+    const [, updateState] = useState();
+    const forceUpdate = useCallback(() => updateState({}, []));
     const navigation = useNavigation<parentScreenProp>();
     const [Id, setID] = useState(0);
     const [mainData, setMainData] = useState([])
@@ -48,9 +50,8 @@ const MainParent: FC = () => {
     
     useEffect(() => {
         console.log(inv_data_bs, 'bs')
-        console.log(mappingList)
-    }, [mappingList])
-
+        console.log(mainData)
+    }, [mainData])
     return (
         <style.scrollViewContainer>
             <style.mainContainer>
@@ -104,13 +105,13 @@ const MainParent: FC = () => {
                                     </style.mainBSProfile>
                                     {/* <style.mainBSInvitationCheckLabel>김영순 님이 맞으신가요?</style.mainBSInvitationCheckLabel> */}
                                     <style.mainBSInvitationCheckBtn>
-                                        <LabelBtn color="#AEC4BA" onPress={() => {acceptBS(mainData.request_info[0].mappingId)}}>
+                                        <LabelBtn color="#AEC4BA" onPress={() => {acceptBS(mainData.request_info[0].mappingId);navigation.navigate('MainParent')}}>
                                             <LabelBtnText>수락하기</LabelBtnText>
                                         </LabelBtn>
                                         {/* <LabelButton label="수락하기" function={acceptBS(1)}/> */}
                                     </style.mainBSInvitationCheckBtn>
                                     <style.mainBSInvitationCheckBtn>
-                                        <LabelBtn color="#C4C4C4" onPress={() => {rejectBS(mainData.request_info[0].mappingId)}}>
+                                        <LabelBtn color="#C4C4C4" onPress={() => {rejectBS(mainData.request_info[0].mappingId);navigation.navigate('MainParent')}}>
                                             <LabelBtnText>거절하기</LabelBtnText>
                                         </LabelBtn>
                                         {/* <LabelButton label="거절하기" color="#C4C4C4" function={rejectBS(1)}/> */}
