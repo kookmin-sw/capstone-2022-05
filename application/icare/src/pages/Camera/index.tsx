@@ -23,7 +23,7 @@ const CameraScreen: FC = (props) => {
 			formData.append('img', {
 				uri: data.uri,
 				type: 'image/jpg',
-				name: new Date().toString() + '.jpg',
+				name: 'alarmimg.jpg',
             });
             postAlarm(1, formData)
             navigation.navigate('BabyIndi')
