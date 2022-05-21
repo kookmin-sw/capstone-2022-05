@@ -110,9 +110,14 @@ export const getCalendarDiary = (id: number, data: calendarInterface, callback: 
         CalendarDiary: {
             issue: ""
         },
-        CalendarImageList : []
+        CalendarImageList : [],
+        CalendarAlarmList : []
     })=> void) => {
-    axios.post(process.env.BASE_URL + 'parent/calendar/' + id, data)
+    axios.post(process.env.BASE_URL + '/parent/calendar/' + id, data, {
+        headers: {
+            // 'Authorization' : 
+        }
+    })
     .then(function (response) {
         console.log(response);
         callback(response.data)
