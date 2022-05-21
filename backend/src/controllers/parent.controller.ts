@@ -123,18 +123,13 @@ const getMainPage = async (req: Request, res: Response, next: NextFunction) => {
                     request_info,
                     inviteEmail: parentEmail
                 })
-            } // 둘 다 없는 경우
-            else {
-                return res.status(404).json({
-                    message: "매핑 및 요청 정보 없음"
-                })
             }
         }
-        // 존재하지 않는 parentId로 요청 보낸 경우
+        // 매핑 정보가 없는 경우
         else {
-            return res.status(400).json({
-                message: "Invalid parentId"
-            });
+            return res.status(200).json({
+                request_info: []
+            })
         }
         
         
