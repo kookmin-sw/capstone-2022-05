@@ -57,7 +57,7 @@ export class Mapping extends BaseEntity {
         return await this.createQueryBuilder("mapping")
             .leftJoinAndSelect("mapping.babySitter", "babySitter")
             .leftJoinAndSelect("babySitter.user", "user")
-            .select(["mapping.mappingId", "mapping.status", "babySitter.bsId", "babySitter.age", "babySitter.region", "babySitter.career", "user.username"])
+            .select(["mapping.mappingId", "mapping.status", "babySitter.bsId", "babySitter.age","babySitter.gender", "babySitter.region", "babySitter.career", "user.username"])
             .where("mapping.parentId = :parentId", { parentId: parentId })
             .getMany();
     }
