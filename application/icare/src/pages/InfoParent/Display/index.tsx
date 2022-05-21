@@ -7,11 +7,13 @@ import LabelInfo from "../../../components/LabelInfo"
 import LabelButton from "../../../components/LabelButton"
 import * as style from "./style"
 import { getParentInfo } from "../../../api/parents"
+import {_getData} from "../../../api/users";
 
 // type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 const DisplayInfoParent: FC = () => {
     // const navigation = useNavigation<registerScreenProp>();
+    const [Id, setID] = useState(1);
     const [data, setData] = useState({
         babyBirth: "",
         babyGender: "",
@@ -19,10 +21,13 @@ const DisplayInfoParent: FC = () => {
         career: "",
         region: ""
     })
-
     useEffect(() => {
-        // getParentInfo(1, setData)
-    }, [])
+        _getData('jobId', setID);
+    });
+    
+    useEffect(() => {
+        getParentInfo(Id, setData)
+    }, [Id])
 
     return (
         <style.scrollViewContainer>
