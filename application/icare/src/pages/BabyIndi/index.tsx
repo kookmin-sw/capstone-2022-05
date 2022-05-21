@@ -14,6 +14,7 @@ const BabyIndiScreen: FC  = () => {
   const [AlertModal, setAlertModal] = useState(false);
   const [working, setWork] = useState(false);
   const [AlarmModalState, setAlarmModalState] = useState(false);
+  const [alarmId, setAlarmId] = useState(0);
   const navigation = useNavigation<mainScreenProp>();
   const modalControl = () => {
     setAlertModal(!AlertModal);
@@ -27,6 +28,7 @@ const BabyIndiScreen: FC  = () => {
   const AlarmModalControl = () => {
     setAlarmModalState(!AlarmModalState)
   }
+  
   return (
     <style.Container>
       {AlertModal ?
@@ -50,7 +52,7 @@ const BabyIndiScreen: FC  = () => {
       :null
       }
       {AlarmModalState ?
-        <AlarmModal closeEvent={AlarmModalControl}/>
+        <AlarmModal closeEvent={AlarmModalControl} alarmId={alarmId}/>
         :null
       }
       <style.InfoView>
@@ -71,26 +73,26 @@ const BabyIndiScreen: FC  = () => {
       </style.InfoView>
       <style.AlertView>
         <style.LightText style={{ fontWeight: '600' }}>알림 보내기</style.LightText>
-        <style.AlertBtn onPress={() => {navigation.navigate('Chatting')}}>
+        <style.AlertBtn onPress={() => {AlarmModalControl(); setAlarmId(1)}}>
           <Text>밥 먹었어요 🍼</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
-        <style.AlertBtn onPress={AlarmModalControl}>
+        <style.AlertBtn onPress={() => {AlarmModalControl(); setAlarmId(2)}}>
           <Text>자는중이에요 💤</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
-        <style.AlertBtn onPress={AlarmModalControl}>
+        <style.AlertBtn onPress={() => {AlarmModalControl(); setAlarmId(3)}}>
           <Text>응가 했어요 💩</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
-        <style.AlertBtn onPress={AlarmModalControl}>
+        <style.AlertBtn onPress={() => {AlarmModalControl(); setAlarmId(4)}}>
           <Text>목욕 했어요 🛁</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
-        <style.AlertBtn onPress={modalControl}>
+        {/* <style.AlertBtn onPress={modalControl}>
           <Text>기타 알림 사항 보내기</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
-        </style.AlertBtn>
+        </style.AlertBtn> */}
       </style.AlertView>
     </style.Container>
   )
