@@ -99,3 +99,33 @@ export const postWorkDiary = (id:number, issue:string) => {
             console.log(error);
         });
 }
+// 센서 값 가져오기
+export const getSensor = (callback: (response:any) => void) => {
+    axios.get('http://3.39.149.92:3000/parent/sensor', {
+        headers: {
+            // "Authorization" : 
+        }
+    })
+    .then(function (response) {
+        console.log(response);
+        callback(response.data.alert)
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
+
+// 센서 값 바꾸기
+export const setSensorFalse = () => {
+    axios.patch('http://3.39.149.92:3000/parent/sensor', {
+        headers: {
+            // "Authorization" : 
+        }
+    })
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}

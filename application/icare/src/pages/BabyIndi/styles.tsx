@@ -139,3 +139,11 @@ export const BtnLabel = styled.Text`
   font-size: 16px;
   font-weight: 600;
 `;
+export const SensorBtn = styled.TouchableOpacity`
+  justify-content: center;
+  background-color: #FFFFFF;
+  padding: 0 16px;
+  margin-top: 12px;
+  height: 48px;
+  border-radius: 10px;
+`;
