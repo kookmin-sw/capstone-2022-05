@@ -66,8 +66,8 @@ export const getBabysitterMapping = (id: number, callback: (response:any) => voi
 };
 
 //post mapping request from babysitter to parents
-export const postMappingRequest = (id:number, eamil:string) => {
-    axios.post('http://3.39.149.92:3000/' + 'bs/mapping/'+ id, eamil)
+export const postMappingRequest = (id:number, email:string) => {
+    axios.post('http://3.39.149.92:3000/' + 'bs/mapping/'+ id, {"email" : email})
         .then( (response) =>{
             console.log(response)
         })
