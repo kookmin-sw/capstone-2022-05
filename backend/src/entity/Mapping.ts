@@ -49,6 +49,9 @@ export class Mapping extends BaseEntity {
     )
     diary: WorkDiary[];
 
+    @Column({default: false})
+    alert: boolean
+
     // 부모 ID를 기준으로 매핑되어 있는 보모 정보를 반환
     static async findMappingList(parentId: number) {
         return await this.createQueryBuilder("mapping")
