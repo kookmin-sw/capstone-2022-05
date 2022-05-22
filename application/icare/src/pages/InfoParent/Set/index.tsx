@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { Image } from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity} from "react-native";
 import LabelInput from "../../../components/LabelInput"
 import SelectDate from "../../../components/SelectDate"
 import LabelRadio from "../../../components/LabelRadio"
@@ -7,8 +7,15 @@ import LabelButton from "../../../components/LabelButton"
 import LabelTextarea from "../../../components/LabelTextarea"
 import * as style from "./style"
 import { setParentInfo } from "../../../api/parents"
+import {useNavigation} from "@react-navigation/native";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../../../RootStackParams";
+import {_getData} from "../../../api/users";
+type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 const SetInfoParent: FC = () => {
+    const navigation = useNavigation<registerScreenProp>();
+    const [Id,setID] = useState(0);
     const [babyName, setBabyName] = useState('')
     const [babyBirth, setBabyBirth] = useState('')
     const [babyGender, setBabyGender] = useState('')
@@ -32,6 +39,13 @@ const SetInfoParent: FC = () => {
         })
     },[babyName, babyBirth, babyGender, region, career])
 
+    useEffect(() => {
+        _getData('userId', setID);
+    });
+    const PostParentInfo = () => {
+        setParentInfo(dataForm, Id)
+        navigation.navigate('Auth')
+    }
     return (
         <style.scrollViewContainer>
             <style.setInfoContainer>
@@ -46,11 +60,30 @@ const SetInfoParent: FC = () => {
                     <LabelTextarea label="아기 특이사항" placeholder="아이에 대한 주의사항을 적어주세요:)" function={setCareer}/>
                 </style.setInfoInputBox>
                 <style.setInfoButtonBox>
-                    <LabelButton label="입력 완료" navigate='MainParent'/>
+                    <TouchableOpacity style={styles.Loginbutton} onPress={PostParentInfo}>
+                        <Text style={styles.LabelBtnText}>입력완료</Text>
+                    </TouchableOpacity>
                 </style.setInfoButtonBox>
             </style.setInfoContainer>
         </style.scrollViewContainer>
     );
 }
 
+const styles = StyleSheet.create({
+    Loginbutton : {
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#AEC4BA",
+        padding: 16,
+        borderRadius: 10,
+        boxShadow: "0 2px rgba(0, 0, 0, .1)",
+    },
+    LabelBtnText : {
+        justifyContent: "center",
+        alignItems: "center",
+        color: "#FFFFFF",
+        fontSize: 16,
+        fontWeight: "bold",
+    },
+});
 export default SetInfoParent;

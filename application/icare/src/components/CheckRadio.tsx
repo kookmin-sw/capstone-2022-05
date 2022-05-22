@@ -36,7 +36,7 @@ const CheckRadio: FC<RadioAndroidProps> = (props) => {
 
     useEffect(() => {
         if(props.function) {
-            if(checked === 'label1') props.function(1)
+            if(checked === 'label1' || checked ==='parents') props.function(1)
             else props.function(2)
         }
     }, [checked])

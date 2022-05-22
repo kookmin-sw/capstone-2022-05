@@ -9,16 +9,11 @@ type mainScreenProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
 const Main: FC = () => {
   const navigation = useNavigation<mainScreenProp>();
-  //token 가져오는거 여기잇슴다~
-  const [token, setToken] = useState('');
-  useEffect(()=>{
-      _getData(setToken);
-  })
   return (
     <View style={styles.container}>
         <Button title="Login" onPress={() => navigation.navigate('Auth')} />
         <Button title="Parents" onPress={() => navigation.navigate('SetInfoParent')} />
-        <Button title="BabySitter" onPress={() => navigation.navigate('SetInfoBS')} />
+        <Button title="BabySitter" onPress={() => navigation.navigate('BSMain')} />
     </View>
   );
 };

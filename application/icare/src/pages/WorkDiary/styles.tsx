@@ -49,4 +49,17 @@ export const Photos = styled.Image`
 export const ButtonView = styled.TouchableOpacity`
   width: 80%;
   margin: 20px auto 0 auto;
+  justify-content: center;
+  align-items: center;
+  background-color: #AEC4BA;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px rgba(0, 0, 0, .1);
+`;
+export const LabelBtnText = styled.Text`
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
 `;

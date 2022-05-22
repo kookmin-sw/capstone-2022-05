@@ -14,7 +14,7 @@ interface calendarInterface {
 
 //부모 정보 입력하기
 export const setParentInfo = (data: parentInterface, id: number) => {
-    axios.post(process.env.BASE_URL + 'parent/info/' + id, data)
+    axios.post('http://3.39.149.92:3000/' + 'parent/info/' + id, data)
     .then(function (response) {
         console.log(response);
     })
@@ -25,7 +25,7 @@ export const setParentInfo = (data: parentInterface, id: number) => {
 
 //부모 정보 가져오기
 export const getParentInfo = (id: number, callback: (value: parentInterface)=> void) => {
-    axios.get(process.env.BASE_URL + 'parent/info/' + id, {
+    axios.get('http://3.39.149.92:3000/' + 'parent/info/' + id, {
         headers: {
             // "Authorization" : 
         }
@@ -41,12 +41,7 @@ export const getParentInfo = (id: number, callback: (value: parentInterface)=> v
 
 //부모 정보 수정하기
 export const editParentInfo = (data: parentInterface, id: number) => {
-    axios.patch(process.env.BASE_URL + 'parent/info/' + id, {
-        headers: {
-            // "Authorization" : 
-        },
-        data
-    })
+    axios.patch('http://3.39.149.92:3000/' + 'parent/info/' + id, data)
     .then(function (response) {
         console.log(response);
     })
@@ -57,14 +52,14 @@ export const editParentInfo = (data: parentInterface, id: number) => {
 
 //부모 메인페이지 정보 가져오기
 export const getParentMainInfo = (id: number, callback: (value:[])=> void) => {
-    axios.get(process.env.BASE_URL + 'parent/main/' + id, {
+    axios.get('http://3.39.149.92:3000/' + 'parent/main/' + id, {
         headers: {
             // "Authorization" : 
         }
     })
     .then(function (response) {
         console.log(response);
-        callback(response.data.mapping_info)
+        callback(response.data)
     })
     .catch(function (error) {
         console.log(error);
@@ -73,7 +68,7 @@ export const getParentMainInfo = (id: number, callback: (value:[])=> void) => {
 
 //보모 매핑 요청 수락하기
 export const acceptBS = (id: number) => {
-    axios.patch(process.env.BASE_URL + 'parent/mapping/acceptance' + id)
+    axios.patch('http://3.39.149.92:3000/' + 'parent/mapping/acceptance/' + id)
     .then(function (response) {
         console.log(response);
     })
@@ -84,7 +79,7 @@ export const acceptBS = (id: number) => {
 
 //보모 매핑 요청 거절하기
 export const rejectBS = (id: number) => {
-    axios.delete(process.env.BASE_URL + 'parent/mapping/rejection' + id)
+    axios.delete('http://3.39.149.92:3000/' + 'parent/mapping/rejection/' + id)
     .then(function (response) {
         console.log(response);
     })
@@ -95,7 +90,7 @@ export const rejectBS = (id: number) => {
 
 //금일 퇴근일지 가져오기
 export const getTodayDiary = (id: number, callback: (value:[])=> void) => {
-    axios.get(process.env.BASE_URL + 'parent/diary/' + id)
+    axios.get('http://3.39.149.92:3000/' + 'parent/diary/' + id)
     .then(function (response) {
         console.log(response);
         callback(response.data.mapping_info)
@@ -113,7 +108,7 @@ export const getCalendarDiary = (id: number, data: calendarInterface, callback: 
         CalendarImageList : [],
         CalendarAlarmList : []
     })=> void) => {
-    axios.post(process.env.BASE_URL + '/parent/calendar/' + id, data, {
+    axios.post('http://3.39.149.92:3000' + '/parent/calendar/' + id, data, {
         headers: {
             // 'Authorization' : 
         }

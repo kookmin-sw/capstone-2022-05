@@ -1,5 +1,6 @@
 import React, { FC, useState, useEffect } from 'react';
 import { Image } from "react-native";
+import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../../RootStackParams';
@@ -10,11 +11,13 @@ import LabelButton from "../../../components/LabelButton"
 import LabelTextarea from "../../../components/LabelTextarea"
 import * as style from "./style"
 import { getParentInfo, editParentInfo } from "../../../api/parents"
+import {_getData} from "../../../api/users";
 
 // type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 const EditInfoParent: FC = () => {
     // const navigation = useNavigation<registerScreenProp>();
+    const [Id, setID] = useState(1);
     const [data, setData] = useState({
         babyBirth: "",
         babyGender: "",
@@ -34,9 +37,12 @@ const EditInfoParent: FC = () => {
         region: "",
         career: ""
     })
+    useEffect(() => {
+        _getData('jobId', setID);
+    });
 
     useEffect(() => {
-        // getParentInfo(1, setData)
+        getParentInfo(Id, setData)
     }, [])
 
     useEffect(() => {
@@ -55,7 +61,6 @@ const EditInfoParent: FC = () => {
             region,
             career
         })
-        console.log(dataForm, 'ss')
     },[babyName, babyBirth, babyGender, region, career])
 
     return (
@@ -72,7 +77,9 @@ const EditInfoParent: FC = () => {
                     <LabelTextarea label="아기 특이사항" placeholder="아이에 대한 주의사항을 입력해주세요 :)" function_state={career} function={setCareer}/>
                 </style.editInfoInputBox>
                 <style.editInfoButtonBox>
-                    <LabelButton label="수정 완료" navigate='MainParent'/>
+                    <LabelBtn color="#AEC4BA" onPress={() => {editParentInfo(dataForm, Id)}}>
+                        <LabelBtnText>수정 완료</LabelBtnText>
+                    </LabelBtn>
                 </style.editInfoButtonBox>
             </style.editInfoContainer>
         </style.scrollViewContainer>
@@ -80,3 +87,20 @@ const EditInfoParent: FC = () => {
 }
 
 export default EditInfoParent;
+
+const LabelBtn = styled.TouchableOpacity<{color: string}>`
+    justify-content: center;
+    align-items: center;
+    background-color: ${props => props.color || "#AEC4BA"};
+    padding: 16px;
+    border-radius: 10px;
+    box-shadow: 0 2px rgba(0, 0, 0, .1);
+`;
+
+const LabelBtnText = styled.Text`
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+`;

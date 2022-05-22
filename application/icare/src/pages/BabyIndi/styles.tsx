@@ -63,6 +63,21 @@ export const AlertBtn = styled.TouchableOpacity`
     font-weight: 200;
   }
 `;
+export const Workbutton = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+  background-color: #AEC4BA;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px rgba(0, 0, 0, .1);
+`;
+export const LabelBtnText = styled.Text`
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: bold;
+`;
 export const sendIcon = styled.Image`
   position: absolute;
   right: 16px;
@@ -123,4 +138,12 @@ export const BtnLabel = styled.Text`
   color: #fff;
   font-size: 16px;
   font-weight: 600;
+`;
+export const SensorBtn = styled.TouchableOpacity`
+  justify-content: center;
+  background-color: #FFFFFF;
+  padding: 0 16px;
+  margin-top: 12px;
+  height: 48px;
+  border-radius: 10px;
 `;
