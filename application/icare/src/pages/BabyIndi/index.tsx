@@ -40,6 +40,7 @@ const BabyIndiScreen: FC  = (props) => {
   }
 
   const IotAlert = () => {
+    sensor ?
     Alert.alert(
       "아이의 기저귀를 확인해주세요",
       "아이가 용변을 보았나요?",
@@ -54,7 +55,14 @@ const BabyIndiScreen: FC  = (props) => {
           onPress : () => {setSensorFalse()}
         }
       ]
-    )
+    ):
+        Alert.alert(
+            "특별한 상태가 감지되지 않았습니다","",
+            [{
+              text:"닫기",
+              style: "cancel",
+            }]
+        )
   }
 
   useEffect(() => {
@@ -135,8 +143,10 @@ const BabyIndiScreen: FC  = (props) => {
           <Text>목욕 했어요 🛁</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
-        <style.SensorBtn onPress={() => {getSensor(setSensor); IotAlert()}}>
-        </style.SensorBtn>
+          <style.AlertBtn onPress={() => {getSensor(setSensor); IotAlert()}}>
+            <Text>기저귀 확인하기 💦</Text>
+            <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
+        </style.AlertBtn>
         {/* <style.AlertBtn onPress={modalControl}>
           <Text>기타 알림 사항 보내기</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
