@@ -81,8 +81,7 @@ const styles = StyleSheet.create({
       flex: 1,
     //   justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "#FFFFFF",
-      paddingTop: 60
+      backgroundColor: "#FFFFFF"
     },
     authLogo: {
         marginTop: 40,
