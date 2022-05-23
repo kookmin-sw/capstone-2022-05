@@ -38,7 +38,7 @@ const RegisterScreen: FC = () => {
             "nickname" : nickname,
             "code" : code
         })
-        console.log(dataForm)
+        // console.log(dataForm)
     },[username, email, nickname, code, password])
     const signUpEvent = () => {
         if (password == passwordCheck){

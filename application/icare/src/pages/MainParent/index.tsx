@@ -1,5 +1,5 @@
 import React, {FC, useState, useEffect, useCallback} from 'react';
-import { Image } from "react-native";
+import {Alert, Image} from "react-native";
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -10,28 +10,66 @@ import LabelInput from "../../components/LabelInput"
 import LabelButton from "../../components/LabelButton"
 import * as style from "./style"
 import LabelInfo from '../../components/LabelInfo';
-import { getParentInfo, getParentMainInfo, acceptBS, rejectBS } from "../../api/parents"
+import {getParentInfo, getParentMainInfo, acceptBS, rejectBS, getTodayDiary, getCalendarDiary} from "../../api/parents"
 import {_getData} from "../../api/users";
+import { getSensor, setSensorFalse } from "../../api/babysitter"
 
 type parentScreenProp = StackNavigationProp<RootStackParamList, 'MainParent'>;
 
 const MainParent: FC = () => {
-    const [, updateState] = useState();
-    const forceUpdate = useCallback(() => updateState({}, []));
     const navigation = useNavigation<parentScreenProp>();
     const [Id, setID] = useState(0);
     const [mainData, setMainData] = useState([])
     const [mappingList, setMappingList] = useState({})
     const [existBS, setExistBS] = useState(false)
     const [existInv, setExistInv] = useState(false)
+    const [sensor, setSensor] = useState(false);
+    const [babyState, setBabyState] = useState([]);
+    const [date, setDate] = useState('');
     const [inv_data_bs, setInvDataBS] = useState({
         name: "",
         age: "",
         gender: "",
     })
-
+    const BabyAlert = () => {
+        let len = babyState.CalendarAlarmList.length;
+        let lastIssue = babyState.CalendarAlarmList[len-1];
+        Alert.alert(
+            "[알림] " + lastIssue.alarmText,
+            "",
+            [
+                {text:"보러가기",
+                onPress: () => {navigation.navigate('BabyDiary', {id : mappingList.mappingId})}
+            },
+                {text:"닫기"}
+            ]
+        )
+    }
+    const IotAlert = () => {
+        Alert.alert(
+            "아이의 기저귀를 확인해주세요",
+            "아이가 용변을 보았나요?",
+            [
+                {
+                    text: "아니요",
+                    style: "cancel",
+                    onPress : () => {setSensorFalse()}
+                },
+                {
+                    text: "네",
+                    onPress : () => {setSensorFalse()}
+                }
+            ]
+        )
+    }
+    // setInterval(IotAlert, 60000)
     useEffect(() => {
         _getData('jobId', setID);
+        var today = new Date()
+        const year = today.getFullYear()
+        const month = today.getMonth() + 1
+        const date = today.getDate()
+        setDate(`${year}-${month >= 10 ? month : '0' + month}-${date >= 10 ? date : '0' + date}`)
     });
     
     useEffect(() => {
@@ -49,8 +87,8 @@ const MainParent: FC = () => {
     }, [mainData])
     
     useEffect(() => {
-        console.log(inv_data_bs, 'bs')
-        console.log(mainData)
+        // console.log(inv_data_bs, 'bs')
+        // console.log(mainData)
     }, [mainData])
     return (
         <style.scrollViewContainer>
@@ -58,7 +96,7 @@ const MainParent: FC = () => {
                 {
                     existBS ? 
                     <style.mainBSProfile>
-                        <style.mainBSProfileCamera>
+                        <style.mainBSProfileCamera onPress={()=>{getCalendarDiary(mainData.mapping_info[0].mappingId, {"date": date}, setBabyState); BabyAlert();}}>
                             <Image source = {require("../../../public/img/camera.png")}/>
                         </style.mainBSProfileCamera>
                         <style.mainBSProfileContent>
@@ -132,6 +170,11 @@ const MainParent: FC = () => {
                     </style.mainBtnList>
                     <style.mainBtnList>
                         <LabelButton label="우리 아이 정보" navigate='DisplayInfoParent' />
+                    </style.mainBtnList>
+                    <style.mainBtnList>
+                        <LabelBtn onPress={() => {getSensor(setSensor); IotAlert();}} color="rgba(0,0,0,0)">
+                            <LabelBtnText> </LabelBtnText>
+                        </LabelBtn>
                     </style.mainBtnList>
                 </style.mainBtnContainer>
             </style.mainContainer>
