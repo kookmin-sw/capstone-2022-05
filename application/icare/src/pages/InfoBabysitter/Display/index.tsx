@@ -41,6 +41,7 @@ const DisplayInfoBS: FC = () => {
                     {/*<LabelButton label="수정 하기"/>*/}
                 </style.displayInfoButtonBox>
             </style.displayInfoContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }

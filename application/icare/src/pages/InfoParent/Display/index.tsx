@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Image } from "react-native";
+import {Image, View} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../../RootStackParams';
@@ -56,6 +56,7 @@ const DisplayInfoParent: FC = () => {
                     <LabelButton label="수정 하기" navigate='EditInfoParent'/>
                 </style.displayInfoButtonBox>
             </style.displayInfoContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }

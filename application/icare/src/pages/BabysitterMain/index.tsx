@@ -50,6 +50,7 @@ const BSMainScreen: FC  = () => {
         </View>
         <LabelButton label="근무일지 확인하기" navigate='Calendar'/>
       </style.NextPage>
+        <View style={{height:60}}/>
     </style.Container>
   );
 }

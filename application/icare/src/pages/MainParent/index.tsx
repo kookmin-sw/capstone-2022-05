@@ -1,5 +1,5 @@
 import React, {FC, useState, useEffect, useCallback} from 'react';
-import {Alert, Image} from "react-native";
+import {Alert, Image, View} from "react-native";
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -208,6 +208,7 @@ const MainParent: FC = () => {
                     </style.mainBtnList>
                 </style.mainBtnContainer>
             </style.mainContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }

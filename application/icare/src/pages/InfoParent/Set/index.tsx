@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity} from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import LabelInput from "../../../components/LabelInput"
 import SelectDate from "../../../components/SelectDate"
 import LabelRadio from "../../../components/LabelRadio"
@@ -65,6 +65,7 @@ const SetInfoParent: FC = () => {
                     </TouchableOpacity>
                 </style.setInfoButtonBox>
             </style.setInfoContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Image } from "react-native";
+import {Image, View} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../RootStackParams';
@@ -42,6 +42,7 @@ const BabyDiary: FC = (props) => {
     ]
 
     useEffect(() => {
+        console.log(props.route.params)
         if(props.route.params.dateString)
             setDate(props.route.params.dateString)
         else {
@@ -58,7 +59,7 @@ const BabyDiary: FC = (props) => {
         if(mapping_id) {
             getCalendarDiary(mapping_id, {"date": date}, setIssue)
         }
-    }, [date])
+    }, [date, props])
 
     return (
         <style.scrollViewContainer>
@@ -104,6 +105,7 @@ const BabyDiary: FC = (props) => {
                     </style.BabyDiaryContent>
                 </style.BabyDiaryContainer>
             </style.DiaryContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }

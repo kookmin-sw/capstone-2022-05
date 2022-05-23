@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { Image } from "react-native";
+import {Image, View} from "react-native";
 import styled from 'styled-components/native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -90,6 +90,7 @@ const EditInfoParent: FC = () => {
                     </LabelBtn>
                 </style.editInfoButtonBox>
             </style.editInfoContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }

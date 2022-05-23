@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity} from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../../RootStackParams';
@@ -54,6 +54,7 @@ const SetInfoBS: FC = () => {
                     {/*<LabelButton label="입력 완료" navigate='BSMain' function={PostBabySitter()}/>*/}
                 </style.setInfoButtonBox>
             </style.setInfoContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }

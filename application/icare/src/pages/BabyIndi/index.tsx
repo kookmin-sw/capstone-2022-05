@@ -151,6 +151,7 @@ const BabyIndiScreen: FC  = (props) => {
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn> */}
       </style.AlertView>
+      <View style={{height:60}}/>
     </style.Container>
   )
 };

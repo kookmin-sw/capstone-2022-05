@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Image, StyleSheet, Text, TouchableOpacity} from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../../RootStackParams';
@@ -52,6 +52,7 @@ const EditInfoBS: FC = (props) => {
                     </TouchableOpacity>
                 </style.editInfoButtonBox>
             </style.editInfoContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }

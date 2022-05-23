@@ -88,6 +88,7 @@ const RegisterScreen: FC = () => {
                     </style.registerLoginLabel>
                 </style.registerButtonBox>
             </style.registerContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }
