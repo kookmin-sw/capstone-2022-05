@@ -39,7 +39,7 @@ const MainParent: FC = () => {
             "",
             [
                 {text:"보러가기",
-                onPress: () => {navigation.navigate('BabyDiary', {id : mappingList.mappingId})}
+                onPress: () => {navigation.navigate('BabyDiary', {id : mainData.mapping_info[0].mappingId})}
             },
                 {text:"닫기"}
             ]
