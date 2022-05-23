@@ -4,5 +4,5 @@ export const scrollViewContainer = styled.ScrollView`
     height: 100%;
     background-color: #FFFFFF;
     flex-grow: 1;
-    margin-top: 60px;
+    padding-top: 60px;
 `;

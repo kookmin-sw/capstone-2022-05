@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const scrollViewContainer = styled.ScrollView`
     height: 100%;
     background-color: #FFFFFF;
-    margin-top: 60px;
+    padding-top: 60px;
     flex-grow: 1;
 `;
 
