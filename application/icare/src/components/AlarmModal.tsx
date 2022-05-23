@@ -8,7 +8,9 @@ import { RootStackParamList } from '../RootStackParams';
 
 interface AlarmModal {
     closeEvent() : void,
-    alarmId : number
+    alarmId : number,
+    mappingId : number,
+    parentId : number
 }
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
@@ -45,7 +47,7 @@ const AlarmModal: FC<AlarmModal> = (props) => {
         </TimeView>
       </TimeStampView>
       <SendBtnView>
-        <SendBtn style={{ backgroundColor: '#c4c4c4'}} onPress={() => {navigation.push('Camera', {id:props.alarmId})}}>
+        <SendBtn style={{ backgroundColor: '#c4c4c4'}} onPress={() => {navigation.push('Camera', {id:props.alarmId, mappingId:props.mappingId, parentId:props.parentId})}}>
           <SendText>사진 보내기</SendText>
         </SendBtn>
         <SendBtn style={{ backgroundColor: '#aec4ba'}}>

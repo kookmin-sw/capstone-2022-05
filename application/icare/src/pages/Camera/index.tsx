@@ -25,8 +25,8 @@ const CameraScreen: FC = (props) => {
 				type: 'image/jpg',
 				name: 'alarmimg.jpg',
             });
-            postAlarm(1, formData)
-            navigation.navigate('BabyIndi')
+            postAlarm(props.route.params.mappingId, formData)
+            navigation.navigate('BabyIndi', {state: {mappingId:props.route.params.mappingId, parentId:props.route.params.parentId}})
         }
 
     }
