@@ -84,8 +84,9 @@ const MainParent: FC = () => {
             setExistBS(true)
             setMappingList(mainData.mapping_info[0]);
         }
+        getSensor(setSensor);
     }, [mainData])
-    
+    // setInterval(() => {getSensor(setSensor)}, 60000)
     useEffect(() => {
         // console.log(inv_data_bs, 'bs')
         // console.log(mainData)
@@ -174,13 +175,8 @@ const MainParent: FC = () => {
                         <LabelButton label="우리 아이 정보" navigate='DisplayInfoParent' />
                     </style.mainBtnList>
                     <style.mainBtnList>
-                        <LabelBtn onPress={()=>{getCalendarDiary(mainData.mapping_info[0].mappingId, {"date": date}, setBabyState); BabyAlert();}} color="rgba(0,0,0,0)">
-                            <LabelBtnText> </LabelBtnText>
-                        </LabelBtn>
-                    </style.mainBtnList>
-                    <style.mainBtnList>
-                        <LabelBtn onPress={() => {getSensor(setSensor); IotAlert();}} color="rgba(0,0,0,0)">
-                            <LabelBtnText> </LabelBtnText>
+                        <LabelBtn onPress={()=>{getCalendarDiary(mainData.mapping_info[0].mappingId, {"date": date}, setBabyState); BabyAlert();}} color="#AEC4BA">
+                            <LabelBtnText>아이 상태 확인하기</LabelBtnText>
                         </LabelBtn>
                     </style.mainBtnList>
                 </style.mainBtnContainer>

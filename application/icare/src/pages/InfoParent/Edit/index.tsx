@@ -13,11 +13,11 @@ import * as style from "./style"
 import { getParentInfo, editParentInfo } from "../../../api/parents"
 import {_getData} from "../../../api/users";
 
-// type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
+type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 const EditInfoParent: FC = () => {
-    // const navigation = useNavigation<registerScreenProp>();
-    const [Id, setID] = useState(1);
+    const navigation = useNavigation<registerScreenProp>();
+    const [Id, setID] = useState(0);
     const [data, setData] = useState({
         babyBirth: "",
         babyGender: "",
@@ -39,11 +39,16 @@ const EditInfoParent: FC = () => {
     })
     useEffect(() => {
         _getData('jobId', setID);
+        console.log(Id);
     });
 
     useEffect(() => {
         getParentInfo(Id, setData)
-    }, [])
+    }, [Id])
+
+    useEffect(() => {
+        console.log(data)
+    }, [data])
 
     useEffect(() => {
         setBabyName(data.babyName)
@@ -62,7 +67,10 @@ const EditInfoParent: FC = () => {
             career
         })
     },[babyName, babyBirth, babyGender, region, career])
-
+    const Complete = () => {
+        editParentInfo(dataForm, Id);
+        navigation.navigate('MainParent');
+    }
     return (
         <style.scrollViewContainer>
             <style.editInfoContainer>
@@ -77,7 +85,7 @@ const EditInfoParent: FC = () => {
                     <LabelTextarea label="아기 특이사항" placeholder="아이에 대한 주의사항을 입력해주세요 :)" function_state={career} function={setCareer}/>
                 </style.editInfoInputBox>
                 <style.editInfoButtonBox>
-                    <LabelBtn color="#AEC4BA" onPress={() => {editParentInfo(dataForm, Id)}}>
+                    <LabelBtn color="#AEC4BA" onPress={Complete}>
                         <LabelBtnText>수정 완료</LabelBtnText>
                     </LabelBtn>
                 </style.editInfoButtonBox>

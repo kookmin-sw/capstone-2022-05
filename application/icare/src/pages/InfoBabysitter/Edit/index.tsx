@@ -30,7 +30,8 @@ const EditInfoBS: FC = (props) => {
     },[name, age, gender, region, career])
     //post edit info
     const completeEdit = () => {
-        patchBabysitterInfo(props.route.params.bsId, edit)
+        patchBabysitterInfo(props.route.params.bsId, edit);
+        navigation.navigate('BSMain');
     }
     return (
         <style.scrollViewContainer>
@@ -40,14 +41,13 @@ const EditInfoBS: FC = (props) => {
                 </style.editInfoLogo>
                 <style.editInfoInputBox>
                     <LabelInput label="이름" function={setName} function_state={name}/>
-                    <LabelInput label="생년월일" function={setAge} function_state={age}/>
-                    {/*<SelectDate label={"생년월일"} />*/}
+                    <SelectDate label="생년월일" function_state={age} function={setAge}/>
                     <LabelRadio title="성별" label1='남자' label2='여자' function={setGender} function_state={gender}/>
                     <LabelInput label="거주 지역" function={setRegion} function_state={region}/>
                     <LabelTextarea label="자기소개/경력" placeholder="자기소개 및 경력을 입력해주세요." function={setCareer} function_state={career}/>
                 </style.editInfoInputBox>
                 <style.editInfoButtonBox>
-                    <TouchableOpacity style={styles.Loginbutton} onPress={()=>{navigation.navigate('DisplayInfoBS')}}>
+                    <TouchableOpacity style={styles.Loginbutton} onPress={completeEdit}>
                         <Text style={styles.LabelBtnText}>수정완료</Text>
                     </TouchableOpacity>
                 </style.editInfoButtonBox>

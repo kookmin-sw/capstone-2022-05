@@ -13,7 +13,7 @@ import {_getData} from "../../../api/users";
 
 const DisplayInfoParent: FC = () => {
     // const navigation = useNavigation<registerScreenProp>();
-    const [Id, setID] = useState(1);
+    const [Id, setID] = useState(0);
     const [data, setData] = useState({
         babyBirth: "",
         babyGender: "",
