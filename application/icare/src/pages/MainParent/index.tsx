@@ -33,19 +33,34 @@ const MainParent: FC = () => {
     })
     const BabyAlert = () => {
         let len = babyState.CalendarAlarmList.length;
-        let lastIssue = babyState.CalendarAlarmList[len-1];
-        Alert.alert(
-            "[알림] " + lastIssue.alarmText,
-            "",
-            [
-                {text:"보러가기",
-                onPress: () => {navigation.navigate('BabyDiary', {id : mainData.mapping_info[0].mappingId})}
-            },
-                {text:"닫기"}
-            ]
-        )
+        if (babyState.CalendarAlarmList[len-1]) {
+            let lastIssue = babyState.CalendarAlarmList[len - 1];
+            Alert.alert(
+                "[알림] " + lastIssue.alarmText,
+                "",
+                [
+                    {
+                        text: "보러가기",
+                        onPress: () => {
+                            navigation.navigate('BabyDiary', {id: mainData.mapping_info[0].mappingId})
+                        }
+                    },
+                    {text: "닫기"}
+                ]
+            )
+        }
+        else {
+            Alert.alert(
+                "아직 수신한 알림이 없습니다","",
+                [{
+                    text:"닫기",
+                    style: "cancel",
+                }]
+            )
+        }
     }
     const IotAlert = () => {
+        sensor?
         Alert.alert(
             "아이의 기저귀를 확인해주세요",
             "아이가 용변을 보았나요?",
@@ -60,7 +75,14 @@ const MainParent: FC = () => {
                     onPress : () => {setSensorFalse()}
                 }
             ]
-        )
+        ):
+            Alert.alert(
+                "특별한 상태가 감지되지 않았습니다","",
+                [{
+                    text:"닫기",
+                    style: "cancel",
+                }]
+            )
     }
     // setInterval(IotAlert, 60000)
     useEffect(() => {
@@ -177,6 +199,11 @@ const MainParent: FC = () => {
                     <style.mainBtnList>
                         <LabelBtn onPress={()=>{getCalendarDiary(mainData.mapping_info[0].mappingId, {"date": date}, setBabyState); BabyAlert();}} color="#AEC4BA">
                             <LabelBtnText>아이 상태 확인하기</LabelBtnText>
+                        </LabelBtn>
+                    </style.mainBtnList>
+                    <style.mainBtnList>
+                        <LabelBtn onPress={()=>{getSensor(setSensor); IotAlert();}} color="#AEC4BA">
+                            <LabelBtnText>센서 확인하기</LabelBtnText>
                         </LabelBtn>
                     </style.mainBtnList>
                 </style.mainBtnContainer>
