@@ -74,13 +74,14 @@ const styles = StyleSheet.create({
     scrollViewContainer: {
         height: "100%",
         backgroundColor: "#FFFFFF",
-        flexGrow: 1
+        flexGrow: 1,
+        paddingTop:30,
     },
     container: {
       flex: 1,
     //   justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "#FFFFFF",
+      backgroundColor: "#FFFFFF"
     },
     authLogo: {
         marginTop: 40,

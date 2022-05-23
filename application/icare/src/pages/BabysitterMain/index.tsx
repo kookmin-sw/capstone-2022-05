@@ -17,25 +17,11 @@ const BSMainScreen: FC  = () => {
   const [Token, setToken] = useState('');
   useEffect(() => {
       _getData('jobId', setID);
-      // axios.get('http://3.39.149.92:3000/bs/mapping/1').then((response) => console.log(response.data))
   });
     useEffect(() => {
         getBabysitterMapping(Id, setBabys);
-            // axios.get('http://3.39.149.92:3000/' + 'bs/mapping/' + id, {
-            //     headers: {
-            //         "Authorization": Token
-            //     }
-            // })
-            //     .then((response) => {
-            //         setBabys(response.data)
-            //         console.log(response.data)
-            //     })
-            //     .catch((error) => {
-            //         console.log(error);
-            //     });
     },[Id, Token])
 
-    // const [Babys, setBabys] = useState([]);
   const [Babys, setBabys] = useState([]);
   const navigation = useNavigation<mainScreenProp>();
   return (
@@ -64,6 +50,7 @@ const BSMainScreen: FC  = () => {
         </View>
         <LabelButton label="근무일지 확인하기" navigate='Calendar'/>
       </style.NextPage>
+        <View style={{height:60}}/>
     </style.Container>
   );
 }

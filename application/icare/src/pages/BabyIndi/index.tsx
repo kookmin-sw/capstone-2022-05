@@ -12,7 +12,6 @@ import { getSensor, setSensorFalse } from "../../api/babysitter"
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
 const BabyIndiScreen: FC  = (props) => {
-  console.log(props.route.params.state);
   const [BabyInfo, setBabyInfo] = useState({
     babyName: "",
     babyBirth: "",
@@ -21,6 +20,7 @@ const BabyIndiScreen: FC  = (props) => {
     career: ""
   });
   const [AlertModal, setAlertModal] = useState(false);
+  const [birth, setBirth] = useState("");
   const [working, setWork] = useState(false);
   const [AlarmModalState, setAlarmModalState] = useState(false);
   const [sensor, setSensor] = useState(false);
@@ -40,6 +40,7 @@ const BabyIndiScreen: FC  = (props) => {
   }
 
   const IotAlert = () => {
+    sensor ?
     Alert.alert(
       "아이의 기저귀를 확인해주세요",
       "아이가 용변을 보았나요?",
@@ -54,12 +55,28 @@ const BabyIndiScreen: FC  = (props) => {
           onPress : () => {setSensorFalse()}
         }
       ]
-    )
+    ):
+        Alert.alert(
+            "특별한 상태가 감지되지 않았습니다","",
+            [{
+              text:"닫기",
+              style: "cancel",
+            }]
+        )
   }
 
   useEffect(() => {
-    // getParentInfo(1, setBabyInfo)
+    if(props.route.params.state !== undefined)
+      getParentInfo(props.route.params.state.parentId, setBabyInfo)
   }, [])
+
+  useEffect(() => {
+      var today = new Date(BabyInfo.babyBirth)
+      const year = today.getFullYear()
+      const month = today.getMonth() + 1
+      const date = today.getDate()
+      setBirth(`${year}-${month >= 10 ? month : '0' + month}-${date >= 10 ? date : '0' + date}`)
+  }, [BabyInfo])
 
   return (
     <style.Container>
@@ -83,16 +100,21 @@ const BabyIndiScreen: FC  = (props) => {
         </style.AlertModal>
       :null
       }
-      {AlarmModalState ?
-        <AlarmModal closeEvent={AlarmModalControl} alarmId={alarmId}/>
+      {AlarmModalState && props.route.params.state!== undefined ?
+        <AlarmModal 
+          closeEvent={AlarmModalControl} 
+          alarmId={alarmId} 
+          mappingId={props.route.params.state.mappingId} 
+          parentId={props.route.params.state.mappingId}
+        />
         :null
       }
       <style.InfoView>
         <style.Profile>
           <style.ProfilePhoto source={require('../../../public/img/logo_92_img.png')}/>
           <style.ProfileInfo>
-            <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.name}</style.StrongText>
-            <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.gender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.age}</style.LightText>
+            <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.babyName}</style.StrongText>
+            <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.babyGender == 'male' ? '남성 / ' : '여성 / ' }{birth}</style.LightText>
             <style.Workbutton onPress={workControl}>
               <style.LabelBtnText>{working? '퇴근하기' : '출근하기'}</style.LabelBtnText>
             </style.Workbutton>
@@ -121,13 +143,15 @@ const BabyIndiScreen: FC  = (props) => {
           <Text>목욕 했어요 🛁</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
-        <style.SensorBtn onPress={() => {getSensor(setSensor); IotAlert()}}>
-        </style.SensorBtn>
+          <style.AlertBtn onPress={() => {getSensor(setSensor); IotAlert()}}>
+            <Text>기저귀 확인하기 💦</Text>
+        </style.AlertBtn>
         {/* <style.AlertBtn onPress={modalControl}>
           <Text>기타 알림 사항 보내기</Text>
           <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn> */}
       </style.AlertView>
+      <View style={{height:60}}/>
     </style.Container>
   )
 };

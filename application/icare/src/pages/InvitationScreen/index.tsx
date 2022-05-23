@@ -27,6 +27,7 @@ const InvitationScreen: FC  = (props) => {
       <LabelBtn color="#AEC4BA" onPress={() => {requestMapping(); navigation.navigate('BSMain')}}>
           <LabelBtnText>초대하기</LabelBtnText>
       </LabelBtn>
+        <View style={{height:60}}/>
     </style.Container>
   )
 };

@@ -4,6 +4,9 @@ import {View, Text, Button, StyleSheet, AsyncStorage} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import { RootStackParamList } from '../RootStackParams';
 import {_getData} from '../api/users';
+import { LogBox } from 'react-native';
+
+LogBox.ignoreAllLogs()
 
 type mainScreenProp = StackNavigationProp<RootStackParamList, 'Main'>;
 
