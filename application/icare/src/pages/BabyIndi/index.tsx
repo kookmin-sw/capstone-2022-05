@@ -145,7 +145,6 @@ const BabyIndiScreen: FC  = (props) => {
         </style.AlertBtn>
           <style.AlertBtn onPress={() => {getSensor(setSensor); IotAlert()}}>
             <Text>기저귀 확인하기 💦</Text>
-            <style.sendIcon source={require('../../../public/img/sendIcon.png')}/>
         </style.AlertBtn>
         {/* <style.AlertBtn onPress={modalControl}>
           <Text>기타 알림 사항 보내기</Text>
