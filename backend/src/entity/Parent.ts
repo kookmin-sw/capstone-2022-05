@@ -44,4 +44,11 @@ export class Parent extends BaseEntity {
         requestToParent => requestToParent.parent,{ nullable: false, onDelete: 'CASCADE' }
     )
     request: RequestToParent[];
+
+    static async getParentEmail(parentId: number){
+        return await this.createQueryBuilder("parent")
+            .leftJoinAndSelect("parent.user", "user")
+            .where("parent.parentId = :parentId", {parentId: parentId})
+            .getOne();
+    }
 }

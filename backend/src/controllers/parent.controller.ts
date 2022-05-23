@@ -88,6 +88,9 @@ const getMainPage = async (req: Request, res: Response, next: NextFunction) => {
         const parent_id: number = +req.params.parentId;
 
         const existMappingList = await Mapping.findMappingList(parent_id);
+        
+        const parentInfo = await Parent.getParentEmail(parent_id);
+        const parentEmail: string = parentInfo.user['email']
 
         let mapping_info = [];
         let request_info = [];
@@ -117,20 +120,17 @@ const getMainPage = async (req: Request, res: Response, next: NextFunction) => {
             else if (mapping_info.length === 0 && request_info.length !== 0) {
                 return res.status(200).json({
                     message: "보모의 매핑 요청 리스트",
-                    request_info
-                })
-            } // 둘 다 없는 경우
-            else {
-                return res.status(404).json({
-                    message: "매핑 및 요청 정보 없음"
+                    request_info,
+                    inviteEmail: parentEmail
                 })
             }
         }
-        // 존재하지 않는 parentId로 요청 보낸 경우
+        // 매핑 정보가 없는 경우
         else {
-            return res.status(400).json({
-                message: "Invalid parentId"
-            });
+            return res.status(200).json({
+                request_info: [],
+                inviteEmail: parentEmail
+            })
         }
         
         
