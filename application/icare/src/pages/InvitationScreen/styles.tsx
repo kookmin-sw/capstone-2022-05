@@ -11,7 +11,7 @@ export const LogoView = styled.View`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 60px;
+  margin-top: 60px;
 `;
 export const LabelComponent = styled.TouchableOpacity`
   width: 80%;
