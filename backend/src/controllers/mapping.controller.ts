@@ -17,7 +17,7 @@ const findParentList = async (req:Request, res: Response, next: NextFunction) =>
 
         result.map((value: any, index: number) => {
             console.log(typeof(value))
-            if(value.status == "2"){
+            if(value.status == "1"){
                 returnData.push(value)
             }
         })
