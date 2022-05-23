@@ -161,10 +161,12 @@ const MainParent: FC = () => {
                 }
                 <style.mainBtnContainer>
                     <style.mainBtnList>
-                        <LabelButton label="아이 기록 캘린더" navigate='Calendar' />
+                        <LabelBtn color="#AEC4BA" onPress={() => {navigation.navigate('Calendar', {id : mainData.mapping_info[0].mappingId})}}>
+                            <LabelBtnText>아이 기록 캘린더</LabelBtnText>
+                        </LabelBtn>
                     </style.mainBtnList>
                     <style.mainBtnList>
-                        <LabelBtn color="#AEC4BA" onPress={() => {navigation.push('BabyDiary', {id : mappingList.mappingId})}}>
+                        <LabelBtn color="#AEC4BA" onPress={() => {navigation.navigate('BabyDiary', {id : mainData.mapping_info[0].mappingId})}}>
                             <LabelBtnText>오늘의 특이사항</LabelBtnText>
                         </LabelBtn>
                     </style.mainBtnList>
