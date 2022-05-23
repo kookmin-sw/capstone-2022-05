@@ -2,6 +2,12 @@
 <a href="./docs/팀05-중간보고서.pdf"><strong>중간 보고서 링크</strong></a>
 <br/>
 <a href="./docs/팀05-중간발표자료.pdf"><strong>중간 발표 자료 링크</strong></a>
+<br/>
+<a href="./docs/팀05-최종발표자료.pdf"><strong>최종 발표 자료 링크</strong></a>
+<br/>
+<a href="https://youtu.be/6aM0t3pmxVA"><strong>시연 영상 링크</strong></a>
+<br/>
+<a href="https://docs.google.com/document/d/1GNAOAtuPM39IEv15RSCPHiqbZbJglwEq/edit?usp=sharing&ouid=100622726522714582578&rtpof=true&sd=true"><strong>최종 보고서 링크</strong></a>
 
 ## 1. 프로젝트 소개
 
