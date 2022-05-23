@@ -272,16 +272,15 @@ const getCalendarDiary = async (req: Request, res: Response, next: NextFunction)
 }
 
 const getSensorInfo = async (req: Request, res: Response, next: NextFunction) => {
-    const mappingInfo = await Mapping.find({mappingId: 1})
+    const mappingInfo = await Mapping.find({mappingId: 6})
 
     return res.status(200).json({
         alert: mappingInfo[0].alert
     })
-
 }
 
 const updateSensorInfo = async (req: Request, res: Response, next: NextFunction) => {
-    await Mapping.update({mappingId: 1}, {alert: false})
+    await Mapping.update({mappingId: 6}, {alert: false})
     .then((result) => {
         res.status(200).json({
             message: "success"
@@ -290,7 +289,7 @@ const updateSensorInfo = async (req: Request, res: Response, next: NextFunction)
 }
 
 const updateSensorAlert = async (req: Request, res: Response, next: NextFunction) => {
-    await Mapping.update({mappingId: 1}, {alert: true})
+    await Mapping.update({mappingId: 6}, {alert: true})
     .then((result) => {
         res.status(200).json({
             message: "success"
