@@ -21,7 +21,7 @@ export const mainBSProfile = styled.View`
     /* background-color: red; */
 `;
 
-export const mainBSProfileCamera = styled.TouchableOpacity`
+export const mainBSProfileCamera = styled.View`
     background-color: #AEC4BA;
     border-radius: 100;
     width: 110px;

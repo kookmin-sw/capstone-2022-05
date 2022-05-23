@@ -96,7 +96,7 @@ const MainParent: FC = () => {
                 {
                     existBS ? 
                     <style.mainBSProfile>
-                        <style.mainBSProfileCamera onPress={()=>{getCalendarDiary(mainData.mapping_info[0].mappingId, {"date": date}, setBabyState); BabyAlert();}}>
+                        <style.mainBSProfileCamera>
                             <Image source = {require("../../../public/img/camera.png")}/>
                         </style.mainBSProfileCamera>
                         <style.mainBSProfileContent>
@@ -172,6 +172,11 @@ const MainParent: FC = () => {
                     </style.mainBtnList>
                     <style.mainBtnList>
                         <LabelButton label="우리 아이 정보" navigate='DisplayInfoParent' />
+                    </style.mainBtnList>
+                    <style.mainBtnList>
+                        <LabelBtn onPress={()=>{getCalendarDiary(mainData.mapping_info[0].mappingId, {"date": date}, setBabyState); BabyAlert();}} color="rgba(0,0,0,0)">
+                            <LabelBtnText> </LabelBtnText>
+                        </LabelBtn>
                     </style.mainBtnList>
                     <style.mainBtnList>
                         <LabelBtn onPress={() => {getSensor(setSensor); IotAlert();}} color="rgba(0,0,0,0)">
