@@ -20,6 +20,7 @@ const BabyIndiScreen: FC  = (props) => {
     region: "",
     career: ""
   });
+  const [mappingId, setMappinId] = useState(props.route.params.state.mappingId);
   const [AlertModal, setAlertModal] = useState(false);
   const [working, setWork] = useState(false);
   const [AlarmModalState, setAlarmModalState] = useState(false);
@@ -58,7 +59,7 @@ const BabyIndiScreen: FC  = (props) => {
   }
 
   useEffect(() => {
-    // getParentInfo(1, setBabyInfo)
+    getParentInfo(props.route.params.state.parentId, setBabyInfo)
   }, [])
 
   return (
@@ -91,8 +92,8 @@ const BabyIndiScreen: FC  = (props) => {
         <style.Profile>
           <style.ProfilePhoto source={require('../../../public/img/logo_92_img.png')}/>
           <style.ProfileInfo>
-            <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.name}</style.StrongText>
-            <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.gender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.age}</style.LightText>
+            <style.StrongText style={{ textAlign: 'center' }}>{BabyInfo.babyName}</style.StrongText>
+            <style.LightText style={{ textAlign: 'center' }}>{BabyInfo.babyGender == 'male' ? '남성 / ' : '여성 / ' }{BabyInfo.babyBirth}</style.LightText>
             <style.Workbutton onPress={workControl}>
               <style.LabelBtnText>{working? '퇴근하기' : '출근하기'}</style.LabelBtnText>
             </style.Workbutton>
