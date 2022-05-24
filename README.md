@@ -117,4 +117,9 @@ $ docker run -d -p 3000:3000 icare-server
     <img src="https://user-images.githubusercontent.com/39997876/161226189-91bb4b81-96d1-42e8-a1ee-9b3115c0af6b.png" alt="Logo" width="64">
     <br/>
     <a href="https://miro.com/app/board/uXjVOYc2F9A=/"><strong>Miro Link »</strong></a>
+    <br/>
+    <br/>
+    <img src="https://www.svgrepo.com/show/354202/postman-icon.svg" alt="logo" width="36">
+    <br/>
+    <a href="https://documenter.getpostman.com/view/16655599/Uyr4Jf51#28b8dca5-578d-4ea9-957d-c37b860b4e9a"><strong>API Documentation Link</strong></a>
 </p>
