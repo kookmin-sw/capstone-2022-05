@@ -8,9 +8,6 @@
 <a href="https://youtu.be/6aM0t3pmxVA"><strong>시연 영상 링크</strong></a>
 <br/>
 <a href="https://docs.google.com/document/d/1GNAOAtuPM39IEv15RSCPHiqbZbJglwEq/edit?usp=sharing&ouid=100622726522714582578&rtpof=true&sd=true"><strong>최종 보고서 링크</strong></a>
-<div align="center">
-    <img src="https://raw.githubusercontent.com/kookmin-sw/capstone-2022-05/master/docs/%E1%84%90%E1%85%B5%E1%86%B705-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5.png" alt="Poster" width="256">
-</div>
 
 ## 1. 프로젝트 소개
 
@@ -30,11 +27,15 @@
 
 ![image](https://user-images.githubusercontent.com/39540561/169974717-f6b61fde-8379-494c-a330-c4f5e53ca925.png)
 
+### 소개 포스터
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/kookmin-sw/capstone-2022-05/master/docs/%E1%84%90%E1%85%B5%E1%86%B705-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5.png" alt="Poster" width="512">
+</div>
+
 ### 2. 소개 영상
 
-추가 예정
-
-![image](https://user-images.githubusercontent.com/39997876/161223750-ba34b04f-c722-4de8-9a30-d49713f981e9.png)
+[![캡스톤 5 팀 소개 영상 비디오](./docs/capstone_thumb.png)](https://youtu.be/6aM0t3pmxVA)
 
 
 ### 3. 팀 소개
