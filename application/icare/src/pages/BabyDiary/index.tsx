@@ -42,9 +42,8 @@ const BabyDiary: FC = (props) => {
     ]
 
     useEffect(() => {
-        console.log(props.route.params)
-        if(props.route.params.dateString)
-            setDate(props.route.params.dateString)
+        if(props.route.params.day.dateString)
+            setDate(props.route.params.day.dateString)
         else {
             var today = new Date()
             const year = today.getFullYear()
