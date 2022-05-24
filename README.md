@@ -42,8 +42,12 @@
 
 [![캡스톤 5 팀 소개 영상 비디오](./docs/capstone_thumb.png)](https://youtu.be/6aM0t3pmxVA)
 
+### 3. 실행 화면
 
-### 3. 팀 소개
+![RPReplay_Final1653306321_MOV_AdobeCreativeCloudExpress (1)](https://user-images.githubusercontent.com/39997876/170001586-820012a4-5d20-4152-b64e-764049b1f84f.gif)
+
+
+### 4. 팀 소개
 
 
 <img src="https://user-images.githubusercontent.com/39997876/161223782-8253f7d0-40a9-4185-a746-d85183da03b0.png" alt="Logo" width="256">
@@ -83,7 +87,7 @@ E-mail: cyh6099@kookmin.ac.kr
 역할: 서버 개발, 데이터베이스 구축, AWS 구축
 ```
 
-### 4. 사용법
+### 5. 사용법
 
 IOS
 
@@ -111,7 +115,7 @@ $ docker build -t icare-server ./backend
 $ docker run -d -p 3000:3000 icare-server
 ```
 
-### 5. 기타
+### 6. 기타
 
 
 <p align="center">
@@ -126,5 +130,5 @@ $ docker run -d -p 3000:3000 icare-server
     <br/>
     <img src="https://www.svgrepo.com/show/354202/postman-icon.svg" alt="logo" width="36">
     <br/>
-    <a href="https://documenter.getpostman.com/view/16655599/Uyr4Jf51#28b8dca5-578d-4ea9-957d-c37b860b4e9a"><strong>API Documentation Link</strong></a>
+    <a href="https://documenter.getpostman.com/view/16655599/Uyr4Jf51#28b8dca5-578d-4ea9-957d-c37b860b4e9a"><strong>API Documentation Link »</strong></a>
 </p>
