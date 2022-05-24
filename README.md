@@ -79,12 +79,23 @@ E-mail: cyh6099@kookmin.ac.kr
 
 ### 4. 사용법
 
-IOS 애뮬레이터 실행방법
+IOS
+
 ```markdown
-1. 해당 repository를 git clone 해준다.
-2. application/icare/ 경로로 이동해서 npm install 명령어를 실행해준다.
-3. 설치가 완료되면 ios/ 경로로 이동해 pod install 명령어를 실행해준다.
-4. 다시 application/icare/ 경로로 돌아와서 npm run ios 명령어를 통해 애뮬레이터를 실행해준다.
+$ git clone https://github.com/kookmin-sw/capstone-2022-05
+$ cd capstone-2022-05/application/icare
+$ npm install
+$ cd ios && pod install
+$ npm run ios / react-native run-ios / yarn ios //셋 중 1택
+$ react-native run-ios --device '{device_name}' --configuration Release //ios 기기에서 실행
+```
+
+Android
+
+```markdown
+$ git clone https://github.com/kookmin-sw/capstone-2022-05
+$ cd capstone-2022-05/application/icare
+$ react-native run-android
 ```
 
 ### 5. 기타
