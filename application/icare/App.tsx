@@ -30,7 +30,7 @@ export default function App() {
         screenOptions={{
           headerShown: false
         }}>
-        <Stack.Screen name="Main" component={MainScreen} />
+        {/* <Stack.Screen name="Main" component={MainScreen} /> */}
         <Stack.Screen name="Auth" component={AuthScreen} />
         <Stack.Screen name="BSMain" component={BSMainScreen} />
         <Stack.Screen name="Invitation" component={InvitationScreen} />
