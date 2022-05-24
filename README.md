@@ -9,7 +9,7 @@
 <br/>
 <a href="https://docs.google.com/document/d/1GNAOAtuPM39IEv15RSCPHiqbZbJglwEq/edit?usp=sharing&ouid=100622726522714582578&rtpof=true&sd=true"><strong>최종 보고서 링크</strong></a>
 <div align="center">
-    <img src="./docs/팀05-포스터.png" alt="Poster" width="256">
+    <img src="https://raw.githubusercontent.com/kookmin-sw/capstone-2022-05/master/docs/%E1%84%90%E1%85%B5%E1%86%B705-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5.png" alt="Poster" width="256">
 </div>
 ## 1. 프로젝트 소개
 
