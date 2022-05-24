@@ -8,7 +8,9 @@
 <a href="https://youtu.be/6aM0t3pmxVA"><strong>시연 영상 링크</strong></a>
 <br/>
 <a href="https://docs.google.com/document/d/1GNAOAtuPM39IEv15RSCPHiqbZbJglwEq/edit?usp=sharing&ouid=100622726522714582578&rtpof=true&sd=true"><strong>최종 보고서 링크</strong></a>
-
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/39997876/161223797-bb810439-2c98-4dbe-a107-c3e79e2ae41d.png](https://github.com/kookmin-sw/capstone-2022-05/blob/master/docs/%E1%84%90%E1%85%B5%E1%86%B705-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5.png?raw=true" alt="Poster" width="256">
+</div>
 ## 1. 프로젝트 소개
 
 ### 프로젝트 설명
