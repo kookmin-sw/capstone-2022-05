@@ -11,6 +11,7 @@
 <div align="center">
     <img src="https://raw.githubusercontent.com/kookmin-sw/capstone-2022-05/master/docs/%E1%84%90%E1%85%B5%E1%86%B705-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5.png" alt="Poster" width="256">
 </div>
+
 ## 1. 프로젝트 소개
 
 ### 프로젝트 설명
@@ -20,13 +21,14 @@
 </div>
 <br/>
 
-아이 돌봄 서비스 이용 추세가 지속적으로 증가함에 따라 부모와 아이돌보미 간 갈등이 일어날 수 있는 문제들을 해결하고자 해당 프로젝트를 기획하게 되었습니다. 기존 아이돌보미 서비스 시장에는 단순히 아이돌보미와 부모를 매칭해주는 서비스와 돌보미에 대한 평점과 리뷰만을 지원해줄 뿐 아이를 돌보는 과정에서 생기는 일에 대해서는 관여하지 않았습니다. 저희 서비스에서는 아이를 돌보는 과정에서 일어날 수 있는 이슈를 관리하고 문제점을 해결할 수 있게 하여 기존 매칭 서비스 만을 지원하였던 기업들에게 다른 플랫폼과 차별성을 줄 수 있는 어플리케이션을 만드는 것을 목표로 하고 있습니다.
+본 프로젝트 ‘ICARE(아이케어)’는 부모와 아이 돌보미 사이를 이어주는 어플리케이션으로 부모와 아이 돌보미의 의사소통을 원활하게 돕고 고용주와 고용인 사이에서 일어날 수 있는 여러가지 갈등들을 해결하기 위함이 목표입니다. 
+부모의 입장에서는 일을 하면서 아이의 행동을 실시간 푸쉬 알림으로 받아 알 수 있게 되고 아이 돌보미의 입장에서는 최소한의 노력으로 아이의 행동을 보고 할 수 있어 고용인의 신뢰를 살 수 있으며 온/습도 센서를 사용한 기능 덕분에 아이의 용변 여부를 많은 신경을 쓰지 않고도 알 수 있게 되어 업무에 도움을 주게 됩니다
 
 ### 주요 기능
 
-![image](https://user-images.githubusercontent.com/39997876/161223097-a9af8ba6-a12e-4e49-9fc5-41c0ec904955.png)
+![image](https://user-images.githubusercontent.com/39540561/169974855-0e32e799-7a39-4162-a7b1-76cf99f443d4.png)
 
-![image](https://user-images.githubusercontent.com/39997876/161223138-8c0ff842-79b8-4175-92c2-478ea47385d8.png)
+![image](https://user-images.githubusercontent.com/39540561/169974717-f6b61fde-8379-494c-a330-c4f5e53ca925.png)
 
 ### 2. 소개 영상
 
@@ -77,7 +79,13 @@ E-mail: cyh6099@kookmin.ac.kr
 
 ### 4. 사용법
 
-소스코드제출시 설치법이나 사용법을 작성하세요.
+IOS 애뮬레이터 실행방법
+```markdown
+1. 해당 repository를 git clone 해준다.
+2. <strong>application/icare/</strong> 경로로 이동해서 <strong>npm install</strong> 명령어를 실행해준다.
+3. 설치가 완료되면 <strong>ios/</strong> 경로로 이동해 <strong>pod install</strong> 명령어를 실행해준다.
+4. 다시 <strong>application/icare/</strong> 경로로 돌아와서 <strong>npm run ios</strong> 명령어를 통해 애뮬레이터를 실행해준다.
+```
 
 ### 5. 기타
 
