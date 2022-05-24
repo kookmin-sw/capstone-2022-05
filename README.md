@@ -27,6 +27,11 @@
 
 ![image](https://user-images.githubusercontent.com/39540561/169974717-f6b61fde-8379-494c-a330-c4f5e53ca925.png)
 
+### 프로젝트 구성도
+<div align="center">
+    <img width="869" alt="image" src="https://user-images.githubusercontent.com/28581838/170000203-322158ee-3c5b-4e4b-98c2-178d8da84fb1.png">
+</div>
+
 ### 소개 포스터
 
 <div align="center">
