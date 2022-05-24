@@ -82,9 +82,9 @@ E-mail: cyh6099@kookmin.ac.kr
 IOS 애뮬레이터 실행방법
 ```markdown
 1. 해당 repository를 git clone 해준다.
-2. <strong>application/icare/</strong> 경로로 이동해서 <strong>npm install</strong> 명령어를 실행해준다.
-3. 설치가 완료되면 <strong>ios/</strong> 경로로 이동해 <strong>pod install</strong> 명령어를 실행해준다.
-4. 다시 <strong>application/icare/</strong> 경로로 돌아와서 <strong>npm run ios</strong> 명령어를 통해 애뮬레이터를 실행해준다.
+2. application/icare/ 경로로 이동해서 npm install 명령어를 실행해준다.
+3. 설치가 완료되면 ios/ 경로로 이동해 pod install 명령어를 실행해준다.
+4. 다시 application/icare/ 경로로 돌아와서 npm run ios 명령어를 통해 애뮬레이터를 실행해준다.
 ```
 
 ### 5. 기타
