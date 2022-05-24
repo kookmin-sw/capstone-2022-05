@@ -99,6 +99,13 @@ $ cd capstone-2022-05/application/icare
 $ react-native run-android
 ```
 
+Server
+```
+$ git clone https://github.com/kookmin-sw/capstone-2022-05.git
+$ docker build -t icare-server ./backend
+$ docker run -d -p 3000:3000 icare-server
+```
+
 ### 5. 기타
 
 
