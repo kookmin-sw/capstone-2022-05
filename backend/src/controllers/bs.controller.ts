@@ -32,18 +32,21 @@ const inputBSInfo = async (req:Request, res:Response, next:NextFunction) => {
         .then((result) => {
             res.status(201).json(result);
         });
-    }
+    }   
 
-    
 }
 
 const getBSInfo = async (req:Request, res:Response, next:NextFunction) => {
-
     // req.params.userId -> string이라 number로 변환
+    let returnData = {}
+
     const bsId: number = +req.params.bsId;
-    const bs = await BabySitter.findOne({bsId: bsId});
+    const bs = await BabySitter.getBsInfomation(bsId);
     
+    console.log(bs.user)
     if (bs) {
+        // returnData['bs'] = bs.Babysitter
+
         res.status(200).json({bs})   
     }
     else {

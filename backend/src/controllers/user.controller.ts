@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from "express";
 import { User } from '../entity/User';
 import bcrypt from "bcrypt";
 import * as jwt from 'jsonwebtoken';
+import { Parent } from "../entity/Parent";
+import { BabySitter } from "../entity/BabySitter";
 
 const signup = async (req: Request, res: Response, next: NextFunction) => {
     const saltRound = 10;
@@ -51,7 +53,6 @@ const signup = async (req: Request, res: Response, next: NextFunction) => {
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
     const {email, password} = req.body;
-    
     const user = await User.find({
         email: email
     })
@@ -62,31 +63,68 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
         })
     }
     else {
-        const check = await bcrypt.compare(password, user[0].password);
 
-        if(check) { // 패스워드 일치 시 토큰 발행
-            const token = jwt.sign({
-                type: 'JWT',
-                email: email,
-                }, process.env.SECRET_KEY, {
-                expiresIn: '24h', // 만료시간 24h
-                issuer: 'icare',
-                }
-            );
+        if (user[0].code === 1) {
+            const parent = await Parent.find({user: user[0]})
             
-            res.status(200).json({
-                success: true,
-                message: "토큰 발행 완료",
-                token: token,
-                userInfo: user
-            });
+            const check = await bcrypt.compare(password, user[0].password);
+
+            if(check) { // 패스워드 일치 시 토큰 발행
+                const token = jwt.sign({
+                    type: 'JWT',
+                    email: email,
+                    }, process.env.SECRET_KEY, {
+                    expiresIn: '24h', // 만료시간 24h
+                    issuer: 'icare',
+                    }
+                );
+                
+                res.status(200).json({
+                    success: true,
+                    message: "토큰 발행 완료",
+                    token: token,
+                    userInfo: user,
+                    parentId: parent[0].parentId
+                });
+                
+            }
+            else {
+                res.status(400).json({
+                    message: "비밀번호가 일치하지 않습니다."
+                })
+            }
+        }
+        else if (user[0].code === 2) {
+            const sitter = await BabySitter.find({user: user[0]});
             
-        }
-        else {
-            res.status(400).json({
-                message: "비밀번호가 일치하지 않습니다."
-            })
-        }
+            const check = await bcrypt.compare(password, user[0].password);
+
+            if(check) { // 패스워드 일치 시 토큰 발행
+                const token = jwt.sign({
+                    type: 'JWT',
+                    email: email,
+                    }, process.env.SECRET_KEY, {
+                    expiresIn: '24h', // 만료시간 24h
+                    issuer: 'icare',
+                    }
+                );
+                
+                res.status(200).json({
+                    success: true,
+                    message: "토큰 발행 완료",
+                    token: token,
+                    userInfo: user,
+                    sitterId: sitter[0].bsId
+                });
+                
+            }
+            else {
+                res.status(400).json({
+                    message: "비밀번호가 일치하지 않습니다."
+                })
+            }
+        }        
+
     }
 };
 

@@ -28,7 +28,6 @@ const upload = multer({
 })
 
 const sendAlarm = async (req:Request, res:Response, next:NextFunction) => {
-    
     const alarmCode: string = req.body.alarmCode
     const alarmText: string = req.body.alarmText
 

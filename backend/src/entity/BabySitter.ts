@@ -60,6 +60,14 @@ export class BabySitter extends BaseEntity {
         return await this.update({bsId:bsId}, data)
     }
 
+    static async getBsInfomation(bsId:number){
+        return await this.createQueryBuilder("babySitter")
+        .leftJoinAndSelect("babySitter.user", "user")
+        .where("babySitter.bsId = :bsId", { bsId: bsId })
+        .select(["babySitter.bsId", "babySitter.age", "babySitter.region", "babySitter.gender","babySitter.career", "user.username"])
+        .getOne()
+    }
+
     static async checkDuple(userId:number){
         const result = await this.createQueryBuilder("babySitter")
         .where("babySitter.userId = :userId", {userId:userId})
