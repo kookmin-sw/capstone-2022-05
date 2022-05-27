@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Image } from "react-native";
+import {Image, View} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../RootStackParams';
@@ -18,12 +18,32 @@ const BabyDiary: FC = (props) => {
         CalendarDiary: {
             issue: ""
         },
-        CalendarImageList : []
+        CalendarImageList : [],
+        CalendarAlarmList : []
     });
-    // const { navigation } = props;
+
+    const alarmType = [
+        {
+            alarmMainColor : '#F59E0B',
+            alarmSecondColor : '#FFFBEB'
+        },
+        {
+            alarmMainColor : '#AEC4BA',
+            alarmSecondColor : '#DDE9E7'
+        },
+        {
+            alarmMainColor : '#DC2626',
+            alarmSecondColor : '#FEF2F2'
+        },
+        {
+            alarmMainColor : '#4A4A4A',
+            alarmSecondColor : '#F6F6F6'
+        }
+    ]
+
     useEffect(() => {
-        if(props.route.params)
-            setDate(props.route.params.dateString)
+        if(props.route.params.day.dateString)
+            setDate(props.route.params.day.dateString)
         else {
             var today = new Date()
             const year = today.getFullYear()
@@ -34,8 +54,11 @@ const BabyDiary: FC = (props) => {
     }, [props])
 
     useEffect(() => {
-        getCalendarDiary(1, {date}, setIssue)
-    }, [date])
+        var mapping_id = props.route.params.id
+        if(mapping_id) {
+            getCalendarDiary(mapping_id, {"date": date}, setIssue)
+        }
+    }, [date, props])
 
     return (
         <style.scrollViewContainer>
@@ -44,15 +67,20 @@ const BabyDiary: FC = (props) => {
                     <style.BabyBehaviorContainerTitle>[{date}] 아기 행동패턴</style.BabyBehaviorContainerTitle>
                     <style.BabyBehaviorContainerLabels>
                         <BehaviorLabel label="밥" main_color='#F59E0B' second_color='#FFFBEB'/>
-                        <BehaviorLabel label="잠" main_color='#AEC4BA' second_color='#DDE9E7'/>
-                        <BehaviorLabel label="목욕" main_color='#DC2626' second_color='#FEF2F2'/>
-                        <BehaviorLabel label="기타" main_color='#4A4A4A' second_color='#F6F6F6'/>
+                        <BehaviorLabel label="수면" main_color='#AEC4BA' second_color='#DDE9E7'/>
+                        <BehaviorLabel label="용변" main_color='#DC2626' second_color='#FEF2F2'/>
+                        <BehaviorLabel label="목욕" main_color='#4A4A4A' second_color='#F6F6F6'/>
                     </style.BabyBehaviorContainerLabels>
                     <style.BabyBehaviorContainerTimeline>
-                        <BehaviorTimeline label="밥을 먹었어요" main_color='#F59E0B' second_color='#FFFBEB' is_image={true}/>
-                        <BehaviorTimeline label="잠을 잤어요" main_color='#AEC4BA' second_color='#DDE9E7' is_image={true}/>
-                        <BehaviorTimeline label="목욕을 했어요" main_color='#DC2626' second_color='#FEF2F2' is_image={false}/>
-                        <BehaviorTimeline label="똥을 쌌어요" main_color='#4A4A4A' second_color='#F6F6F6' is_image={true}/>
+                        {
+                            issue ?
+                            issue.CalendarAlarmList.map((e, i) => {
+                                return (
+                                    <BehaviorTimeline label={e.alarmText} main_color={alarmType[Number(e.alarmCode)-1].alarmMainColor} second_color={alarmType[Number(e.alarmCode)-1].alarmSecondColor} image_uri={e.alarmImg} time={e.createdAt}/>
+                                )
+                            }) : null
+
+                        }
                     </style.BabyBehaviorContainerTimeline>
                 </style.BabyBehaviorContainer>
                 <style.BabyDiaryContainer>
@@ -61,7 +89,7 @@ const BabyDiary: FC = (props) => {
                         <style.BabyDiaryContentText>
                             {issue ? issue.CalendarDiary.issue : "오늘의 일기가 없어요."}
                         </style.BabyDiaryContentText>
-                        {
+                        {/* {
                             issue.CalendarImageList ? 
                             issue.CalendarImageList.map((e, i) => {
                                 return (
@@ -72,10 +100,11 @@ const BabyDiary: FC = (props) => {
                                 )
                             }) : null
 
-                        }
+                        } */}
                     </style.BabyDiaryContent>
                 </style.BabyDiaryContainer>
             </style.DiaryContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }

@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import { Image } from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../../RootStackParams';
@@ -10,9 +10,11 @@ import LabelButton from "../../../components/LabelButton"
 import LabelTextarea from "../../../components/LabelTextarea"
 import * as style from "./style"
 import {postBabysitterInfo} from '../../../api/babysitter'
-// type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
+import {_getData} from "../../../api/users";
+type registerScreenProp = StackNavigationProp<RootStackParamList, 'Register'>;
 
 const SetInfoBS: FC = () => {
+    const [Id, setID] = useState(1);
     const [info, setInfo] = useState({age:'',gender:'', region:'', career:''});
     const [age, setAge] = useState('');
     const [gender, setGender] = useState('');
@@ -24,10 +26,15 @@ const SetInfoBS: FC = () => {
     useEffect(() => {
         infoArrange()
     },[age, gender,region, career])
+    useEffect(() => {
+        _getData('userId', setID);
+    });
+    // console.log(Id)
     const PostBabySitter = () => {
-        postBabysitterInfo(1, info)
+        postBabysitterInfo(Id, info)
+        navigation.navigate('Auth')
     }
-    // const navigation = useNavigation<registerScreenProp>();
+    const navigation = useNavigation<registerScreenProp>();
     return (
         <style.scrollViewContainer>
             <style.setInfoContainer>
@@ -41,11 +48,32 @@ const SetInfoBS: FC = () => {
                     <LabelTextarea label="자기소개/경력" placeholder="자기소개 및 경력을 입력해주세요." function={setCareer} function_state={career}/>
                 </style.setInfoInputBox>
                 <style.setInfoButtonBox>
-                    <LabelButton label="입력 완료" navigate='BSMain' function={PostBabySitter()}/>
+                    <TouchableOpacity style={styles.Loginbutton} onPress={PostBabySitter}>
+                        <Text style={styles.LabelBtnText}>입력완료</Text>
+                    </TouchableOpacity>
+                    {/*<LabelButton label="입력 완료" navigate='BSMain' function={PostBabySitter()}/>*/}
                 </style.setInfoButtonBox>
             </style.setInfoContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }
 
+const styles = StyleSheet.create({
+    Loginbutton : {
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#AEC4BA",
+        padding: 16,
+        borderRadius: 10,
+        boxShadow: "0 2px rgba(0, 0, 0, .1)",
+    },
+    LabelBtnText : {
+        justifyContent: "center",
+        alignItems: "center",
+        color: "#FFFFFF",
+        fontSize: 16,
+        fontWeight: "bold",
+    },
+});
 export default SetInfoBS;

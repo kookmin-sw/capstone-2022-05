@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react';
-import { Image, Text } from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../../RootStackParams';
@@ -21,6 +21,7 @@ const RegisterScreen: FC = () => {
     const [password, setPassword] = useState('')
     const [passwordCheck, setPasswordCheck] = useState('')
     const [code, setCode] = useState(1)
+    const [status, setStatus] = useState(201);
     const [dataForm, setDataForm] = useState({
         "email" : "",
         "password" : "",
@@ -37,9 +38,16 @@ const RegisterScreen: FC = () => {
             "nickname" : nickname,
             "code" : code
         })
-        console.log(dataForm)
+        // console.log(dataForm)
     },[username, email, nickname, code, password])
-
+    const signUpEvent = () => {
+        if (password == passwordCheck){
+            signup(dataForm,setStatus)
+            if (status === 201){
+                navigation.navigate(code===1 ? 'SetInfoParent' : 'SetInfoBS');
+            }
+        }
+    }
     return (
         <style.scrollViewContainer>
             <style.registerContainer>
@@ -70,16 +78,36 @@ const RegisterScreen: FC = () => {
                             }}/>
                         <style.registerAgreeCheckText>개인정보 수집 및 이용 동의</style.registerAgreeCheckText>
                     </style.registerAgreeCheck>
-                    {/* <LabelButton label="회원가입" function={signup(dataForm)}/> */}
-                    <LabelButton label="회원가입" function={password != passwordCheck ? null : signup(dataForm)} />
+                    <TouchableOpacity style={styles.Loginbutton} onPress={signUpEvent}>
+                        <Text style={styles.LabelBtnText}>회원가입</Text>
+                    </TouchableOpacity>
+                    {/*<LabelButton label="회원가입" function={password != passwordCheck ? null : signup(dataForm)} />*/}
                     <style.registerLoginLabel>
                         <style.registerLoginLabelText>이미 계정이 있으신가요?</style.registerLoginLabelText>
                         <style.registerLoginLabelTextLink onPress={() => navigation.navigate('Auth')}>로그인</style.registerLoginLabelTextLink>
                     </style.registerLoginLabel>
                 </style.registerButtonBox>
             </style.registerContainer>
+            <View style={{height:60}}/>
         </style.scrollViewContainer>
     );
 }
 
+const styles = StyleSheet.create({
+    Loginbutton: {
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#AEC4BA",
+        padding: 16,
+        borderRadius: 10,
+        boxShadow: "0 2px rgba(0, 0, 0, .1)",
+    },
+    LabelBtnText: {
+        justifyContent: "center",
+        alignItems: "center",
+        color: "#FFFFFF",
+        fontSize: 16,
+        fontWeight: "bold",
+    }
+});
 export default RegisterScreen;

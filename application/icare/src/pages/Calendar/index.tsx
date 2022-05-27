@@ -7,7 +7,7 @@ import * as style from "./style"
 
 type calendarScreenProp = StackNavigationProp<RootStackParamList, 'Calendar'>;
 
-const CalendarScreen: FC = () => {
+const CalendarScreen: FC = (props) => {
     const navigation = useNavigation<calendarScreenProp>();
 
     return (
@@ -16,7 +16,7 @@ const CalendarScreen: FC = () => {
                 monthFormat={'yyyy MM'}
                 onDayPress={(day) => navigation.navigate({
                     name: 'BabyDiary',
-                    params: day
+                    params: {day, id:props.route.params.id}
                 })}
             />
         </style.scrollViewContainer>

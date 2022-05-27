@@ -23,6 +23,9 @@ const WorkDiaryScreen: FC  = () => {
     postWorkDiary(1,Notice)
     setModal(!modal);
   }
+  const AddText = (text:string) => {
+      setNotice(Notice + text)
+  }
   return(
     <Container>
       {modal ?
@@ -33,7 +36,7 @@ const WorkDiaryScreen: FC  = () => {
         <MsgInput placeholder="오늘의 특이사항을 입력해주세요" multiline numberOfLines={4} value={Notice} onChangeText={setNotice} />
         <style.TextTemplate>
           {TemplateList.map((t) => (
-              <style.Templates>
+              <style.Templates onPress={()=>{AddText(t)}}>
                 <Text>{t}</Text>
               </style.Templates>
           ))}
@@ -51,11 +54,10 @@ const WorkDiaryScreen: FC  = () => {
         </style.PhotoView>
       </style.PhotoAttach>
       <style.ButtonView onPress={ControlModal}>
-        <Text>퇴근하기</Text>
-        {/*<LabelButton label="퇴근하기" />*/}
+        <style.LabelBtnText>퇴근하기</style.LabelBtnText>
       </style.ButtonView>
       <style.ButtonView onPress={() => {navigation.goBack()}}>
-        <LabelButton label="취소" />
+          <style.LabelBtnText>취소</style.LabelBtnText>
       </style.ButtonView>
       {/* 야매로 아래에 공간을 만듬..이거 어케해결함 ㅜ */}
       <View style={{flex: 1, marginBottom: PhotoList.length != 0 ? '45%' : '80%'}} />

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {useState} from "react";
 interface babysitterInfoInterface {
     id?: number,
     age?: string,
@@ -22,7 +23,7 @@ interface AlarmInterface {
 
 //get babysitter info
 export const getBabysitterInfo = (id: number, callback: (response:any) => void) => {
-    axios.get(process.env.BASE_URL + 'bs/info/'+ id)
+    axios.get('http://3.39.149.92:3000/' + 'bs/info/'+ id)
         .then( (response) =>{
             callback(response.data)
         })
@@ -33,7 +34,7 @@ export const getBabysitterInfo = (id: number, callback: (response:any) => void) 
 
 //post babysitter info
 export const postBabysitterInfo = (id:number, data:babysitterInfoInterface) => {
-    axios.post(process.env.BASE_URL + 'bs/info/' + id, data)
+    axios.post('http://3.39.149.92:3000/' + 'bs/info/' + id, data)
         .then((response) => {
             console.log(response);
         })
@@ -44,7 +45,7 @@ export const postBabysitterInfo = (id:number, data:babysitterInfoInterface) => {
 
 //patch babysitter info
 export const patchBabysitterInfo = (id:number, data:babysitterInfoInterface) => {
-    axios.patch(process.env.BASE_URL + 'bs/info/' + id, data)
+    axios.patch('http://3.39.149.92:3000/' + 'bs/info/' + id, data)
         .then((response) => {
             console.log(response);
         })
@@ -55,8 +56,8 @@ export const patchBabysitterInfo = (id:number, data:babysitterInfoInterface) => 
 
 //get babysitter mapping info
 export const getBabysitterMapping = (id: number, callback: (response:any) => void) => {
-    axios.get(process.env.BASE_URL + 'bs/mapping/'+ id)
-        .then( (response) =>{
+    axios.get('http://3.39.149.92:3000/' + 'bs/mapping/'+ id)
+        .then((response) =>{
             callback(response.data)
         })
         .catch((error) => {
@@ -65,8 +66,8 @@ export const getBabysitterMapping = (id: number, callback: (response:any) => voi
 };
 
 //post mapping request from babysitter to parents
-export const postMappingRequest = (id:number, eamil:string) => {
-    axios.post(process.env.BASE_URL + 'bs/mapping/'+ id, eamil)
+export const postMappingRequest = (id:number, email:string) => {
+    axios.post('http://3.39.149.92:3000/' + 'bs/mapping/'+ id, {"email" : email})
         .then( (response) =>{
             console.log(response)
         })
@@ -77,7 +78,7 @@ export const postMappingRequest = (id:number, eamil:string) => {
 
 //post Alarm
 export const postAlarm = (id:number, data:AlarmInterface) => {
-    axios.post(process.env.BASE_URL + 'bs/alarm/'+ id, data)
+    axios.post('http://3.39.149.92:3000/' + 'bs/alarm/'+ id, data)
         .then( (response) =>{
             console.log(response)
         })
@@ -87,11 +88,41 @@ export const postAlarm = (id:number, data:AlarmInterface) => {
 }
 //post workDiary
 export const postWorkDiary = (id:number, issue:string) => {
-    axios.post(process.env.BASE_URL + 'bs/diary/'+ id, issue)
+    axios.post('http://3.39.149.92:3000/' + 'bs/diary/'+ id, issue)
         .then( (response) =>{
             console.log(response)
         })
         .catch((error) => {
             console.log(error);
         });
+}
+// 센서 값 가져오기
+export const getSensor = (callback: (response:any) => void) => {
+    axios.get('http://3.39.149.92:3000/parent/sensor', {
+        headers: {
+            // "Authorization" : 
+        }
+    })
+    .then(function (response) {
+        console.log(response);
+        callback(response.data.alert)
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
+
+// 센서 값 바꾸기
+export const setSensorFalse = () => {
+    axios.patch('http://3.39.149.92:3000/parent/sensor', {
+        headers: {
+            // "Authorization" : 
+        }
+    })
+    .then(function (response) {
+        console.log(response);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 }

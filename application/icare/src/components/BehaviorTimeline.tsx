@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { View, Image } from "react-native";
 import styled from 'styled-components/native';
 
@@ -6,7 +6,8 @@ interface BehaviorTimelineProps {
     label: string,
     main_color: string,
     second_color: string,
-    is_image: boolean,
+    image_uri?: string,
+    time?: string
 }
 
 const TimeLine = styled.View<{second_color: string}>`
@@ -67,17 +68,26 @@ const TimeLineBoxImg = styled.Image`
 
 const BehaviorTimeline: FC<BehaviorTimelineProps> = (props) => {
     const [showContent, setShowContent] = useState(false)
+    const [alarmTime, setAlarmTime] = useState("")
+
+    useEffect(() => {
+        if(props.time) {
+            var date = new Date(props.time)
+            setAlarmTime(date.getHours() + ":" + (date.getMinutes()<10?'0':'') + date.getMinutes())
+        }
+    }, [props])
+    
     return (
         <View>
             <TimeLine second_color={props.second_color}>
                 <TimeLineTop>
                     <TimeLineTime main_color={props.main_color} showContent={showContent}>
-                        <TimeLineTimeText>07:55</TimeLineTimeText>
+                        <TimeLineTimeText>{alarmTime}</TimeLineTimeText>
                     </TimeLineTime>
                     <TimeLineContent>
                         <TimeLineContentText>{props.label}</TimeLineContentText>
                         {
-                            props.is_image ?
+                            props.image_uri ?
                             <TimeLineContentImg onPress={() => setShowContent(!showContent)}>
                                 {
                                     showContent ?
@@ -92,7 +102,11 @@ const BehaviorTimeline: FC<BehaviorTimelineProps> = (props) => {
                 {
                     showContent?
                     <TimeLineBox second_color={props.second_color}>
-                        <TimeLineBoxImg source = {require("../../public/img/example_baby.jpeg")}/>
+                        {
+                            props.image_uri !== undefined ?
+                                <TimeLineBoxImg source = {{uri : "https://icare-s3.s3.amazonaws.com/" + props.image_uri}}/> :
+                                <TimeLineBoxImg source = {require("../../public/img/example_baby.jpeg")}/>
+                        }
                     </TimeLineBox> :
                     <></>
                 }

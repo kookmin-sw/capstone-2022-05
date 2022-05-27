@@ -1,12 +1,17 @@
 import React, {FC, useEffect, useState} from 'react';
 import {View, Text, Image, Modal, TouchableOpacity} from "react-native";
 import styled from 'styled-components/native';
+import {useNavigation} from "@react-navigation/native";
+import {StackNavigationProp} from "@react-navigation/stack";
+import {RootStackParamList} from "../RootStackParams";
 
 interface ConfirmModalProps {
   close(): void
 }
+type mainScreenProp = StackNavigationProp<RootStackParamList, 'BSMain'>;
 
 const ConfirmModal: FC<ConfirmModalProps> = (props) => {
+  const navigation = useNavigation<mainScreenProp>();
   return(
     <ModalBg>
       <ModalView>
@@ -14,7 +19,7 @@ const ConfirmModal: FC<ConfirmModalProps> = (props) => {
           <NoticeText>소중한 아이를 위해 </NoticeText>
           <NoticeText>입력하신 내용을 한번 더 확인해주세요!</NoticeText>
           <BtnView>
-            <ModalBtn>
+            <ModalBtn onPress={() => navigation.navigate('BSMain')}>
               <BtnLabel>저장</BtnLabel>
             </ModalBtn>
             <ModalBtn onPress={props.close}>

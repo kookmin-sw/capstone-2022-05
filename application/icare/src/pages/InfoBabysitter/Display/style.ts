@@ -4,6 +4,7 @@ export const scrollViewContainer = styled.ScrollView`
     height: 100%;
     background-color: #FFFFFF;
     flex-grow: 1;
+    padding-top: 60px;
 `;
 
 export const displayInfoContainer = styled.View`
@@ -27,7 +28,7 @@ export const displayInfoInputBox = styled.View`
     width: 80%;
 `;
 
-export const displayInfoButtonBox = styled.View`
+export const displayInfoButtonBox = styled.TouchableOpacity`
     margin: 24px 0;
     width: 80%;
 `;
