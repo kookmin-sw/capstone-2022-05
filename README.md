@@ -1,3 +1,14 @@
+# ICARE
+<a href="./docs/팀05-중간보고서.pdf"><strong>중간 보고서 링크</strong></a>
+<br/>
+<a href="./docs/팀05-중간발표자료.pdf"><strong>중간 발표 자료 링크</strong></a>
+<br/>
+<a href="./docs/팀05-최종발표자료.pdf"><strong>최종 발표 자료 링크</strong></a>
+<br/>
+<a href="https://youtu.be/6aM0t3pmxVA"><strong>시연 영상 링크</strong></a>
+<br/>
+<a href="https://docs.google.com/document/d/1GNAOAtuPM39IEv15RSCPHiqbZbJglwEq/edit?usp=sharing&ouid=100622726522714582578&rtpof=true&sd=true"><strong>최종 보고서 링크</strong></a>
+
 ## 1. 프로젝트 소개
 
 ### 프로젝트 설명
@@ -7,22 +18,36 @@
 </div>
 <br/>
 
-아이 돌봄 서비스 이용 추세가 지속적으로 증가함에 따라 부모와 아이돌보미 간 갈등이 일어날 수 있는 문제들을 해결하고자 해당 프로젝트를 기획하게 되었습니다. 기존 아이돌보미 서비스 시장에는 단순히 아이돌보미와 부모를 매칭해주는 서비스와 돌보미에 대한 평점과 리뷰만을 지원해줄 뿐 아이를 돌보는 과정에서 생기는 일에 대해서는 관여하지 않았습니다. 저희 서비스에서는 아이를 돌보는 과정에서 일어날 수 있는 이슈를 관리하고 문제점을 해결할 수 있게 하여 기존 매칭 서비스 만을 지원하였던 기업들에게 다른 플랫폼과 차별성을 줄 수 있는 어플리케이션을 만드는 것을 목표로 하고 있습니다.
+본 프로젝트 ‘ICARE(아이케어)’는 부모와 아이 돌보미 사이를 이어주는 어플리케이션으로 부모와 아이 돌보미의 의사소통을 원활하게 돕고 고용주와 고용인 사이에서 일어날 수 있는 여러가지 갈등들을 해결하기 위함이 목표입니다. 
+부모의 입장에서는 일을 하면서 아이의 행동을 실시간 푸쉬 알림으로 받아 알 수 있게 되고 아이 돌보미의 입장에서는 최소한의 노력으로 아이의 행동을 보고 할 수 있어 고용인의 신뢰를 살 수 있으며 온/습도 센서를 사용한 기능 덕분에 아이의 용변 여부를 많은 신경을 쓰지 않고도 알 수 있게 되어 업무에 도움을 주게 됩니다
 
 ### 주요 기능
 
-![image](https://user-images.githubusercontent.com/39997876/161223097-a9af8ba6-a12e-4e49-9fc5-41c0ec904955.png)
+![image](https://user-images.githubusercontent.com/39540561/169974855-0e32e799-7a39-4162-a7b1-76cf99f443d4.png)
 
-![image](https://user-images.githubusercontent.com/39997876/161223138-8c0ff842-79b8-4175-92c2-478ea47385d8.png)
+![image](https://user-images.githubusercontent.com/39540561/169974717-f6b61fde-8379-494c-a330-c4f5e53ca925.png)
+
+### 프로젝트 구성도
+<div align="center">
+    <img width="869" alt="image" src="https://user-images.githubusercontent.com/28581838/170000203-322158ee-3c5b-4e4b-98c2-178d8da84fb1.png">
+</div>
+
+### 소개 포스터
+
+<div align="center">
+    <img src="https://raw.githubusercontent.com/kookmin-sw/capstone-2022-05/master/docs/%E1%84%90%E1%85%B5%E1%86%B705-%E1%84%91%E1%85%A9%E1%84%89%E1%85%B3%E1%84%90%E1%85%A5.png" alt="Poster" width="512">
+</div>
 
 ### 2. 소개 영상
 
-추가 예정
+[![캡스톤 5 팀 소개 영상 비디오](./docs/capstone_thumb.png)](https://youtu.be/6aM0t3pmxVA)
 
-![image](https://user-images.githubusercontent.com/39997876/161223750-ba34b04f-c722-4de8-9a30-d49713f981e9.png)
+### 3. 실행 화면
+
+![RPReplay_Final1653306321_MOV_AdobeCreativeCloudExpress (1)](https://user-images.githubusercontent.com/39997876/170001586-820012a4-5d20-4152-b64e-764049b1f84f.gif)
 
 
-### 3. 팀 소개
+### 4. 팀 소개
 
 
 <img src="https://user-images.githubusercontent.com/39997876/161223782-8253f7d0-40a9-4185-a746-d85183da03b0.png" alt="Logo" width="256">
@@ -62,11 +87,35 @@ E-mail: cyh6099@kookmin.ac.kr
 역할: 서버 개발, 데이터베이스 구축, AWS 구축
 ```
 
-### 4. 사용법
+### 5. 사용법
 
-소스코드제출시 설치법이나 사용법을 작성하세요.
+IOS
 
-### 5. 기타
+```markdown
+$ git clone https://github.com/kookmin-sw/capstone-2022-05
+$ cd capstone-2022-05/application/icare
+$ npm install
+$ cd ios && pod install
+$ npm run ios / react-native run-ios / yarn ios //셋 중 1택
+$ react-native run-ios --device '{device_name}' --configuration Release //ios 기기에서 실행
+```
+
+Android
+
+```markdown
+$ git clone https://github.com/kookmin-sw/capstone-2022-05
+$ cd capstone-2022-05/application/icare
+$ react-native run-android
+```
+
+Server
+```
+$ git clone https://github.com/kookmin-sw/capstone-2022-05.git
+$ docker build -t icare-server ./backend
+$ docker run -d -p 3000:3000 icare-server
+```
+
+### 6. 기타
 
 
 <p align="center">
@@ -77,4 +126,9 @@ E-mail: cyh6099@kookmin.ac.kr
     <img src="https://user-images.githubusercontent.com/39997876/161226189-91bb4b81-96d1-42e8-a1ee-9b3115c0af6b.png" alt="Logo" width="64">
     <br/>
     <a href="https://miro.com/app/board/uXjVOYc2F9A=/"><strong>Miro Link »</strong></a>
+    <br/>
+    <br/>
+    <img src="https://www.svgrepo.com/show/354202/postman-icon.svg" alt="logo" width="36">
+    <br/>
+    <a href="https://documenter.getpostman.com/view/16655599/Uyr4Jf51#28b8dca5-578d-4ea9-957d-c37b860b4e9a"><strong>API Documentation Link »</strong></a>
 </p>

@@ -33,6 +33,7 @@ const inputBSInfo = async (req:Request, res:Response, next:NextFunction) => {
             res.status(201).json(result);
         });
     }   
+
 }
 
 const getBSInfo = async (req:Request, res:Response, next:NextFunction) => {
@@ -45,6 +46,7 @@ const getBSInfo = async (req:Request, res:Response, next:NextFunction) => {
     console.log(bs.user)
     if (bs) {
         // returnData['bs'] = bs.Babysitter
+
         res.status(200).json({bs})   
     }
     else {

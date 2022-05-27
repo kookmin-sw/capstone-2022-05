@@ -17,6 +17,7 @@ const uploadImg = upload.upload.array('img');
 const writeWorkdiary = async (req:Request, res:Response, next:NextFunction) => {
     console.log(req.body)
 
+
     uploadImg(req,res,async (err) => {
         if(err){
             // console.log(req.body)

@@ -188,7 +188,6 @@ const rejectMapping = async (req: Request, res: Response, next: NextFunction) =>
 
 const getDailyDiary = async (req: Request, res: Response, next: NextFunction) => {
     const mappingId: number = +req.params.mappingId;
-
     // mappingId를 이용하여 금일 퇴근일지 가져오기
     const daily_work_diary = await WorkDiary.findDiarybyMappingId(mappingId);
     
@@ -205,6 +204,7 @@ const getDailyDiary = async (req: Request, res: Response, next: NextFunction) =>
         .then((result) => {
             return res.status(200).json({
                 dailyDiary: daily_work_diary,
+
                 dailyImageList: result,
                 dailyAlarmList: daily_alarm_list
             })
@@ -269,6 +269,7 @@ const getCalendarDiary = async (req: Request, res: Response, next: NextFunction)
             res.status(400).json(err);
         })
     }
+
 }
 
 const getSensorInfo = async (req: Request, res: Response, next: NextFunction) => {

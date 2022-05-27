@@ -63,6 +63,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
         })
     }
     else {
+
         if (user[0].code === 1) {
             const parent = await Parent.find({user: user[0]})
             
@@ -123,6 +124,7 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
                 })
             }
         }        
+
     }
 };
 
